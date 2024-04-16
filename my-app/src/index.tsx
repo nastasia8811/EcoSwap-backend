@@ -4,18 +4,16 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
 import store from './store';
-import CssBaseline from '@mui/material/CssBaseline';
-import ScopedCssBaseline from '@mui/material/ScopedCssBaseline';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root')as HTMLElement);
 root.render(
-    <ScopedCssBaseline>
       <Provider store={store}>
         <BrowserRouter>
             <App />
         </BrowserRouter>
     </Provider>
-    </ScopedCssBaseline>
+
 );
 
 

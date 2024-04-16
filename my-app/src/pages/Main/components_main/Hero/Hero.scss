@@ -1,0 +1,62 @@
+.hero__background-top{
+  background-image: url("pictures/container_top.jpg");
+  background-repeat: no-repeat;
+  height: 39vh;
+  background-position: center center;
+  background-size: cover;
+  position:relative;
+}
+
+.hero__content-container {
+  position: absolute;
+  background-color: #1B2A20;
+  min-width: 444px;
+  min-height: 172px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  display: flex;
+}
+.hero__content-container_text1{
+max-width: 222px;
+padding: 10px;
+
+  font-family: Cleopatras, sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 62.4px;
+  text-align: left;
+
+}
+.hero__content-container_text2{
+  max-width: 222px;
+  padding: 10px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: right;
+}
+.hero__background-bottom{
+  background-color: #F0EEDF;
+  min-height: 380px;
+}
+
+.hero__background-bottom_container{
+  max-width: 683px;
+  min-height: 102px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 130px;
+
+}
+.hero__background-bottom_content{
+  padding: 30px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 29.7px;
+  text-align: center;
+
+
+
+}
+

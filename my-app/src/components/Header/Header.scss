@@ -1,9 +1,49 @@
 .header{
   .header__wrapper {
-
+    display: flex;
     height: 160px;
     background-color: #283D3B;
+    align-items: center;
+    justify-content: space-evenly;
+    .header__logo-wrapper{
+      //padding-left: 200px;
+      cursor: pointer;
+    }
+    .header-menu__list{
+       //margin-left: 150px;
+      .header-menu__list-item{
+        padding-right: 15px;
+        color: #EDEDED;
+        font-family: Maitree, sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px;
+        line-height: 26.4px;
+        text-transform: uppercase;
+        cursor:pointer;
+      }
+
+    }
+    .header-menu__input-wrapper{
+      cursor:pointer;
+      display: flex;
+    }
+    .menu-button{
+      font-family: Maitree, sans-serif;
+      background-color: #8BA993;
+      min-width: 208px;
+      height: 48px;
+      border: 1px solid #1B2A20;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 18px;
+      font-style: normal;
+      line-height: 29.7px;
+      text-transform: uppercase;
+    ;
+    }
   }
+
+
 }
-
-

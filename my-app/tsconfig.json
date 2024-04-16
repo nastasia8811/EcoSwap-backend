@@ -1,26 +1,74 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
+  "compilerOptions":
+  {
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "*",
+        "components/*"
+      ]
+    },
+    "allowJs": false,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "alwaysStrict": true,
+    "charset": "utf8",
+    "checkJs": false,
+    "declaration": true,
+    "disableSizeLimit": false,
+    "downlevelIteration": false,
+    "emitBOM": false,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "importHelpers": false,
+    "inlineSourceMap": false,
+    "inlineSources": false,
+    "isolatedModules": false,
+    "lib": [
+      "es2017",
+      "esnext.asynciterable"
+    ],
+    "locale": "en-us",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "newLine": "lf",
+    "noEmit": false,
+    "noEmitHelpers": false,
+    "noEmitOnError": true,
+    "noErrorTruncation": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noStrictGenericChecks": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitUseStrict": false,
+    "noLib": false,
+    "noResolve": false,
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "suppressExcessPropertyErrors": false,
+    "suppressImplicitAnyIndexErrors": false,
+    "target": "es2017",
+    "traceResolution": false,
+    "rootDir": "",
+    "outDir": "../../build/lib",
+    "typeRoots": []
   },
   "include": [
-    "src"
-  ]
+    "**/*.ts"
+  ],
+  "exclude": [],
+  "lib": ["es6", "dom"],
+  "noImplicitAny": true,
+  "noImplicitThis": true,
+  "strictNullChecks": true
 }
