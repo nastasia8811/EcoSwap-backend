@@ -1,16 +1,22 @@
 .header{
+  min-width: 375px;
   &__wrapper {
     display: flex;
-    height: 160px;
+    height: 48px;
     background-color: #283D3B;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding-right: 10px;
+    padding-left: 10px;
     &-logo{
-      //padding-left: 200px;
       cursor: pointer;
+      &_icon{
+        max-width: 32px;
+        max-height: 32px;
+      }
     }
     &-menu{
-      //margin-left: 150px;
+      display: none;
       &-item{
         padding-right: 15px;
         color: #EDEDED;
@@ -23,72 +29,62 @@
         cursor:pointer;
       }
     }
-    //&-input{
-    //  cursor:pointer;
-    //  display: flex;
-    //}
-    &__menu-button{
-      font-family: Maitree, sans-serif;
-      background-color: #8BA993;
-      min-width: 208px;
-      height: 48px;
-      border: 1px solid #1B2A20;
-      border-radius: 10px;
+    &-burger_btn{
+      display: block;
       cursor: pointer;
-      font-weight: 500;
-      font-size: 18px;
-      font-style: normal;
-      line-height: 29.7px;
-      text-transform: uppercase;
     }
   }
 
-
-
-
-
-
-  &__wrapper {
-    display: flex;
-    height: 160px;
-    background-color: #283D3B;
-    align-items: center;
-    justify-content: space-evenly;
-    &-logo{
-      //padding-left: 200px;
-      cursor: pointer;
-    }
-    &-menu{
-      //margin-left: 150px;
-      &-item{
-        padding-right: 15px;
-        color: #EDEDED;
-        font-family: Maitree, sans-serif;
-        font-weight: 400;
-        font-style: normal;
-        font-size: 16px;
-        line-height: 26.4px;
-        text-transform: uppercase;
-        cursor:pointer;
+  @media (min-width: 482px) and (max-width: 833.9px) {
+    &__wrapper {
+      height: 160px;
+      align-items: center;
+      justify-content: space-evenly;
+      &-logo{
+        &_icon{
+          max-width: 80px;
+          max-height: 80px;
+        }
+      }
+      &-menu{
+        display: block;
+        &-item {
+          padding-right: 15px;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 26.4px;
+        }
+      }
+      &-burger_btn{
+        display: none;
       }
     }
-    //&-input{
-    //  cursor:pointer;
-    //  display: flex;
-    //}
-    &__menu-button{
-      font-family: Maitree, sans-serif;
-      background-color: #8BA993;
-      min-width: 208px;
-      height: 48px;
-      border: 1px solid #1B2A20;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 500;
-      font-size: 18px;
-      font-style: normal;
-      line-height: 29.7px;
-      text-transform: uppercase;
+  }
+  @media (min-width: 834px) and (max-width: 1800px) {
+    &__wrapper {
+      display: flex;
+      height: 160px;
+      background-color: #283D3B;
+      align-items: center;
+      justify-content: space-evenly;
+      &-logo{
+        &_icon{
+          max-width: 80px;
+          max-height: 80px;
+        }
+      }
+      &-menu{
+        display: block;
+        &-item{
+          padding-right: 55px;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 31px;
+        }
+      }
+      &-burger_btn{
+      display: none;
+      }
     }
   }
 }

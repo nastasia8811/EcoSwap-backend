@@ -3,10 +3,12 @@ import './Header.scss';
 import { Link, NavLink } from 'react-router-dom';
 import {logo} from "./icons";
 import {useState} from "react";
-
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 const Header = () => {
-    const [modalAuthor, setModalAuthor]= useState(false)
+    const [modalAuthor, setModalAuthor]= useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const handleClick = () => {
         setModalAuthor(true)
         console.log("hi")
@@ -35,12 +37,9 @@ const Header = () => {
                             authorization
                         </NavLink>
                     </Box>
-                    {/*<Box className="header__wrapper-input">*/}
-                    {/*    <Box className="header__wrapper-input-search">*/}
-                    {/*        {circum}*/}
-                    {/*    </Box>*/}
-                    {/*</Box>*/}
-
+                    <Box className="header__wrapper-burger_btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                        {isMenuOpen ? <CloseOutlinedIcon /> : <MenuOutlinedIcon />}
+                    </Box>
                 </Box>
 
             </Container>
