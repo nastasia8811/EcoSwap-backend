@@ -157,7 +157,7 @@ const FormRegistration = ({ onSubmit,initialValues, validationSchema}) => {
 
                                     />
                                 </div>
-                                <button type={"submit"} disabled={!isValid} onSubmit={onSubmit}>create</button>
+                                <button type={"submit"} disabled={!isValid} >create</button>
                             </Form>
                         </>
                     );

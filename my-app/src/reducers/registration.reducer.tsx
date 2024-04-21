@@ -1,67 +1,46 @@
-import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { REGISTER_USER } from '../endpoints';
 import axios from 'axios';
 
-
-interface RegistrationState {
-    formData: {
-        firstName: string;
-        lastName: string;
-        login: string;
-        email: string;
-        password: string;
-        telephone: string;
-        city: string;
-        country: string;
-        birthdate: string;
-    };
-    modalError: string | null;
-    modalSuccess: boolean | null;
-    pageIsLoading: boolean;
-    messageError: string;
-}
-
-
-export const initialState: RegistrationState = {
-    formData: {
-        firstName: '',
-        lastName: '',
-        login: '',
-        email: '',
-        password: '',
-        telephone: '',
-        city:'',
-        country:'',
-        birthdate: '',
-    },
-    modalError: null,
-    modalSuccess: null,
-    pageIsLoading: false,
-    messageError: ""
-};
-
-const registrationSlice:Slice<RegistrationState> = createSlice({
+const registrationSlice = createSlice({
     name: 'registration',
-    initialState,
+    initialState: {
+        formData: {
+            firstName: '',
+            lastName: '',
+            login: '',
+            email: '',
+            password: '',
+            telephone: '',
+            city:'',
+            country:'',
+            birthdate: '',
+        },
+        modalError: null,
+        modalSuccess: null,
+        pageIsLoading: false,
+        messageError: ""
+    },
     reducers: {
-        actionPageIsLoading: (state, action: PayloadAction<boolean>) => {
-            state.pageIsLoading = action.payload;
+        actionPageIsLoading:  (state, { payload }) => {
+            state.pageIsLoading = payload;
         },
-        actionRegistrationSuccess: (state, action: PayloadAction<boolean>) => {
-            state.modalSuccess = action.payload;
+        actionRegistrationSuccess: (state, { payload }) => {
+            state.modalSuccess = payload;
         },
-        actionRegistrationError: (state, action: PayloadAction<string>) => {
-            state.modalError = action.payload;
+        actionRegistrationError: (state, { payload }) => {
+            state.modalError = payload;
         },
-        actionMessageError: (state, action: PayloadAction<string>) => {
-            state.messageError = action.payload;
+        actionMessageError: (state, { payload }) => {
+            state.messageError = payload;
         },
+
     },
 });
 
 export const { actionRegistrationSuccess, actionPageIsLoading, actionRegistrationError, actionMessageError} = registrationSlice.actions;
 
-export const createCustomerServerApi = (value: any) => (dispatch: any) => {
+export const createCustomerServerApi  = (value) => (dispatch) => {
     dispatch(actionPageIsLoading(true));
     return axios
         .post(REGISTER_USER, value)
@@ -72,9 +51,13 @@ export const createCustomerServerApi = (value: any) => (dispatch: any) => {
         .catch((error) => {
             dispatch(actionMessageError(error.response.data.message))
             dispatch(actionRegistrationError(true))
-        }).finally(() => {
+        }).finally(()=>{
             dispatch(actionPageIsLoading(false))
         })
+
+
 };
 
+
+export const initialState = registrationSlice.getInitialState();
 export default registrationSlice.reducer;

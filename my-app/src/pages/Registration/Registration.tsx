@@ -20,7 +20,6 @@ import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
 
 
-
 const Registration: React.FC = () => {
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
     const initialFormData = useSelector(selectorRegistrationInitialState);
