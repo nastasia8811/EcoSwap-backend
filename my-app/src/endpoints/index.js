@@ -2,6 +2,14 @@ import axios from 'axios';
 //axios.defaults.baseURL = 'https://eu-central-1.aws.data.mongodb-api.com/app/data-lembu/endpoint/data/v1';
 axios.defaults.baseURL = "https://EcoSwap-api.com/api";
 
+
+
+export const REGISTER_USER = `/customers`;
+export const LOGIN_USER = `/customers/login`;
+export const GET_USER = `/customers/customer`;
+
+
+
 export const GET_ALL_PRODUCTS = `/products`;
 export const GET_ALL_PRODUCTS_URL = `/products/filter`
 
@@ -19,17 +27,6 @@ export const GET_PRODUCT_COMMENTS = `/comments/product/:itemNo`;
 export const PRODUCT_COMMENTS = `/comments`;
 
 
-export const REGISTER_USER = `/customers`;
-export const LOGIN_USER = `/customers/login`;
-export const GET_USER = `/customers/customer`;
 
-export const WISHLIST = `/wishlist`;
-export const PRODUCT_IN_WISHLIST = `/wishlist/:productId`;
 
-export const SHOPPING_CART = `/cart`;
-export const PRODUCT_IN_SHOPPING_CART = `/cart/:productId`;
-export const CHANGE_PRODUCT_QUANTITY_SHOPPING_CART = `/cart/product/:productId`;
-export const ORDERS = `/orders`;
-
-// export const FAVORITES = `/favorites`;
 

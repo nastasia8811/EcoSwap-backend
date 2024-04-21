@@ -21,9 +21,8 @@ const Authorization = () => {
                         <div className="auth__background-bottom_container">
                             <form className="auth__background-bottom_container-content"></form>
                             <span>or</span>
-                            <p className=""><Link to="/registration" className="registration">
-                                <Registration/>
-                            </Link></p>
+
+                            <Link to="/registration" className="registration"> Create</Link>
                         </div>
                     </Box>
                 </Container>

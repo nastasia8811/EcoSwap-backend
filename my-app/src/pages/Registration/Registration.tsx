@@ -5,7 +5,7 @@ import BreadCrumbs from '../../components/BreadCrumbs/BreadCrumbs';
 import FormRegistration from '../../components/FormRegistration/FormRegistration';
 import ValidationSchema from './ValidationSchemaRegistration';
 import ModalSuccessRegistration from './components/ModalSuccessRegistration';
-import Preloader from '../../components/Preloader';
+import Preloader from '../../components/Preloader/Preloader';
 import { createCustomerServerApi, actionRegistrationSuccess, actionRegistrationError } from '../../reducers';
 import ModalErrorRegistration from './components/ModalErrorRegistration';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,9 +15,13 @@ import {
     selectorRegistrationModalError,
     selectorRegistrationModalSuccess
 } from '../../selectors';
+import { AxiosResponse } from 'axios';
+import {ThunkDispatch} from "redux-thunk";
+import {Action} from "redux";
+
 
 const Registration: React.FC = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
     const initialFormData = useSelector(selectorRegistrationInitialState);
     const modalError = useSelector(selectorRegistrationModalError);
     const loading = useSelector(selectorRegistrationIsLoading);
@@ -33,14 +37,13 @@ const Registration: React.FC = () => {
                     <FormRegistration
                         initialValues={initialFormData}
                         validationSchema={ValidationSchema}
-                        onSubmit={(values, { resetForm }) => {
+                        onSubmit={(values,{ resetForm }) => {
                             delete values.confirmPassword;
-                            // @ts-ignore
-                            dispatch(createCustomerServerApi(values)).then((axiosValue) => {
+                            dispatch(createCustomerServerApi(values)).then((axiosValue: AxiosResponse<any>) => {
                                 if (axiosValue) {
                                     resetForm();
                                 }
-                            });
+                            })
                         }}
                         inputsEditName={["firstName", "lastName", "login", "email", "password", "telephone", "city", "country", "birthdate"]}
                         btnEdit={true}

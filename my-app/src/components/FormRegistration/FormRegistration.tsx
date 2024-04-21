@@ -2,14 +2,12 @@ import './FormRegistration.scss';
 import { Formik, Form } from 'formik';
 import FormikControl from '../CustomInput/FormikControl'
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { actionEditInputs } from '../../reducers';
 
 import PasswordInput from '../CustomInput/PasswordInput';
-import EditButton from '../EditButton/EditButton';
 
-const FormRegistration = ({ onSubmit, initialValues, btnEdit, inputsEditName, withPassword, validationSchema }) => {
-    const dispatch = useDispatch();
+
+const FormRegistration = ({ onSubmit,initialValues, inputsEditName, withPassword, validationSchema}) => {
+
     const [showPassword, setShowPassword] = useState(false);
     const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
@@ -18,7 +16,9 @@ const FormRegistration = ({ onSubmit, initialValues, btnEdit, inputsEditName, wi
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={onSubmit}
+                onSubmit={(values, { resetForm }) => {
+                    onSubmit(values, { resetForm });
+                }}
             >
                 {(isValid) => {
                     return (
@@ -39,10 +39,6 @@ const FormRegistration = ({ onSubmit, initialValues, btnEdit, inputsEditName, wi
                                         variant="outlined"
                                         id="outlined-multiline-flexible"
                                         disabled={!inputsEditName.includes("firstName")}
-                                        InputProps={btnEdit && {
-                                            endAdornment: (<EditButton dataName={"firstName"}
-                                                onClick={() => dispatch(actionEditInputs("firstName"))} />)
-                                        }}
                                         required
                                     />
 
@@ -60,10 +56,6 @@ const FormRegistration = ({ onSubmit, initialValues, btnEdit, inputsEditName, wi
                                         variant="outlined"
                                         id="outlined-multiline-flexible"
                                         disabled={!inputsEditName.includes("lastName")}
-                                        InputProps={btnEdit && {
-                                            endAdornment: (<EditButton dataName={"lastName"}
-                                                onClick={() => dispatch(actionEditInputs("lastName"))} />)
-                                        }}
                                         required
                                     />
 
@@ -81,10 +73,6 @@ const FormRegistration = ({ onSubmit, initialValues, btnEdit, inputsEditName, wi
                                         variant="outlined"
                                         id="outlined-multiline-flexible"
                                         disabled={!inputsEditName.includes("login")}
-                                        InputProps={btnEdit && {
-                                            endAdornment: (<EditButton dataName={"login"}
-                                                onClick={() => dispatch(actionEditInputs("login"))} />)
-                                        }}
                                         required
                                     />
 
@@ -102,10 +90,6 @@ const FormRegistration = ({ onSubmit, initialValues, btnEdit, inputsEditName, wi
                                         variant="outlined"
                                         id="outlined-multiline-flexible"
                                         disabled={!inputsEditName.includes("email")}
-                                        InputProps={btnEdit && {
-                                            endAdornment: (<EditButton dataName={"email"}
-                                                onClick={() => dispatch(actionEditInputs("email"))} />)
-                                        }}
                                         required
                                     />
 
@@ -141,10 +125,6 @@ const FormRegistration = ({ onSubmit, initialValues, btnEdit, inputsEditName, wi
                                         required
                                         placeholder="+380 99 999 99 99"
                                         disabled={!inputsEditName.includes("telephone")}
-                                        InputProps={btnEdit && {
-                                            endAdornment: (<EditButton dataName={"telephone"}
-                                                onClick={() => dispatch(actionEditInputs("telephone"))} />)
-                                        }}
                                     />
 
                                     <FormikControl
@@ -161,10 +141,6 @@ const FormRegistration = ({ onSubmit, initialValues, btnEdit, inputsEditName, wi
                                         variant="outlined"
                                         id="outlined-multiline-flexible"
                                         disabled={!inputsEditName.includes("city")}
-                                        InputProps={btnEdit && {
-                                            endAdornment: (<EditButton dataName={"city"}
-                                                onClick={() => dispatch(actionEditInputs("city"))} />)
-                                        }}
 
                                     />
                                     <FormikControl
@@ -181,10 +157,6 @@ const FormRegistration = ({ onSubmit, initialValues, btnEdit, inputsEditName, wi
                                         variant="outlined"
                                         id="outlined-multiline-flexible"
                                         disabled={!inputsEditName.includes("country")}
-                                        InputProps={btnEdit && {
-                                            endAdornment: (<EditButton dataName={"country"}
-                                                onClick={() => dispatch(actionEditInputs("country"))} />)
-                                        }}
 
                                     />
 
@@ -202,13 +174,9 @@ const FormRegistration = ({ onSubmit, initialValues, btnEdit, inputsEditName, wi
                                         className="form-registration__input"
                                         variant="outlined"
                                         disabled={!inputsEditName.includes("birthdate")}
-                                        InputProps={btnEdit && {
-                                            endAdornment: (<EditButton dataName={"birthdate"}
-                                                onClick={() => dispatch(actionEditInputs("birthdate"))} />)
-                                        }}
                                     />
                                 </div>
-                                <button></button>
+                                <button type={"submit"} disabled={!isValid}>create</button>
                             </Form>
                         </>
                     );
