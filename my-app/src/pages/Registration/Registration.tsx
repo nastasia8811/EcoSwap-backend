@@ -4,10 +4,10 @@ import './Registration.scss';
 import BreadCrumbs from '../../components/BreadCrumbs/BreadCrumbs';
 import FormRegistration from '../../components/FormRegistration/FormRegistration';
 import ValidationSchema from './ValidationSchemaRegistration';
-import ModalSuccessRegistration from './components/ModalSuccessRegistration';
+import ModalSuccessRegistration from './components/ModalSuccessRegistration/ModalSuccessRegistration';
 import Preloader from '../../components/Preloader/Preloader';
 import { createCustomerServerApi, actionRegistrationSuccess, actionRegistrationError } from '../../reducers';
-import ModalErrorRegistration from './components/ModalErrorRegistration';
+import ModalErrorRegistration from './components/ModalErrorRegistration/ModalErrorRegistration';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     selectorRegistrationInitialState,
@@ -18,6 +18,7 @@ import {
 import { AxiosResponse } from 'axios';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
+
 
 
 const Registration: React.FC = () => {
@@ -45,9 +46,8 @@ const Registration: React.FC = () => {
                                 }
                             })
                         }}
-                        inputsEditName={["firstName", "lastName", "login", "email", "password", "telephone", "city", "country", "birthdate"]}
-                        btnEdit={true}
-                        withPassword={true}
+
+
                     />
                     {loading && <Preloader open />}
                     {openModal && <ModalSuccessRegistration closeModal={() => dispatch(actionRegistrationSuccess(false))} />}

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import PasswordInput from '../CustomInput/PasswordInput';
 
 
-const FormRegistration = ({ onSubmit,initialValues, inputsEditName, withPassword, validationSchema}) => {
+const FormRegistration = ({ onSubmit,initialValues, validationSchema}) => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [showRepeatPassword, setShowRepeatPassword] = useState(false);
@@ -16,9 +16,7 @@ const FormRegistration = ({ onSubmit,initialValues, inputsEditName, withPassword
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={(values, { resetForm }) => {
-                    onSubmit(values, { resetForm });
-                }}
+                onSubmit={onSubmit}
             >
                 {(isValid) => {
                     return (
@@ -26,9 +24,7 @@ const FormRegistration = ({ onSubmit,initialValues, inputsEditName, withPassword
                             <Form className="form-registration" style={{ width: '100%' }}>
                                 <div className="form-registration__grid_wrapper">
                                     <FormikControl
-                                        sx={[!inputsEditName.includes("firstName") && {
-                                            "& fieldset": { border: 'none' }
-                                        }]}
+
                                         type="text"
                                         control="input"
                                         label="First Name"
@@ -38,14 +34,12 @@ const FormRegistration = ({ onSubmit,initialValues, inputsEditName, withPassword
                                         placeholder="Enter your first name"
                                         variant="outlined"
                                         id="outlined-multiline-flexible"
-                                        disabled={!inputsEditName.includes("firstName")}
+
                                         required
                                     />
 
                                     <FormikControl
-                                        sx={[!inputsEditName.includes("lastName") && {
-                                            "& fieldset": { border: 'none' }
-                                        }]}
+
                                         type="text"
                                         control="input"
                                         color="success"
@@ -55,14 +49,13 @@ const FormRegistration = ({ onSubmit,initialValues, inputsEditName, withPassword
                                         placeholder="Enter your last name"
                                         variant="outlined"
                                         id="outlined-multiline-flexible"
-                                        disabled={!inputsEditName.includes("lastName")}
+
+
                                         required
                                     />
 
                                     <FormikControl
-                                        sx={[!inputsEditName.includes("login") && {
-                                            "& fieldset": { border: 'none' }
-                                        }]}
+
                                         type="text"
                                         control="input"
                                         color="success"
@@ -72,14 +65,13 @@ const FormRegistration = ({ onSubmit,initialValues, inputsEditName, withPassword
                                         placeholder="Enter your login"
                                         variant="outlined"
                                         id="outlined-multiline-flexible"
-                                        disabled={!inputsEditName.includes("login")}
+
+
                                         required
                                     />
 
                                     <FormikControl
-                                        sx={[!inputsEditName.includes("email") && {
-                                            "& fieldset": { border: 'none' }
-                                        }]}
+
                                         type="text"
                                         control="input"
                                         color="success"
@@ -89,31 +81,27 @@ const FormRegistration = ({ onSubmit,initialValues, inputsEditName, withPassword
                                         placeholder="Enter your email"
                                         variant="outlined"
                                         id="outlined-multiline-flexible"
-                                        disabled={!inputsEditName.includes("email")}
+
+
                                         required
                                     />
 
-                                    {!withPassword &&
                                         <PasswordInput name={"password"}
                                             placeholder={"Enter your password"}
                                             label={"Enter your password"}
                                             showPassword={showPassword}
                                             onClick={() => setShowPassword(!showPassword)}
                                             onMouseDown={(e) => e.preventDefault()} />
-                                    }
-                                    {!withPassword &&
+
                                         <PasswordInput name={"confirmPassword"}
                                             placeholder={"Confirm password"}
                                             label={"Confirm password"}
                                             showPassword={showRepeatPassword}
                                             onClick={() => setShowRepeatPassword(!showRepeatPassword)}
                                             onMouseDown={(e) => e.preventDefault()} />
-                                    }
 
                                     <FormikControl
-                                        sx={[!inputsEditName.includes("telephone") && {
-                                            "& fieldset": { border: 'none' }
-                                        }]}
+
                                         type="text"
                                         control="input"
                                         color="success"
@@ -123,14 +111,11 @@ const FormRegistration = ({ onSubmit,initialValues, inputsEditName, withPassword
                                         variant="outlined"
                                         id="outlined-multiline-flexible"
                                         required
-                                        placeholder="+380 99 999 99 99"
-                                        disabled={!inputsEditName.includes("telephone")}
+                                        placeholder="+491 99 999 99 99"
+
                                     />
 
                                     <FormikControl
-                                        sx={[!inputsEditName.includes("city") && {
-                                            "& fieldset": { border: 'none' }
-                                        }]}
                                         type="text"
                                         control="input"
                                         label="City"
@@ -140,13 +125,12 @@ const FormRegistration = ({ onSubmit,initialValues, inputsEditName, withPassword
                                         placeholder="Enter your city"
                                         variant="outlined"
                                         id="outlined-multiline-flexible"
-                                        disabled={!inputsEditName.includes("city")}
+
+
 
                                     />
                                     <FormikControl
-                                        sx={[!inputsEditName.includes("country") && {
-                                            "& fieldset": { border: 'none' }
-                                        }]}
+
                                         type="text"
                                         control="input"
                                         label="Country"
@@ -156,14 +140,11 @@ const FormRegistration = ({ onSubmit,initialValues, inputsEditName, withPassword
                                         placeholder="Enter your country"
                                         variant="outlined"
                                         id="outlined-multiline-flexible"
-                                        disabled={!inputsEditName.includes("country")}
+
 
                                     />
 
                                     <FormikControl
-                                        sx={[!inputsEditName.includes("birthdate") && {
-                                            "& fieldset": { border: 'none' }
-                                        }]}
                                         id="outlined-multiline-flexible"
                                         name="birthdate"
                                         placeholder="dd.mm.yyyy"
@@ -173,10 +154,10 @@ const FormRegistration = ({ onSubmit,initialValues, inputsEditName, withPassword
                                         color="success"
                                         className="form-registration__input"
                                         variant="outlined"
-                                        disabled={!inputsEditName.includes("birthdate")}
+
                                     />
                                 </div>
-                                <button type={"submit"} disabled={!isValid}>create</button>
+                                <button type={"submit"} disabled={!isValid} onSubmit={onSubmit}>create</button>
                             </Form>
                         </>
                     );

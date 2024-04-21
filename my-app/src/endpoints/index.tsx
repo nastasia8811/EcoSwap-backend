@@ -1,6 +1,6 @@
 import axios from 'axios';
-//axios.defaults.baseURL = 'https://eu-central-1.aws.data.mongodb-api.com/app/data-lembu/endpoint/data/v1';
-axios.defaults.baseURL = "https://EcoSwap-api.com/api";
+axios.defaults.baseURL = 'mongodb+srv://redi:111@atlascluster.flcy3uy.mongodb.net/test?retryWrites=true&w=majority';
+// axios.defaults.baseURL = "https://EcoSwap-api.com/api";
 
 
 
