@@ -1,7 +1,7 @@
-.hero{
+.auth{
   min-width: 375px;
   &__background-top{
-    background-image: url("img/container_top.jpg");
+    background-image: url("img/Frame 633324.png");
     background-repeat: no-repeat;
     height: 19vh;
     background-position: center center;
@@ -17,9 +17,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: #EDEDED;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     &_text1{
       padding-right: 10px;
       padding-left: 10px;
@@ -31,23 +28,13 @@
       line-height: 31.2px;
       text-align: center;
     }
-    &_text2{
-      padding-right: 10px;
-      padding-left: 10px;
-      padding-bottom: 10px;
-      min-width: 211px;
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 18px;
-      text-align: center;
-    }
   }
   &__background-bottom{
     background-color: #F0EEDF;
     min-height: 380px;
     &_container{
       max-width: 333px;
-      min-height: 155px;
+      min-height: 100px;
       margin-right: auto;
       margin-left: auto;
       padding-top: 60px;
@@ -67,24 +54,13 @@
 
     &__content-container {
       min-width: 444px;
-      min-height: 172px;
-      flex-direction: row;
+      min-height: 118px;
       top: 530px;
       &_text1{
-        max-width: 232px;
-        min-height: 124px;
+        min-height: 46px;
         padding: 10px;
         font-size: 48px;
         line-height: 62.4px;
-        text-align: left;
-      }
-      &_text2{
-        max-width: 164px;
-        min-height: 89px;
-        padding: 10px;
-        font-size: 24px;
-        line-height: 36px;
-        text-align: right;
       }
     }
     &__background-bottom{
@@ -109,26 +85,14 @@
 
     &__content-container {
       min-width: 444px;
-      min-height: 172px;
+      min-height: 118px;
       left: 50%;
       transform: translate(-50%, -50%);
-      flex-direction: row;
 
       &_text1{
-        max-width: 232px;
-        min-height: 124px;
         padding: 10px;
-        font-size: 48px;
-        line-height: 62.4px;
-        text-align: left;
-      }
-      &_text2{
-        max-width: 164px;
-        min-height: 89px;
-        padding: 10px;
-        font-size: 24px;
-        line-height: 36px;
-        text-align: right;
+        font-size: 64px;
+        line-height: 70.46px;
       }
     }
     &__background-bottom{
@@ -144,6 +108,6 @@
         }
       }
     }
-    }
   }
+}
 

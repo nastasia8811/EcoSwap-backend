@@ -1,6 +1,6 @@
-.header{
+.footer{
   min-width: 375px;
-  &__wrapper {
+  &__container {
     display: flex;
     height: 48px;
     background-color: #283D3B;
@@ -25,18 +25,13 @@
         font-style: normal;
         font-size: 16px;
         line-height: 26.4px;
-        text-transform: uppercase;
-        cursor:pointer;
       }
     }
-    &-burger_btn{
-      display: block;
-      cursor: pointer;
-    }
+
   }
 
   @media (min-width: 482px) and (max-width: 833.9px) {
-    &__wrapper {
+    &__container {
       height: 160px;
       align-items: center;
       justify-content: space-evenly;
@@ -55,36 +50,32 @@
           line-height: 26.4px;
         }
       }
-      &-burger_btn{
-        display: none;
-      }
     }
   }
-  @media (min-width: 834px) and (max-width: 1800px) {
-    &__wrapper {
-      display: flex;
-      height: 160px;
-      background-color: #283D3B;
-      align-items: center;
-      justify-content: space-evenly;
-      &-logo{
-        &_icon{
-          max-width: 80px;
-          max-height: 80px;
+    @media (min-width: 834px) and (max-width: 1800px) {
+      &__container {
+        display: flex;
+        height: 160px;
+        background-color: #283D3B;
+        align-items: center;
+        justify-content: space-evenly;
+        &-logo{
+          &_icon{
+            max-width: 80px;
+            max-height: 80px;
+          }
         }
-      }
-      &-menu{
-        display: block;
-        &-item{
-          padding-right: 55px;
-          font-weight: 400;
-          font-size: 18px;
-          line-height: 31px;
+        &-menu{
+          display: block;
+          display: flex;
+          &-item{
+            padding-right: 55px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 30px;
+            flex-direction: row;
+          }
         }
-      }
-      &-burger_btn{
-      display: none;
-      }
     }
-  }
+    }
 }
