@@ -15,7 +15,7 @@ import {
     selectorRegistrationModalError,
     selectorRegistrationModalSuccess
 } from '../../selectors';
-import { AxiosResponse } from 'axios';
+//import { AxiosResponse } from 'axios';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
 
@@ -37,17 +37,18 @@ const Registration: React.FC = () => {
                     <FormRegistration
                         initialValues={initialFormData}
                         validationSchema={ValidationSchema}
-                        onSubmit={(values,{ resetForm }) => {
+                        onSubmit={(values) => {
                             delete values.confirmPassword;
-                            dispatch(createCustomerServerApi(values)).then((axiosValue: AxiosResponse<any>) => {
+                            dispatch(createCustomerServerApi(values)).then((axiosValue) => {
                                 if (axiosValue) {
-                                    resetForm();
+                                    // resetForm();
+                                    console.log("hi")
+
                                 }
                             })
                         }}
-
-
                     />
+                    {}
                     {loading && <Preloader open />}
                     {openModal && <ModalSuccessRegistration closeModal={() => dispatch(actionRegistrationSuccess(false))} />}
                     {modalError && <ModalErrorRegistration closeErrorModal={() => dispatch(actionRegistrationError(false))} />}

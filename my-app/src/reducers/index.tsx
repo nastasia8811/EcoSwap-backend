@@ -1,9 +1,3 @@
-import personalOfficeReducer, {
-    actionEditInputsOrder,
-    actionEditInputs,
-    actionFetchUpdateCustomer
-} from "./personalOffice.reducer";
-
 import registrationReducer, {
     createCustomerServerApi,
     actionRegistrationSuccess,
@@ -13,18 +7,8 @@ import registrationReducer, {
     actionMessageError
 } from './registration.reducer';
 
-import logInReducer, {
-    actionFetchLogin,
-    actionToken,
-    actionFetchAuthorizationUser,
-    actionResetLoginError,
-    actionAuthorizationUser,
-} from './logIn.reducer';
 
 export {
-    actionEditInputs,
-    actionFetchUpdateCustomer,
-    actionEditInputsOrder,
     registrationReducer,
     createCustomerServerApi,
     actionRegistrationSuccess,
@@ -32,12 +16,4 @@ export {
     actionRegistrationError,
     initialState,
     actionMessageError,
-    personalOfficeReducer,
-    logInReducer,
-    actionFetchLogin,
-    actionToken,
-    actionFetchAuthorizationUser,
-    actionResetLoginError,
-    actionAuthorizationUser,
-
 };

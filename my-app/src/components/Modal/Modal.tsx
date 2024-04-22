@@ -37,7 +37,7 @@ const Modal = ({children, modalAction, closeAction}) => {
         <div className="wrapper">
             <ModalWrapper onClick={closeAction}>
                 <ModalBlock onClick={(e) => e.stopPropagation()}>
-                    <button onClick={modalAction}> {children}</button>
+                    <button onClick={ modalAction }> { children }</button>
                 </ModalBlock>
             </ModalWrapper>
         </div>

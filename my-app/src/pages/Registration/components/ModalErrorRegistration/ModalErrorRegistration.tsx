@@ -1,7 +1,7 @@
 import Modal from '../../../../components/Modal/Modal';
 
 import { useState } from 'react';
-import Authorization from '../../../Authorization/Authorization';
+//import Authorization from '../../../Authorization/Authorization';
 import { useNavigate } from 'react-router-dom';
 import './ModalErrorRegistration.scss';
 import {useSelector} from "react-redux";
