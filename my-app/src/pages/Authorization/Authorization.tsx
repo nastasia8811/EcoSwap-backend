@@ -67,10 +67,11 @@ const Authorization: React.FC = () => {
                             validationSchema={validationSchemaLogin}
                         />
 
-                            <span>or</span>
+                            <span className="auth__background-bottom_container-span">or</span>
 
-                            <Link to="/registration" className="registration"> Create</Link>
+                            <Link to="/registration" className="auth__background-bottom_container-registration"> Create account </Link>
                         </div>
+
                     </Box>
                 </Container>
 

@@ -21,8 +21,7 @@ const FormLogin: React.FC<FormLoginProps> = ({onSubmit, initialValues, validatio
             >
                 {(isValid) => (
             <Form className="form-login" style={{ width: '100%' }}>
-                <div className="form-login__grid_wrapper">
-
+                <div className="form-login__wrapper">
                     <FormikControl
                         type="text"
                         control="input"
@@ -46,7 +45,7 @@ const FormLogin: React.FC<FormLoginProps> = ({onSubmit, initialValues, validatio
                     />
                 </div>
 
-                <button type="submit" disabled={!isValid}>Login</button>
+                <button className="button-login" type="submit" disabled={!isValid}>Login</button>
             </Form>
                 )}
             </Formik>
