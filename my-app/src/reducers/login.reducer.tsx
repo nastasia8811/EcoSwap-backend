@@ -6,22 +6,13 @@ import setAuthToken from '../helpers/setAuthToken';
 export interface LoginState {
     userData: object;
     token:string;
-    modalError: string | null;
-    modalSuccess: boolean | null;
-    pageIsLoading: boolean;
-    messageError: string;
+    error: string;
 }
 
 export const initialState: LoginState = {
-    userData: {
-        login:"",
-        password:""
-    },
+    userData: {},
     token: localStorage.getItem("token") || '',
-    modalError: null,
-    modalSuccess: null,
-    pageIsLoading: false,
-    messageError: ""
+    error: null,
 };
 
 
@@ -29,49 +20,55 @@ const loginSlice:Slice<LoginState> = createSlice({
     name: 'login',
     initialState,
     reducers: {
-
-        actionAuthorizationUser: (state, action: PayloadAction<object>) => {
-            state.userData = action.payload
+        actionToken: (state, {payload}) => {
+            localStorage.setItem('token', payload);
+            state.token = payload
         },
-
-        actionPageIsLoading: (state, action: PayloadAction<boolean>) => {
-            state.pageIsLoading = action.payload;
+        actionAuthorizationUser: (state, {payload}) => {
+            state.userData = payload
         },
-        actionToken: (state, action: PayloadAction<string>) => {
-            localStorage.setItem('token', action.payload);
-            state.token = action.payload
+        actionError: (state, {payload}) => {
+            state.error = payload;
         },
-        actionLoginError: (state, action: PayloadAction<string>) => {
-            state.modalError = action.payload;
-        },
-        actionMessageError: (state, action: PayloadAction<string>) => {
-            state.messageError = action.payload;
-        },
+        actionResetLoginError: (state) => {
+            state.error = initialState.error;
+        }
     },
 });
 
-export const { actionToken,actionAuthorizationUser, actionLoginSuccess, actionPageIsLoading, actionLoginError, actionMessageError} = loginSlice.actions;
 
-export const loginUserApi = (value: any) => (dispatch: any) => {
-    dispatch(actionPageIsLoading(true));
-    return axios
-        .post(LOGIN_USER, value)
-        .then((response) => {
-            const { token } = response.data;
-            dispatch(actionToken(token));
-            setAuthToken(token);
+export const {
+    actionToken,
+    actionAuthorizationUser,
+    actionError,
+    actionResetLoginError
+} = loginSlice.actions
+
+export const actionFetchLogin = (userData) => (dispatch) => {
+    return axios.post(LOGIN_USER, userData)
+        .then(({ data }) => {
+            dispatch(actionError(null))
+            dispatch(actionToken(data.token))
+            setAuthToken(data.token )
         })
-        .catch((error) => {
-            dispatch(actionMessageError(error.response.data.message))
-            dispatch(actionLoginError(true))
-        }).finally(() => {
-            dispatch(actionPageIsLoading(false))
-        })
-};
+        .catch((err) => {
+            if (err.response.status === 404) {
+                return dispatch(actionError('NOT_FOUND'))
+            }
+            if (err.response.status === 400) {
+                return dispatch(actionError('BAD_REQUEST'))
+            }
+            return dispatch(actionError('SERVER_ERROR'))
+
+        });
+}
 
 export const actionFetchAuthorizationUser = () => (dispatch) => {
     return axios.get(GET_USER)
         .then(user => {
-            dispatch(actionLoginSuccess(user.data))
+            dispatch(actionAuthorizationUser(user.data))
         })
 }
+
+export default loginSlice.reducer
+

@@ -2,32 +2,50 @@ import './Authorization.scss';
 import {Box, Container} from '@mui/material';
 import {Link} from "react-router-dom";
 import FormLogin from "../../components/FormLogin/FormLogin";
-import ValidationSchema from "../Registration/ValidationSchemaRegistration";
+import validationSchemaLogin from "../Authorization/ValidationSchemaLogin";
 import {useDispatch, useSelector} from "react-redux";
-import {selectorUserData,selectorIsLoading,selectorToken} from "../../selectors";
-import Preloader from "../../components/Preloader/Preloader";
+import {selectorToken,selectorUserData} from "../../selectors";
+//import Preloader from "../../components/Preloader/Preloader";
 import * as React from "react";
-import {actionFetchAuthorizationUser} from "../../reducers/login.reducer";
+import {actionFetchAuthorizationUser, actionFetchLogin} from "../../reducers";
 
 import {useEffect} from 'react';
 import setAuthToken from '../../helpers/setAuthToken';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
+import store from "../../store";
+//import ModalErrorRegistration from "../Registration/components/ModalErrorRegistration/ModalErrorRegistration";
 
 
 
 
 const Authorization: React.FC = () => {
-    const initialUserData = useSelector(selectorUserData);
-    const loading = useSelector(selectorIsLoading);
+    const userData = useSelector(selectorUserData);
     const authToken = useSelector(selectorToken);
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
+
     useEffect(() => {
         setAuthToken(authToken);
         if (authToken) {
-            dispatch(actionFetchAuthorizationUser());
+            dispatch(actionFetchAuthorizationUser()).then(r => {
+                console.log("actionFetchAuthorizationUser");});
         }
     }, [authToken]);
+
+
+    const handleSubmit = async (values) => {
+        await dispatch(actionFetchLogin(values))
+        const state = store.getState()
+        const error = state.login.error;
+
+        if(!error) {
+
+            console.log("error")
+        }
+    }
+
+
+
     return (
         <>
             <Box className="auth">
@@ -44,18 +62,10 @@ const Authorization: React.FC = () => {
                     <Box className="auth__background-bottom">
                         <div className="auth__background-bottom_container">
                         <FormLogin
-                            initialValues={initialUserData}
-                            validationSchema={ValidationSchema}
-                            onSubmit={(values => {
-                                dispatch(actionFetchAuthorizationUser()).then(() => {
-                                    console.log("hi");
-                                }).catch((error) => {
-                                    console.error("Error occurred:", error);
-                                });
-                            })}
-
+                            initialValues={userData}
+                            onSubmit={ (values) => handleSubmit(values) }
+                            validationSchema={validationSchemaLogin}
                         />
-                            {loading && <Preloader open />}
 
                             <span>or</span>
 

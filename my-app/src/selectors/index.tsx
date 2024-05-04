@@ -9,11 +9,11 @@ export const selectorRegistrationMessageError = (state) => state.registration.me
 
 /* export const selectoRequestObj = state => state.app.requestObj */
 // LOGIN
-export const selectorIsLoading = (state) => state.logIn.pageIsLoading;
-export const selectorAllLoginErrors = (state) => state.logIn.error;
-export const selectorUserData = (state) => state.logIn.userData;
-export const selectorToken = (state) => state.logIn.token;
-
+export const selectorIsLoading = (state) => state.logIn.loginPageIsLoading;
+export const selectorAllLoginErrors = (state) => state.login.loginModalError;
+export const selectorUserData = (state) => state.login.userData;
+export const selectorToken = (state) => state.login.token;
+export const selectorLoginModalError = (state) => state.login.loginModalError;
 
 
 

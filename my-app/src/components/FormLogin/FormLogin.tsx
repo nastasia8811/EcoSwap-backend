@@ -5,7 +5,7 @@ import PasswordInput from "../CustomInput/PasswordInput";
 import {useState} from "react";
 
 interface FormLoginProps {
-    onSubmit: (values: any) => void;
+    onSubmit: (values: string) => void;
     initialValues: any;
     validationSchema: any;
 }
