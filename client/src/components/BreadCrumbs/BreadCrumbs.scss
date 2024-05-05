@@ -1,16 +1,14 @@
-@use './src/styles/mixins';
-@use 'src/styles/variables';
 
 .breadcrumbs__wrapper {
-  margin: 15px 0;
+  padding-top: 80px;
+  padding-left: 25px;
 }
 
 .breadcrumbs__link {
   text-decoration: none;
   font-size: 14px;
-  color: variables.$border;
+  color: #75758a;
   cursor: pointer;
-  font-family: Ubuntu, sans-serif;
   font-weight: 400;
 
   &::after {
@@ -25,6 +23,6 @@
   }
 
   &:hover {
-    color: variables.$light-green;
+    color: #1b2a20;
   }
 }

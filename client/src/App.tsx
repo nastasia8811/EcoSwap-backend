@@ -6,7 +6,7 @@ import Authorization from "./pages/Authorization/Authorization"
 import Footer from "./components/footer/Footer";
 import './reset.css';
 import Registration from "./pages/Registration/Registration";
-
+import Blog from './pages/Blog/Blog';
 
 const App = () =>{
 
@@ -16,6 +16,7 @@ const App = () =>{
         <div className="app-routes-wrapper">
           <Routes>
             <Route path="/" element={ <Main/> }/>
+            <Route path="/blog" element={ <Blog/> }/>
             <Route path="/authorization" element={ <Authorization/> }/>
             <Route path="/registration" element={ <Registration/> }/>
           </Routes>

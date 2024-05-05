@@ -1,17 +1,18 @@
-@use './src/styles/mixins';
-@use 'src/styles/variables';
-
 .registration-container {
   min-width: 345px;
   position: relative;
-
+  font-family: Maitree, sans-serif;
   &__wrapper {
     min-width: 300px;
 
     &-title {
-      @include mixins.titleStyles;
       text-align: center;
       margin-bottom: 43px;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 34px;
+      text-transform: uppercase;
+      color:#1b2a20;
     }
   }
 }
@@ -24,7 +25,7 @@
 
     &__wrapper {
       min-width: 400px;
-    }
+
   }
 }
 
@@ -35,9 +36,6 @@
     &__wrapper {
       min-width: 900px;
 
-      &-title {
-        text-align: left;
-      }
-    }
+    }}
   }
 }

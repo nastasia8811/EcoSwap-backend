@@ -44,7 +44,7 @@
       text-align: center;
       font-size: 24px;
       line-height: 36px;
-      padding-top: 120px;
+      padding-top: 150px;
       &-span{
         margin-top: 20px;
         margin-bottom: 20px;
@@ -66,7 +66,7 @@
     &__content-container {
       min-width: 320px;
       min-height: 118px;
-      top: 370px;
+      top: 470px;
       &_text1{
         min-height: 46px;
         padding: 10px;
@@ -76,10 +76,11 @@
     }
     &__background-bottom{
       min-height: 380px;
+
       &_container{
         max-width: 686px;
         min-height: 37px;
-        padding-top: 150px;
+        padding-top: 140px;
         top:520px;
         &-content{
           padding: 30px;
@@ -116,7 +117,7 @@
       &_container{
         max-width: 683px;
         min-height: 102px;
-        padding-top: 170px;
+        padding-top: 160px;
         &-content{
           padding: 30px;
           font-size: 18px;

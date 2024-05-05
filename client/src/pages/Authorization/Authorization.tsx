@@ -14,6 +14,7 @@ import setAuthToken from '../../helpers/setAuthToken';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
 import store from "../../store";
+import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
 //import ModalErrorRegistration from "../Registration/components/ModalErrorRegistration/ModalErrorRegistration";
 
 
@@ -49,17 +50,19 @@ const Authorization: React.FC = () => {
     return (
         <>
             <Box className="auth">
+
                 <Container maxWidth="xl">
                     <div className="auth__background-top">
 
                     </div>
                     <div className="auth__content-container">
                         <div className="auth__content-container_text1">
-                            Sign up
+                            Authorization
                         </div>
                     </div>
 
                     <Box className="auth__background-bottom">
+                        <BreadCrumbs linksArray={[{ link: '/authorization', text: 'Authorization' }]} />
                         <div className="auth__background-bottom_container">
                         <FormLogin
                             initialValues={userData}
