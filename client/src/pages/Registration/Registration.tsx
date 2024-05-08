@@ -40,10 +40,10 @@ const Registration: React.FC = () => {
                         onSubmit={(values) => {
                             delete values.confirmPassword;
                             dispatch(createCustomerServerApi(values)).then((axiosValue) => {
+                                console.log(axiosValue)
                                 if (axiosValue) {
                                     // resetForm();
                                     console.log("hi")
-
                                 }
                             })
                         }}

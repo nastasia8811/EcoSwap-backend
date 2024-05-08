@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
 require('dotenv').config();
+const cors = require('cors');
 
 const globalConfigs = require('./routes/globalConfigs');
 const customers = require('./routes/customers');
@@ -80,3 +81,17 @@ if (process.env.NODE_ENV === 'production') {
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
+
+/**
+ * CORS
+ */
+const allowedOrigins = 'http://localhost:3000';
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
+
+
+
+
+
