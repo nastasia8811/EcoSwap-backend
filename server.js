@@ -27,6 +27,14 @@ const partners = require('./routes/partners');
 // const mainRoute = require('./routes/index');
 
 const app = express();
+/**
+ * CORS
+ */
+const allowedOrigins = 'http://localhost:3000';
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -82,14 +90,7 @@ const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
 
-/**
- * CORS
- */
-const allowedOrigins = 'http://localhost:3000';
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true,
-}));
+
 
 
 
