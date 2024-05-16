@@ -4,47 +4,32 @@ import {Link} from "react-router-dom";
 import FormLogin from "../../components/FormLogin/FormLogin";
 import validationSchemaLogin from "../Authorization/ValidationSchemaLogin";
 import {useDispatch, useSelector} from "react-redux";
-import {selectorToken,selectorUserData} from "../../selectors";
-//import Preloader from "../../components/Preloader/Preloader";
+import {selectorLoginIsLoading, selectorLoginToken, selectorLoginUserData} from "../../selectors";
+import Preloader from "../../components/Preloader/Preloader";
 import * as React from "react";
-import {actionFetchAuthorizationUser, actionFetchLogin} from "../../reducers";
-
 import {useEffect} from 'react';
 import setAuthToken from '../../helpers/setAuthToken';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
-import store from "../../store";
 import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
+import {getUserApi, sendApiLogin} from "../../reducers/login.reducer";
 //import ModalErrorRegistration from "../Registration/components/ModalErrorRegistration/ModalErrorRegistration";
 
 
 
 
-const Authorization: React.FC = () => {
-    const userData = useSelector(selectorUserData);
-    const authToken = useSelector(selectorToken);
+const Authorization: React.FC = (getUser) => {
+    const userData = useSelector(selectorLoginUserData);
+    const authToken = useSelector(selectorLoginToken);
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
-
-    useEffect(() => {
-        setAuthToken(authToken);
-        if (authToken) {
-            dispatch(actionFetchAuthorizationUser()).then(r => {
-                console.log("actionFetchAuthorizationUser");});
-        }
-    }, [authToken]);
-
-
-    const handleSubmit = async (values) => {
-        await dispatch(actionFetchLogin(values))
-        const state = store.getState()
-        const error = state.login.error;
-
-        if(!error) {
-
-            console.log("error")
-        }
-    }
-
+    const loading = useSelector(selectorLoginIsLoading);
+    // useEffect(() => {
+    //     setAuthToken(authToken);
+    //     if (authToken) {
+    //         dispatch(getUserApi(getUser)).then(r => {
+    //             console.log("success");});
+    //     }
+    // }, [authToken]);
 
 
     return (
@@ -66,10 +51,12 @@ const Authorization: React.FC = () => {
                         <div className="auth__background-bottom_container">
                         <FormLogin
                             initialValues={userData}
-                            onSubmit={ (values) => handleSubmit(values) }
+                            onSubmit={ (values) => dispatch(sendApiLogin(values)).then((axiosValue) => {
+                                console.log(axiosValue)})
+                            }
                             validationSchema={validationSchemaLogin}
                         />
-
+                            {loading && <Preloader open />}
                             <span className="auth__background-bottom_container-span">or</span>
 
                             <Link to="/registration" className="auth__background-bottom_container-registration"> Create account </Link>

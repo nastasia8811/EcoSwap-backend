@@ -8,12 +8,13 @@ import registrationReducer, {
 } from './registration.reducer';
 
 import loginReducer, {
-    actionFetchLogin,
+    actionPageIsLoadingLogin,
     actionToken,
-    actionFetchAuthorizationUser,
-    actionResetLoginError,
-    actionAuthorizationUser,
+    actionUserData,
+    actionLoginError,
+    actionLoginMassageError,
 } from './login.reducer';
+
 export {
     registrationReducer,
     createCustomerServerApi,
@@ -23,9 +24,9 @@ export {
     initialState,
     actionMessageError,
     loginReducer,
-    actionFetchLogin,
+    actionPageIsLoadingLogin,
     actionToken,
-    actionFetchAuthorizationUser,
-    actionResetLoginError,
-    actionAuthorizationUser,
+    actionUserData,
+    actionLoginError,
+    actionLoginMassageError,
 };

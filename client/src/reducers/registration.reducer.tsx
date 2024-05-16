@@ -70,7 +70,7 @@ export const createCustomerServerApi = (value: any) => (dispatch: any) => {
             return savedCustomer;
         })
         .catch((error) => {
-            // dispatch(actionMessageError(error.response.data.message))
+            dispatch(actionMessageError(error.response.data.message))
             dispatch(actionRegistrationError(true))
         }).finally(() => {
             dispatch(actionPageIsLoading(false))
