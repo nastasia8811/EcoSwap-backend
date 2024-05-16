@@ -3,15 +3,15 @@ import { Formik, Form } from 'formik';
 import FormikControl from "../CustomInput/FormikControl";
 import PasswordInput from "../CustomInput/PasswordInput";
 import {useState} from "react";
-
 interface FormLoginProps {
-    onSubmit: (values: string) => void;
+    onSubmit: (values: any) => void;
     initialValues: any;
     validationSchema: any;
 }
 
 const FormLogin: React.FC<FormLoginProps> = ({onSubmit, initialValues, validationSchema}) => {
     const [showPassword, setShowPassword] = useState(false);
+
     return (
         <>
             <Formik
@@ -33,6 +33,7 @@ const FormLogin: React.FC<FormLoginProps> = ({onSubmit, initialValues, validatio
                         variant="outlined"
                         id="outlined-multiline-flexible"
                         required
+
                     />
 
                     <PasswordInput

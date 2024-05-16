@@ -3,16 +3,25 @@ import {LOGIN_USER, GET_USER} from '../endpoints';
 import axios from 'axios';
 import setAuthToken from '../helpers/setAuthToken';
 
+
+
 export interface LoginState {
+    pageIsLoading:boolean;
     userData: object;
     token:string;
-    error: string;
+    loginMassageError: string;
+    modalError:string;
 }
 
 export const initialState: LoginState = {
-    userData: {},
+    userData : {
+        loginOrEmail: "",
+        password: ""
+    },
+    pageIsLoading: false,
     token: localStorage.getItem("token") || '',
-    error: null,
+    loginMassageError: null,
+    modalError: null,
 };
 
 
@@ -20,54 +29,66 @@ const loginSlice:Slice<LoginState> = createSlice({
     name: 'login',
     initialState,
     reducers: {
-        actionToken: (state, {payload}) => {
-            localStorage.setItem('token', payload);
-            state.token = payload
+
+        actionPageIsLoadingLogin: (state, action: PayloadAction<boolean>) => {
+            state.pageIsLoading = action.payload;
         },
-        actionAuthorizationUser: (state, {payload}) => {
-            state.userData = payload
+
+        actionToken: (state, action: PayloadAction<string>) => {
+            localStorage.setItem('token', action.payload);
+            state.token = action.payload;
         },
-        actionError: (state, {payload}) => {
-            state.error = payload;
+        actionUserData:(state, action: PayloadAction<object>) => {
+            state.userData = action.payload;
         },
-        actionResetLoginError: (state) => {
-            state.error = initialState.error;
+        actionLoginError: (state, action: PayloadAction<string>) => {
+            state.modalError = action.payload;
+        },
+
+        actionLoginMassageError: (state, action: PayloadAction<string>) => {
+            state.loginMassageError = action.payload;
         }
-    },
-});
+}});
 
 
 export const {
+    actionPageIsLoadingLogin,
     actionToken,
-    actionAuthorizationUser,
-    actionError,
-    actionResetLoginError
+    actionUserData,
+    actionLoginError,
+    actionLoginMassageError,
 } = loginSlice.actions
 
-export const actionFetchLogin = (userData) => (dispatch) => {
-    return axios.post(LOGIN_USER, userData)
-        .then(({ data }) => {
-            dispatch(actionError(null))
-            dispatch(actionToken(data.token))
-            setAuthToken(data.token )
+export const sendApiLogin = (value: any) => (dispatch: any) => {
+    dispatch(actionPageIsLoadingLogin(true));
+    return axios
+        .post(LOGIN_USER, value)
+        .then((loginUser) => {
+            dispatch(actionUserData(true));
+            console.log(loginUser)
+            return loginUser;
         })
-        .catch((err) => {
-            if (err.response.status === 404) {
-                return dispatch(actionError('NOT_FOUND'))
-            }
-            if (err.response.status === 400) {
-                return dispatch(actionError('BAD_REQUEST'))
-            }
-            return dispatch(actionError('SERVER_ERROR'))
-
-        });
-}
-
-export const actionFetchAuthorizationUser = () => (dispatch) => {
-    return axios.get(GET_USER)
-        .then(user => {
-            dispatch(actionAuthorizationUser(user.data))
+        .catch((error) => {
+            dispatch(actionLoginMassageError(error.response.data.message))
+            dispatch(actionLoginError(true))
+        }).finally(() => {
+            dispatch(actionPageIsLoadingLogin(false))
         })
+};
+
+export const getUserApi = (value:any)=>(dispatch:any)=> {
+    return axios
+        .get(GET_USER, value)
+        .then((getUser=>{dispatch(true)
+            return getUser;
+        }))
+        .catch((error)=>{
+            dispatch(actionLoginMassageError(error.response.data.message))
+            dispatch(actionLoginError(true))
+        })
+                .finally(() => {
+                    dispatch(actionPageIsLoadingLogin(false))
+                })
 }
 
 export default loginSlice.reducer

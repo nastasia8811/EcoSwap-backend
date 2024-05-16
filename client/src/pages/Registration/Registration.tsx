@@ -18,7 +18,7 @@ import {
 //import { AxiosResponse } from 'axios';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
-
+//import {useFormikContext} from 'formik';
 
 const Registration: React.FC = () => {
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
@@ -26,6 +26,8 @@ const Registration: React.FC = () => {
     const modalError = useSelector(selectorRegistrationModalError);
     const loading = useSelector(selectorRegistrationIsLoading);
     const openModal = useSelector(selectorRegistrationModalSuccess);
+    //const { resetForm } = useFormikContext();
+
 
     return (
         <main>
@@ -40,15 +42,14 @@ const Registration: React.FC = () => {
                         onSubmit={(values) => {
                             delete values.confirmPassword;
                             dispatch(createCustomerServerApi(values)).then((axiosValue) => {
-                                console.log(axiosValue)
                                 if (axiosValue) {
-                                    // resetForm();
-                                    console.log("hi")
+                                    //resetForm()
+                                    console.log("надо очистить форму")
                                 }
                             })
                         }}
                     />
-                    {}
+
                     {loading && <Preloader open />}
                     {openModal && <ModalSuccessRegistration closeModal={() => dispatch(actionRegistrationSuccess(false))} />}
                     {modalError && <ModalErrorRegistration closeErrorModal={() => dispatch(actionRegistrationError(false))} />}
