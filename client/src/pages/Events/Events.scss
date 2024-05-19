@@ -15,6 +15,11 @@
         color:#1b2a20;
       }
     }
+    &__wrapper-flex{
+      display:flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
   }
   
   @media (min-width: 482px) and (max-width: 995.9px) {

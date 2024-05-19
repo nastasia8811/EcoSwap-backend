@@ -1,19 +1,18 @@
 
-
+import './EventItem.scss'
 export interface EventItemProps {
-  id: string;
+  id: number;
   title: string;
   img: string;
-  date: string;
+
 
 }
-const EventItem: React.FC<EventItemProps>  = ({id, title, img, date}) =>  {
+const EventItem: React.FC<EventItemProps>  = ({title, img, id}) =>  {
 
   return (
-<div className="item-wrapper">{id}
-  <div className="item-wrapper__img">{img}
-    <div className="item-wrapper__img-date">{date}</div></div>
-  <div className="item-wrapper__title">{title}</div>
+<div className="item-wrapper">
+  <img className="item-wrapper__img" key={id} src={img} alt={title} />
+  <div className="item-wrapper__title" key={id}>{title}</div>
 </div>
   );
 }

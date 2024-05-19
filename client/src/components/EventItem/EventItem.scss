@@ -1,11 +1,8 @@
 .item-wrapper{
-   
-    &__img{
-        &-date{
-            text-align: left;
-        }
-    }
+  padding-right:5px;
+  padding-left: 5px;
     &__title{
         background-color: #1B2A20;
+        color:#EDEDED;
     }
 }
