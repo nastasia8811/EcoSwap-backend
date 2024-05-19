@@ -18,6 +18,10 @@ const FormRegistration: React.FC<FormRegistrationProps> = ({
     const [showPassword, setShowPassword] = useState(false);
     const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
+    const handleMouseDown = (e: React.MouseEvent) => {
+        e.preventDefault();
+    };
+    
     return (
         <>
             <Formik
@@ -39,6 +43,7 @@ const FormRegistration: React.FC<FormRegistrationProps> = ({
                                     placeholder="Enter your first name"
                                     variant="outlined"
                                     id="outlined-multiline-flexible"
+                                    helperText='null'
                                     required
                                 />
 
@@ -52,6 +57,7 @@ const FormRegistration: React.FC<FormRegistrationProps> = ({
                                     placeholder="Enter your last name"
                                     variant="outlined"
                                     id="outlined-multiline-flexible"
+                                    helperText='null'
                                     required
                                 />
 
@@ -65,6 +71,7 @@ const FormRegistration: React.FC<FormRegistrationProps> = ({
                                     placeholder="Enter your login"
                                     variant="outlined"
                                     id="outlined-multiline-flexible"
+                                    helperText='null'
                                     required
                                 />
 
@@ -78,6 +85,7 @@ const FormRegistration: React.FC<FormRegistrationProps> = ({
                                     placeholder="Enter your email"
                                     variant="outlined"
                                     id="outlined-multiline-flexible"
+                                    helperText='null'
                                     required
                                 />
 
@@ -87,7 +95,7 @@ const FormRegistration: React.FC<FormRegistrationProps> = ({
                                     label="Enter your password"
                                     showPassword={showPassword}
                                     onClick={() => setShowPassword(!showPassword)}
-                                    onMouseDown={(e) => e.preventDefault()}
+                                    onMouseDown={handleMouseDown}
                                 />
 
                                 <PasswordInput
@@ -96,7 +104,7 @@ const FormRegistration: React.FC<FormRegistrationProps> = ({
                                     label="Confirm password"
                                     showPassword={showRepeatPassword}
                                     onClick={() => setShowRepeatPassword(!showRepeatPassword)}
-                                    onMouseDown={(e) => e.preventDefault()}
+                                    onMouseDown={handleMouseDown}
                                 />
 
                                 <FormikControl
@@ -109,10 +117,12 @@ const FormRegistration: React.FC<FormRegistrationProps> = ({
                                     variant="outlined"
                                     id="outlined-multiline-flexible"
                                     required
+                                    helperText='null'
                                     placeholder="+491 99 999 99 99"
                                 />
 
                                 <FormikControl
+                        
                                     type="text"
                                     control="input"
                                     label="City"
@@ -122,6 +132,8 @@ const FormRegistration: React.FC<FormRegistrationProps> = ({
                                     placeholder="Enter your city"
                                     variant="outlined"
                                     id="outlined-multiline-flexible"
+                                    helperText='null'
+                                    required
                                 />
 
                                 <FormikControl
@@ -134,6 +146,8 @@ const FormRegistration: React.FC<FormRegistrationProps> = ({
                                     placeholder="Enter your country"
                                     variant="outlined"
                                     id="outlined-multiline-flexible"
+                                    required
+                                    helperText='null'
                                 />
 
                                 <FormikControl
@@ -146,6 +160,8 @@ const FormRegistration: React.FC<FormRegistrationProps> = ({
                                     color="success"
                                     className="form-registration__input"
                                     variant="outlined"
+                                    helperText='null'
+                                    required
                                 />
                             </div>
                             <button type="submit" disabled={!isValid}>create</button>

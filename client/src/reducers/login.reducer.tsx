@@ -1,24 +1,22 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import {LOGIN_USER, GET_USER} from '../endpoints';
 import axios from 'axios';
-import setAuthToken from '../helpers/setAuthToken';
-
 
 
 export interface LoginState {
-    pageIsLoading:boolean;
+    loginPageIsLoading:boolean;
     userData: object;
     token:string;
-    loginMassageError: string;
-    modalError:string;
+    loginMassageError: string | null;
+    modalError: string | null;
 }
 
-export const initialState: LoginState = {
+export const initialState:LoginState = {
     userData : {
         loginOrEmail: "",
         password: ""
     },
-    pageIsLoading: false,
+    loginPageIsLoading: false,
     token: localStorage.getItem("token") || '',
     loginMassageError: null,
     modalError: null,
@@ -31,7 +29,7 @@ const loginSlice:Slice<LoginState> = createSlice({
     reducers: {
 
         actionPageIsLoadingLogin: (state, action: PayloadAction<boolean>) => {
-            state.pageIsLoading = action.payload;
+            state.loginPageIsLoading = action.payload;
         },
 
         actionToken: (state, action: PayloadAction<string>) => {

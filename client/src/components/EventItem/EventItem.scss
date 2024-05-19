@@ -1,0 +1,11 @@
+.item-wrapper{
+   
+    &__img{
+        &-date{
+            text-align: left;
+        }
+    }
+    &__title{
+        background-color: #1B2A20;
+    }
+}

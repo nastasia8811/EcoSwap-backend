@@ -1,6 +1,5 @@
 {
-  "compilerOptions":
-  {
+  "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "*": [
@@ -13,7 +12,6 @@
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "alwaysStrict": true,
-    "charset": "utf8",
     "checkJs": false,
     "declaration": true,
     "disableSizeLimit": false,
@@ -27,11 +25,12 @@
     "inlineSourceMap": false,
     "inlineSources": false,
     "isolatedModules": false,
+    "jsx": "react-jsx",
     "lib": [
-      "es2017",
-      "esnext.asynciterable"
+      "esnext.asynciterable",
+      "dom",
+      "es2018"
     ],
-    "locale": "en-us",
     "module": "commonjs",
     "moduleResolution": "node",
     "newLine": "lf",
@@ -47,8 +46,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitUseStrict": false,
-    "noLib": false,
-    "noResolve": false,
     "preserveConstEnums": true,
     "removeComments": false,
     "skipLibCheck": true,
@@ -59,16 +56,15 @@
     "suppressImplicitAnyIndexErrors": false,
     "target": "es2017",
     "traceResolution": false,
-    "rootDir": "",
-    "outDir": "../../build/lib",
+    "rootDir": "src",
+    "outDir": "build/lib",
     "typeRoots": []
   },
   "include": [
-    "**/*.ts"
+    "src/**/*.tsx"
   ],
-  "exclude": [],
-  "lib": ["es6", "dom"],
-  "noImplicitAny": true,
-  "noImplicitThis": true,
-  "strictNullChecks": true
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
 }

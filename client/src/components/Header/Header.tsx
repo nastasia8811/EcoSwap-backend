@@ -1,4 +1,4 @@
-import { Box, Container,TextField } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import './Header.scss';
 import { Link, NavLink } from 'react-router-dom';
 import {logo} from "./icons";
@@ -7,10 +7,9 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 const Header = () => {
-    const [modalAuthor, setModalAuthor]= useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const handleClick = () => {
-        setModalAuthor(true)
+
         console.log("hi")
     }
 

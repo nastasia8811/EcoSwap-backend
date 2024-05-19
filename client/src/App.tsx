@@ -7,6 +7,7 @@ import Footer from "./components/footer/Footer";
 import './reset.css';
 import Registration from "./pages/Registration/Registration";
 import Blog from './pages/Blog/Blog';
+import Events from './pages/Events/Events';
 
 const App = () =>{
 
@@ -17,6 +18,7 @@ const App = () =>{
           <Routes>
             <Route path="/" element={ <Main/> }/>
             <Route path="/blog" element={ <Blog/> }/>
+            <Route path="/events" element={ <Events/> }/>
             <Route path="/authorization" element={ <Authorization/> }/>
             <Route path="/registration" element={ <Registration/> }/>
           </Routes>
