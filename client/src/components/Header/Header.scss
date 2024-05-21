@@ -2,7 +2,7 @@
   min-width: 375px;
   &__wrapper {
     display: flex;
-    height: 48px;
+    min-height: 48px;
     background-color: #283D3B;
     align-items: center;
     justify-content: space-between;
