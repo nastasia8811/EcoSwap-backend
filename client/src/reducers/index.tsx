@@ -9,7 +9,6 @@ import registrationReducer, {
 
 import loginReducer, {
     actionPageIsLoadingLogin,
-    actionToken,
     actionUserData,
     actionLoginError,
     actionLoginMassageError,
@@ -25,7 +24,6 @@ export {
     actionMessageError,
     loginReducer,
     actionPageIsLoadingLogin,
-    actionToken,
     actionUserData,
     actionLoginError,
     actionLoginMassageError,

@@ -11,7 +11,9 @@ interface FormLoginProps {
 
 const FormLogin: React.FC<FormLoginProps> = ({onSubmit, initialValues, validationSchema}) => {
     const [showPassword, setShowPassword] = useState(false);
-
+    const handleMouseDown = (e: React.MouseEvent) => {
+        e.preventDefault();
+    };
     return (
         <>
             <Formik
@@ -33,7 +35,7 @@ const FormLogin: React.FC<FormLoginProps> = ({onSubmit, initialValues, validatio
                         variant="outlined"
                         id="outlined-multiline-flexible"
                         required
-
+                        helperText='null'
                     />
 
                     <PasswordInput
@@ -42,7 +44,7 @@ const FormLogin: React.FC<FormLoginProps> = ({onSubmit, initialValues, validatio
                         label="Enter your password"
                         showPassword={showPassword}
                         onClick={() => setShowPassword(!showPassword)}
-                        onMouseDown={(e) => e.preventDefault()}
+                        onMouseDown={handleMouseDown}
                     />
                 </div>
 

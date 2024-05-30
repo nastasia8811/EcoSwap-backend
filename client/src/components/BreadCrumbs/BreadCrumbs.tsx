@@ -1,23 +1,28 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import "./BreadCrumbs.scss"
 
-const BreadCrumbs = ({ linksArray = [] }) => {
+interface BreadCrumbLink {
+    link: string;
+    text: string;
+}
+
+interface BreadCrumbsProps {
+    linksArray: BreadCrumbLink[];
+}
+
+const BreadCrumbs: React.FC<BreadCrumbsProps>  = ({ linksArray }) => {
     return (
         <div className="breadcrumbs__wrapper">
             <Link to="/" className="breadcrumbs__link">Home</Link>
             {
-                linksArray.map((item, index) => (
-                    <Link key={ index } to={ item.link } className="breadcrumbs__link">{ item.text }</Link>)
+                linksArray.map((link, index) => (
+                    <Link key={ index } to={ link.link } className="breadcrumbs__link">{ link.text }</Link>)
                 )
             }
         </div>
     );
 };
 
-BreadCrumbs.propTypes = {
-    linksArray: PropTypes.array.isRequired,
-};
 
 export default BreadCrumbs;

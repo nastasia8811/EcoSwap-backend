@@ -22,6 +22,7 @@ export interface RegistrationState {
 }
 
 
+
 export const initialState: RegistrationState = {
     formData: {
         firstName: '',
@@ -72,9 +73,11 @@ export const createCustomerServerApi = (value: any) => (dispatch: any) => {
         .catch((error) => {
             dispatch(actionMessageError(error.response.data.message))
             dispatch(actionRegistrationError(true))
-        }).finally(() => {
-            dispatch(actionPageIsLoading(false))
         })
+        .finally(() => { 
+            dispatch(actionPageIsLoading(false))
+        });
 };
+
 
 export default registrationSlice.reducer;

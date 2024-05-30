@@ -1,5 +1,5 @@
 import { Box, Container } from '@mui/material';
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {logo} from "../Header/icons";
 import "./Footer.scss";
 const Footer = () => {

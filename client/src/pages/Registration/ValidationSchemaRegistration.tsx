@@ -31,7 +31,7 @@ const validationSchema = yup.object().shape({
   telephone: yup
       .string()
       .typeError("That doesn't look like a phone number")
-      .min(13, 'Phone number should start with +491 and contain 14 chars')
+      .min(14, 'Phone number should start with +491 and contain 14 chars')
       .matches(
           /^\+491\d{3}\d{2}\d{2}\d{2}$/,
           'Phone number should start with +491 and contain 14 chars',
