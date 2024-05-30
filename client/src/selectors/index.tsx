@@ -18,21 +18,12 @@ export const selectorRegistrationMessageError = (state: AppState) => state.regis
 //EVENTItem
 //export const selectorEventItemTitle = (state: AppState) => state.eventItem.date;
 
-/* export const selectoRequestObj = state => state.app.requestObj */
-// LOGIN
-// export const selectorIsLoading = (state) => state.login.loginPageIsLoading;
-// export const selectorAllLoginErrors = (state) => state.login.loginModalError;
-// export const selectorUserData = (state) => state.login.userData;
-// export const selectorToken = (state) => state.login.token;
-//export const selectorLoginModalError = (state) => state.login.loginModalError;
-
 
 //log 2
 
 export const selectorLoginIsLoading = (state: AppState) => state.login.loginPageIsLoading;
-export const selectorLoginToken = (state: AppState) => state.login.token;
 export const selectorLoginUserData = (state: AppState) => state.login.userData;
-export const selectorLoginError = (state: AppState) => state.login.loginMassageError;
-export const selectorLoginModalError = (state: AppState) => state.registration.modalError;
-//export const selectorError = (state: AppState) => state.registration.error;
+export const selectorMassageError = (state: AppState) => state.login.loginMassageError;
+export const selectorLoginModalError = (state: AppState) => state.login.modalError;
+
 

@@ -26,7 +26,6 @@ const CustomInput: React.FC<CustomInputProps> = (props) => {
     <>
       <Field
         onClick={onClick}
-    
         style={{ minWidth: 300 }}
         type={type}
         placeholder={placeholder}

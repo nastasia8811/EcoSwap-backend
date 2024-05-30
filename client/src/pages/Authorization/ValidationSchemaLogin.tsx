@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 
 const validationSchemaLogin = yup.object().shape({
-  login: yup.string().min(3, 'Min 3 symbols').max(20, 'Max 20 symbols').required('Not valid login'),
-  //.matches(/^[a-zA-Z0-9]+$/, 'Should contain only characters and space'),
+  login: yup.string().min(3, 'Min 3 symbols').max(20, 'Max 20 symbols').required('Not valid login')
+  .matches(/^[a-zA-Z0-9]+$/, 'Should contain only characters and space'),
 
   password: yup.string()
     .required('No password provided')

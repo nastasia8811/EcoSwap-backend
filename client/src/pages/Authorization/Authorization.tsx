@@ -4,33 +4,23 @@ import {Link} from "react-router-dom";
 import FormLogin from "../../components/FormLogin/FormLogin";
 import validationSchemaLogin from "../Authorization/ValidationSchemaLogin";
 import {useDispatch, useSelector} from "react-redux";
-import {selectorLoginIsLoading, selectorLoginUserData} from "../../selectors";
+import {selectorLoginIsLoading, selectorLoginUserData, selectorLoginModalError} from "../../selectors";
 import Preloader from "../../components/Preloader/Preloader";
 import * as React from "react";
-//import {useEffect} from 'react';
-//import setAuthToken from '../../helpers/setAuthToken';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
 import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
-import { sendApiLogin} from "../../reducers/login.reducer";
-//import ModalErrorRegistration from "../Registration/components/ModalErrorRegistration/ModalErrorRegistration";
+import { sendApiLogin, actionLoginError} from "../../reducers/login.reducer";
+import ModalLoginError from './modalLoginError/ModalErrorRegistration/ModalLoginError';
 
 
 
 
 const Authorization: React.FC = () => {
     const userData = useSelector(selectorLoginUserData);
-    //const authToken = useSelector(selectorLoginToken);
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
     const loading = useSelector(selectorLoginIsLoading);
-    // useEffect(() => {
-    //     setAuthToken(authToken);
-    //     if (authToken) {
-    //         dispatch(getUserApi(getUser)).then(r => {
-    //             console.log("success");});
-    //     }
-    // }, [authToken]);
-
+    const modalError = useSelector(selectorLoginModalError);
 
     return (
         <>
@@ -51,12 +41,14 @@ const Authorization: React.FC = () => {
                         <div className="auth__background-bottom_container">
                         <FormLogin
                             initialValues={userData}
+                            validationSchema={validationSchemaLogin}
                             onSubmit={ (values) => dispatch(sendApiLogin(values)).then((axiosValue) => {
                                 console.log(axiosValue)})
                             }
-                            validationSchema={validationSchemaLogin}
+                            
                         />
                             {loading && <Preloader open />}
+                            {modalError && <ModalLoginError closeErrorModal={() => dispatch(actionLoginError(false))} />}
                             <span className="auth__background-bottom_container-span">or</span>
 
                             <Link to="/registration" className="auth__background-bottom_container-registration"> Create account </Link>
