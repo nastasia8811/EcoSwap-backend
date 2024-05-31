@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { LOGIN_USER, GET_USER } from '../endpoints';
+import { LOGIN_USER } from '../endpoints';
 import axios from 'axios';
 
 export interface LoginState {
@@ -75,19 +75,5 @@ export const sendApiLogin = (value: { login: string; password: string }) => (dis
         });
 };
 
-export const getUserApi = (value:any)=>(dispatch:any)=> {
-    return axios
-        .get(GET_USER, value)
-        .then((getUser=>{dispatch(true)
-            return getUser;
-        }))
-        .catch((error)=>{
-            dispatch(actionLoginMassageError(error.response.data.message))
-            dispatch(actionLoginError(true))
-        })
-                .finally(() => {
-                    dispatch(actionPageIsLoadingLogin(false))
-                })
-}
 
 export default loginSlice.reducer;

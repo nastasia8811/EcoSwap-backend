@@ -14,6 +14,17 @@ import loginReducer, {
     actionLoginMassageError,
 } from './login.reducer';
 
+import accountReducer,{
+    actionPageIsLoadingAccount
+} from './account.reducer'; 
+
+import authorizationSlice,{
+    actionPageIsLoadingAuthorization,
+    actionAuthorizationSuccesNewIcon,
+    actionAuthorizationMassageError,
+    actionAuthorizationError
+} from './authorization.reducer'; 
+
 export {
     registrationReducer,
     createCustomerServerApi,
@@ -27,4 +38,11 @@ export {
     actionUserData,
     actionLoginError,
     actionLoginMassageError,
+    accountReducer,
+    actionPageIsLoadingAccount,
+    authorizationSlice,
+    actionPageIsLoadingAuthorization,
+    actionAuthorizationSuccesNewIcon,
+    actionAuthorizationMassageError,
+    actionAuthorizationError
 };

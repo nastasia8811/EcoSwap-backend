@@ -8,6 +8,7 @@ import './reset.css';
 import Registration from "./pages/Registration/Registration";
 import Blog from './pages/Blog/Blog';
 import Events from './pages/Events/Events';
+import Account from './pages/Account/Account';
 
 const App = () =>{
 
@@ -21,6 +22,7 @@ const App = () =>{
             <Route path="/events" element={ <Events/> }/>
             <Route path="/authorization" element={ <Authorization/> }/>
             <Route path="/registration" element={ <Registration/> }/>
+            <Route path="/account" element={ <Account/> }/>
           </Routes>
         </div>
         <Footer/>

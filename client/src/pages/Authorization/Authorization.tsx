@@ -5,6 +5,7 @@ import FormLogin from "../../components/FormLogin/FormLogin";
 import validationSchemaLogin from "../Authorization/ValidationSchemaLogin";
 import {useDispatch, useSelector} from "react-redux";
 import {selectorLoginIsLoading, selectorLoginUserData, selectorLoginModalError} from "../../selectors";
+//selectorAuthorizationSuccesNewIcon
 import Preloader from "../../components/Preloader/Preloader";
 import * as React from "react";
 import {ThunkDispatch} from "redux-thunk";
@@ -21,6 +22,7 @@ const Authorization: React.FC = () => {
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
     const loading = useSelector(selectorLoginIsLoading);
     const modalError = useSelector(selectorLoginModalError);
+    //const myAccountSuccess = useSelector(selectorAuthorizationSuccesNewIcon);
 
     return (
         <>
@@ -43,8 +45,11 @@ const Authorization: React.FC = () => {
                             initialValues={userData}
                             validationSchema={validationSchemaLogin}
                             onSubmit={ (values) => dispatch(sendApiLogin(values)).then((axiosValue) => {
-                                console.log(axiosValue)})
-                            }
+                                return axiosValue
+                            })
+                                
+                                }
+                            
                             
                         />
                             {loading && <Preloader open />}
