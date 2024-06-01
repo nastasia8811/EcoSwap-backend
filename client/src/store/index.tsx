@@ -4,7 +4,7 @@ import {
     registrationReducer,
     loginReducer,
     accountReducer,
-    authorizationReducer
+    //authorizationReducer
 } from "../reducers";
 
 
@@ -14,7 +14,7 @@ const store = configureStore({
         registration: registrationReducer,
         login: loginReducer,
         account: accountReducer,
-        authorization: authorizationReducer,
+        // authorization: authorizationReducer,
     }
     
 

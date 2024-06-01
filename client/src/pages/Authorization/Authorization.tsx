@@ -4,21 +4,43 @@ import { Link } from "react-router-dom";
 import FormLogin from "../../components/FormLogin/FormLogin";
 import validationSchemaLogin from "../Authorization/ValidationSchemaLogin";
 import { useDispatch, useSelector } from "react-redux";
-import { selectorLoginIsLoading, selectorLoginUserData, selectorLoginModalError } from "../../selectors";
+import { selectorLoginIsLoading, selectorLoginUserData, selectorLoginModalError, selectorLoginToken } from "../../selectors";
 import Preloader from "../../components/Preloader/Preloader";
 import * as React from "react";
 import { ThunkDispatch } from "redux-thunk";
 import { Action } from "redux";
+import { useEffect } from 'react';
 import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
-import { sendApiLogin, actionLoginError } from "../../reducers";
+import { sendApiLogin, actionLoginError, getUserApi } from "../../reducers";
 import ModalLoginError from './modalLoginError/ModalErrorRegistration/ModalLoginError';
+import setAuthToken from '../../reducers/login.reducer'
 
 const Authorization: React.FC = () => {
     const userData = useSelector(selectorLoginUserData);
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
+    //const dispatch = useDispatch(); 
+
     const loading = useSelector(selectorLoginIsLoading);
     const modalError = useSelector(selectorLoginModalError);
+    const authorizationToken = useSelector(selectorLoginToken);
 
+    useEffect(() => {
+            setAuthToken(authorizationToken); 
+            if (authorizationToken) {
+                dispatch<any>(getUserApi());
+            }
+          
+        }, [authorizationToken, dispatch]); 
+
+    const handleSubmit = (values: { login: string; password: string }) => {
+        dispatch(sendApiLogin(values)).then((response) => {
+            console.log('Login successful:', response);
+            // Дополнительная логика после успешной авторизации
+        }).catch((error) => {
+            console.error('Login failed:', error);
+            // Дополнительная логика при ошибке авторизации
+        });
+    };
 
     return (
         <>
@@ -37,10 +59,7 @@ const Authorization: React.FC = () => {
                             <FormLogin
                                 initialValues={userData}
                                 validationSchema={validationSchemaLogin}
-                                onSubmit={(values) => dispatch(sendApiLogin(values)).then((axiosValue) => {
-                                 return axiosValue
-                                })
-                                }
+                                onSubmit={handleSubmit}
                             />
                             {loading && <Preloader open />}
                         

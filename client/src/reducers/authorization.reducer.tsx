@@ -1,67 +1,67 @@
-import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { GET_USER } from '../endpoints';
-import axios from 'axios';
+// import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
+// import { GET_USER } from '../endpoints';
+// import axios from 'axios';
 
 
-export interface AuthorizationState {
-    authorizationPageIsLoading: boolean;
-    authorizationSuccesNewIcon: boolean;
-    authorizationMassageError: string | null;
-    authorizationModalError: string | null;
-}
+// export interface AuthorizationState {
+//     authorizationPageIsLoading: boolean;
+//     authorizationSuccesNewIcon: boolean;
+//     authorizationMassageError: string | null;
+//     authorizationModalError: string | null;
+// }
 
 
-export const initialState: AuthorizationState = {
-    authorizationPageIsLoading: false,
-    authorizationSuccesNewIcon: false,
-    authorizationMassageError: null,
-    authorizationModalError: null,
-};
+// export const initialState: AuthorizationState = {
+//     authorizationPageIsLoading: false,
+//     authorizationSuccesNewIcon: false,
+//     authorizationMassageError: null,
+//     authorizationModalError: null,
+// };
 
 
-const authorizationSlice: Slice<AuthorizationState> = createSlice({
-    name: 'authorization',
-    initialState,
-    reducers: {
-        actionPageIsLoadingAuthorization: (state, action: PayloadAction<boolean>) => {
-            state.authorizationPageIsLoading = action.payload;
-        },
-        actionAuthorizationSuccesNewIcon: (state, action: PayloadAction<boolean>) => {
-            state.authorizationSuccesNewIcon = action.payload;
-        },
-        actionAuthorizationMassageError: (state, action: PayloadAction<string>) => {
-            state.authorizationMassageError = action.payload;
-        },
-        actionAuthorizationError: (state, action: PayloadAction<string>) => {
-            state.authorizationModalError = action.payload;
-        },
-    }
-});
+// const authorizationSlice: Slice<AuthorizationState> = createSlice({
+//     name: 'authorization',
+//     initialState,
+//     reducers: {
+//         actionPageIsLoadingAuthorization: (state, action: PayloadAction<boolean>) => {
+//             state.authorizationPageIsLoading = action.payload;
+//         },
+//         actionAuthorizationSuccesNewIcon: (state, action: PayloadAction<boolean>) => {
+//             state.authorizationSuccesNewIcon = action.payload;
+//         },
+//         actionAuthorizationMassageError: (state, action: PayloadAction<string>) => {
+//             state.authorizationMassageError = action.payload;
+//         },
+//         actionAuthorizationError: (state, action: PayloadAction<string>) => {
+//             state.authorizationModalError = action.payload;
+//         },
+//     }
+// });
 
-export const {
-    actionPageIsLoadingAuthorization,
-    actionAuthorizationSuccesNewIcon,
-    actionAuthorizationMassageError,
-    actionAuthorizationError
-} = authorizationSlice.actions;
+// export const {
+//     actionPageIsLoadingAuthorization,
+//     actionAuthorizationSuccesNewIcon,
+//     actionAuthorizationMassageError,
+//     actionAuthorizationError
+// } = authorizationSlice.actions;
 
-// Thunk
-export const authorizationSuccess = (value: any) => (dispatch: any) => {
-    dispatch(actionPageIsLoadingAuthorization(true));
-    return axios
-        .get(GET_USER, value)
-        .then(response => {
-            dispatch(actionAuthorizationSuccesNewIcon(true));
-            return response;
-        })
-        .catch(error => {
-            dispatch(actionAuthorizationMassageError(error.response.data.message));
-            dispatch(actionAuthorizationError(true));
-        })
-        .finally(() => {
-            dispatch(actionPageIsLoadingAuthorization(false));
-        });
-};
+// // Thunk
+// export const authorizationSuccess = (value: any) => (dispatch: any) => {
+//     dispatch(actionPageIsLoadingAuthorization(true));
+//     return axios
+//         .get(GET_USER, value)
+//         .then(response => {
+//             dispatch(actionAuthorizationSuccesNewIcon(true));
+//             return response;
+//         })
+//         .catch(error => {
+//             dispatch(actionAuthorizationMassageError(error.response.data.message));
+//             dispatch(actionAuthorizationError(true));
+//         })
+//         .finally(() => {
+//             dispatch(actionPageIsLoadingAuthorization(false));
+//         });
+// };
 
-export default authorizationSlice.reducer;
+// export default authorizationSlice.reducer;
 
