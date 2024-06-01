@@ -12,17 +12,19 @@ import loginReducer, {
     actionUserData,
     actionLoginError,
     actionLoginMassageError,
+    sendApiLogin
 } from './login.reducer';
 
 import accountReducer,{
     actionPageIsLoadingAccount
 } from './account.reducer'; 
 
-import authorizationSlice,{
+import authorizationReducer,{
     actionPageIsLoadingAuthorization,
     actionAuthorizationSuccesNewIcon,
     actionAuthorizationMassageError,
-    actionAuthorizationError
+    actionAuthorizationError,
+    authorizationSuccess
 } from './authorization.reducer'; 
 
 export {
@@ -38,11 +40,13 @@ export {
     actionUserData,
     actionLoginError,
     actionLoginMassageError,
+    sendApiLogin,
     accountReducer,
     actionPageIsLoadingAccount,
-    authorizationSlice,
+    authorizationReducer,
     actionPageIsLoadingAuthorization,
     actionAuthorizationSuccesNewIcon,
     actionAuthorizationMassageError,
-    actionAuthorizationError
+    actionAuthorizationError,
+    authorizationSuccess
 };

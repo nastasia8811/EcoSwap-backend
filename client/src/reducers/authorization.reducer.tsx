@@ -1,22 +1,23 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import {  GET_USER } from '../endpoints';
+import { GET_USER } from '../endpoints';
 import axios from 'axios';
+
 
 export interface AuthorizationState {
     authorizationPageIsLoading: boolean;
     authorizationSuccesNewIcon: boolean;
     authorizationMassageError: string | null;
     authorizationModalError: string | null;
-
 }
 
-export const initialState: AuthorizationState = {
 
+export const initialState: AuthorizationState = {
     authorizationPageIsLoading: false,
     authorizationSuccesNewIcon: false,
     authorizationMassageError: null,
     authorizationModalError: null,
 };
+
 
 const authorizationSlice: Slice<AuthorizationState> = createSlice({
     name: 'authorization',
@@ -25,7 +26,7 @@ const authorizationSlice: Slice<AuthorizationState> = createSlice({
         actionPageIsLoadingAuthorization: (state, action: PayloadAction<boolean>) => {
             state.authorizationPageIsLoading = action.payload;
         },
-        actionAuthorizationSuccesNewIcon:(state, action: PayloadAction<boolean>) =>{
+        actionAuthorizationSuccesNewIcon: (state, action: PayloadAction<boolean>) => {
             state.authorizationSuccesNewIcon = action.payload;
         },
         actionAuthorizationMassageError: (state, action: PayloadAction<string>) => {
@@ -34,7 +35,6 @@ const authorizationSlice: Slice<AuthorizationState> = createSlice({
         actionAuthorizationError: (state, action: PayloadAction<string>) => {
             state.authorizationModalError = action.payload;
         },
-    
     }
 });
 
@@ -45,22 +45,23 @@ export const {
     actionAuthorizationError
 } = authorizationSlice.actions;
 
-    
-export const AuthorizationSuccess = (value:any)=>(dispatch:any)=> {
+// Thunk
+export const authorizationSuccess = (value: any) => (dispatch: any) => {
+    dispatch(actionPageIsLoadingAuthorization(true));
     return axios
         .get(GET_USER, value)
-        .then((getUser=>{dispatch(true)
-            return getUser;
-        }))
-        .catch((error)=>{
-            dispatch(actionAuthorizationMassageError(error.response.data.message))
-            dispatch(actionAuthorizationError(true))
+        .then(response => {
+            dispatch(actionAuthorizationSuccesNewIcon(true));
+            return response;
         })
-                .finally(() => {
-                    dispatch(actionPageIsLoadingAuthorization(false))
-                })
-}
-
-
+        .catch(error => {
+            dispatch(actionAuthorizationMassageError(error.response.data.message));
+            dispatch(actionAuthorizationError(true));
+        })
+        .finally(() => {
+            dispatch(actionPageIsLoadingAuthorization(false));
+        });
+};
 
 export default authorizationSlice.reducer;
+

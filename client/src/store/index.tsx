@@ -3,7 +3,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import {
     registrationReducer,
     loginReducer,
-    accountReducer
+    accountReducer,
+    authorizationReducer
 } from "../reducers";
 
 
@@ -13,7 +14,9 @@ const store = configureStore({
         registration: registrationReducer,
         login: loginReducer,
         account: accountReducer,
+        authorization: authorizationReducer,
     }
+    
 
 })
 
