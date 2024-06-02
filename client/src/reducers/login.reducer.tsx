@@ -46,7 +46,7 @@ export const {
 } = loginSlice.actions;
 
 export const sendApiLogin = (value: { login: string; password: string }) => (dispatch: any) => {
-    console.log('Sending login request with value:', value);  // Логирование отправляемых данных
+    console.log('Sending login request with value:', value);
     dispatch(actionPageIsLoadingLogin(true));
 
     const loginData = {
@@ -57,14 +57,14 @@ export const sendApiLogin = (value: { login: string; password: string }) => (dis
     return axios
         .post(LOGIN_USER, loginData)
         .then((response) => {
-            console.log('Login response:', response);  //  ответ
+            console.log('Login response:', response);
             dispatch(actionUserData(response.data));
             return response;
         })
         .catch((error) => {
-            console.error('Login error:', error);  //  ошибка
+            console.error('Login error:', error);
             if (error.response) {
-                console.error('Error response data:', error.response.data);  //  данные ошибки
+                console.error('Error response data:', error.response.data);
                 dispatch(actionLoginMassageError(error.response.data.message));
             } else {
                 dispatch(actionLoginMassageError('An unknown error occurred.'));
