@@ -25,7 +25,8 @@ const Authorization: React.FC = () => {
     const authorizationToken = useSelector(selectorLoginToken);
 
     useEffect(() => {
-            setAuthToken(authorizationToken); 
+            // @ts-ignore
+        setAuthToken(authorizationToken);
             if (authorizationToken) {
                 dispatch<any>(getUserApi());
             }

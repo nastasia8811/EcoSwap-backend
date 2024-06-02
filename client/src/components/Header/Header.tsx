@@ -3,16 +3,16 @@ import './Header.scss';
 import { Link, NavLink } from 'react-router-dom';
 import { logo } from "./icons";
 import { useState } from "react";
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import { selectorAuthorizationSuccesNewIcon } from '../../selectors';
+//import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+//import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const isUserAuthorized = useSelector(selectorAuthorizationSuccesNewIcon);
+
 
     return (
         <header className="header">
@@ -34,8 +34,9 @@ const Header = () => {
                             Events
                         </NavLink>
                         <NavLink to="/authorization" className="header__wrapper-menu-item">
-                            {isUserAuthorized ? <AccountCircleOutlinedIcon /> : <LoginOutlinedIcon />}
+                            {/*{isUserAuthorized ? <AccountCircleOutlinedIcon /> : <LoginOutlinedIcon />}*/}
                         </NavLink>
+
                     </Box>
                     <Box className="header__wrapper-burger_btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                         {isMenuOpen ? <CloseOutlinedIcon /> : <MenuOutlinedIcon />}
