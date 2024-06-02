@@ -1,17 +1,18 @@
 import { Box, Container } from '@mui/material';
 import './Header.scss';
 import { Link, NavLink } from 'react-router-dom';
-import {logo} from "./icons";
-import {useState} from "react";
+import { logo } from "./icons";
+import { useState } from "react";
+//import { useSelector } from 'react-redux';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+//import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+//import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const handleClick = () => {
 
-        console.log("hi")
-    }
 
     return (
         <header className="header">
@@ -32,17 +33,18 @@ const Header = () => {
                         <NavLink to="/events" className="header__wrapper-menu-item">
                             Events
                         </NavLink>
-                        <NavLink to="/authorization" className="header__wrapper-menu-item" onClick={handleClick}>
-                            authorization
+                        <NavLink to="/authorization" className="header__wrapper-menu-item">
+                            {/*{isUserAuthorized ? <AccountCircleOutlinedIcon /> : <LoginOutlinedIcon />}*/}
                         </NavLink>
+
                     </Box>
                     <Box className="header__wrapper-burger_btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                         {isMenuOpen ? <CloseOutlinedIcon /> : <MenuOutlinedIcon />}
                     </Box>
                 </Box>
-
             </Container>
         </header>
     );
 };
+
 export default Header;
