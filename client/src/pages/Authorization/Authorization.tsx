@@ -13,8 +13,8 @@ import { useEffect } from 'react';
 import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
 import { sendApiLogin, actionLoginError, getUserApi } from "../../reducers";
 import ModalLoginError from './modalLoginError/ModalErrorRegistration/ModalLoginError';
-import setAuthToken from '../../reducers/login.reducer'
-
+import {setAuthToken} from '../../reducers/login.reducer'
+import { useNavigate } from "react-router-dom";
 const Authorization: React.FC = () => {
     const userData = useSelector(selectorLoginUserData);
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
@@ -23,12 +23,12 @@ const Authorization: React.FC = () => {
     const loading = useSelector(selectorLoginIsLoading);
     const modalError = useSelector(selectorLoginModalError);
     const authorizationToken = useSelector(selectorLoginToken);
-
+const navigate = useNavigate();
     useEffect(() => {
-            // @ts-ignore
+
         setAuthToken(authorizationToken);
             if (authorizationToken) {
-                dispatch<any>(getUserApi());
+                dispatch<object>(getUserApi());
             }
           
         }, [authorizationToken, dispatch]); 
@@ -36,10 +36,11 @@ const Authorization: React.FC = () => {
     const handleSubmit = (values: { login: string; password: string }) => {
         dispatch(sendApiLogin(values)).then((response) => {
             console.log('Login successful:', response);
-            // Дополнительная логика после успешной авторизации
+            navigate('/events');
+
         }).catch((error) => {
             console.error('Login failed:', error);
-            // Дополнительная логика при ошибке авторизации
+
         });
     };
 
