@@ -28,20 +28,24 @@ const validationSchema = yup.object().shape({
   //   is: (val) => (val && val.length > 0 ? true : false),
   //   then: yup.string().oneOf([yup.ref('password')], 'Both password need to be the same'),
   // }),
+  city: yup
+      .string()
+      .min(2, 'Min 2 symbols')
+      .required('City field is requierd'),
   telephone: yup
       .string()
       .typeError("That doesn't look like a phone number")
-      .min(14, 'Phone number should start with +491 and contain 14 chars')
+      .min(14, 'Phone number should start with +49 and contain 14 chars')
       .matches(
-          /^\+49\d{3}\d{2}\d{2}\d{2}$/,
+          /^\+49\d{11}$/,
           'Phone number should start with +49 and contain 14 chars',
       ),
-  avatarUrl: yup
-    .string()
-    .matches(
-      /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-      'Enter correct url',
-    ),
+  // avatarUrl: yup
+  //   .string()
+  //   .matches(
+  //     /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+  //     'Enter correct url',
+  //   ),
 });
 
 export default validationSchema;
