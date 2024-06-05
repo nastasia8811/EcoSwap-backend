@@ -2,18 +2,18 @@ const Event = require("../models/Event");
 
 
 exports.addEvent = (req, res, next) => {
-    Event.findOne({ name: req.body.name }).then(color => {
-        if (color) {
+    Event.findOne({ name: req.body.name }).then(event => {
+        if (event) {
             return res
                 .status(400)
-                .json({ message: `Color with name "${color.name}" already exists` });
+                .json({ message: `Event with name "${event.name}" already exists` });
         } else {
             const initialQuery = _.cloneDeep(req.body);
             const newColor = new Event(queryCreator(initialQuery));
 
             newColor
                 .save()
-                .then(color => res.json(color))
+                .then(event => res.json(event))
                 .catch(err =>
                     res.status(400).json({
                         message: `Error happened on server: "${err}" `
