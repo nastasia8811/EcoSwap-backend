@@ -14,6 +14,11 @@
       text-transform: uppercase;
       color:#1b2a20;
     }
+    &-plus{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
   }
   &__wrapper-flex{
     display:flex;
@@ -29,7 +34,7 @@
   
       &__wrapper {
         min-width: 400px;
-  
+
     }
   }
   
@@ -39,7 +44,12 @@
   
       &__wrapper {
         min-width: 900px;
-  
+        &-title {}
+        &-plus{
+          justify-content: flex-end;
+          margin-right: 50px;
+
+        }
       }}
     }
   }
