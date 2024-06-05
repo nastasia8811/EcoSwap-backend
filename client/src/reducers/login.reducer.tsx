@@ -27,7 +27,7 @@ export const setAuthToken = (token: string | null): void => {
     // Функция setAuthToken: Она принимает один аргумент token и устанавливает заголовок Authorization
     // для всех запросов Axios, если токен присутствует. Если токен отсутствует, заголовок удаляется.
     if (token) {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        axios.defaults.headers.common['Authorization'] = token;
     } else {
         delete axios.defaults.headers.common['Authorization'];
     }
@@ -100,8 +100,7 @@ export const sendApiLogin = (value: { login: string; password: string }) => (dis
 
 export const getUserApi = () => async (dispatch: (arg0: { payload: any; type: `${string}/${string}`; } | AsyncThunkAction<any, any, any>) => void)  =>{
     return axios
-    .get(GET_USER, { headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2M4NjQ5NmEyZmRkNjcxNmM5YjRkYiIsImZpcnN0TmFtZSI6ImZnZmdmIiwibGFzdE5hbWUiOiJmZ2ZnZiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MTc1MzA1MTEsImV4cCI6MTcxNzU2NjUxMX0.8-CZDCV2QQNUD5phIzv3LCuQwva2UG93kyYanR8rbPA` }})
-
+    .get(GET_USER)
     .then(customer =>{
         dispatch(actionUserData(customer.data))
     })
@@ -110,19 +109,5 @@ export const getUserApi = () => async (dispatch: (arg0: { payload: any; type: `$
     });
 
 };
-
-
-
-// import { Dispatch } from 'redux';
-
-
-// export const getUserApi = () => async (dispatch: Dispatch) => {
-//     try {
-//         const response = await axios.get(GET_USER);
-//         dispatch({ type: 'SET_USER_DATA', payload: response.data });
-//     } catch (error) {
-//         dispatch({ type: 'API_ERROR', payload: error });
-//     }
-// };
 
 export default loginSlice.reducer;

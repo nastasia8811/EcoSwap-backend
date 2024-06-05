@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 import FormLogin from "../../components/FormLogin/FormLogin";
 import validationSchemaLogin from "../Authorization/ValidationSchemaLogin";
 import { useDispatch, useSelector } from "react-redux";
-import { selectorLoginIsLoading, selectorLoginUserData, selectorLoginModalError, selectorLoginToken } from "../../selectors";
+import { selectorLoginIsLoading, selectorLoginUserData, selectorLoginModalError } from "../../selectors";
 import Preloader from "../../components/Preloader/Preloader";
 import * as React from "react";
 import { ThunkDispatch } from "redux-thunk";
 import { Action } from "redux";
-import { useEffect } from 'react';
+
 import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
-import { sendApiLogin, actionLoginError, getUserApi } from "../../reducers";
+import { sendApiLogin, actionLoginError } from "../../reducers";
 import ModalLoginError from './modalLoginError/ModalErrorRegistration/ModalLoginError';
-import {setAuthToken} from '../../reducers/login.reducer'
+
 import { useNavigate } from "react-router-dom";
 const Authorization: React.FC = () => {
     const userData = useSelector(selectorLoginUserData);
@@ -22,16 +22,8 @@ const Authorization: React.FC = () => {
 
     const loading = useSelector(selectorLoginIsLoading);
     const modalError = useSelector(selectorLoginModalError);
-    const authorizationToken = useSelector(selectorLoginToken);
-const navigate = useNavigate();
-    useEffect(() => {
 
-        setAuthToken(authorizationToken);
-            if (authorizationToken) {
-                dispatch<object>(getUserApi());
-            }
-          
-        }, [authorizationToken, dispatch]); 
+const navigate = useNavigate();
 
     const handleSubmit = (values: { login: string; password: string }) => {
         dispatch(sendApiLogin(values)).then((response) => {

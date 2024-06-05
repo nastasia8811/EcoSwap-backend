@@ -1,12 +1,13 @@
-.auth{
+.auth {
   min-width: 375px;
-  &__background-top{
+
+  &__background-top {
     background-image: url("img/Frame 633324.png");
     background-repeat: no-repeat;
     height: 19vh;
     background-position: center center;
     background-size: cover;
-    position:relative;
+    position: relative;
   }
 
   &__content-container {
@@ -17,7 +18,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: #EDEDED;
-    &_text1{
+
+    &_text1 {
       padding-right: 10px;
       padding-left: 10px;
       padding-top: 10px;
@@ -29,10 +31,12 @@
       text-align: center;
     }
   }
-  &__background-bottom{
+
+  &__background-bottom {
     background-color: #F0EEDF;
     min-height: 380px;
-    &_container{
+
+    &_container {
       max-width: 333px;
       min-height: 100px;
       margin-right: auto;
@@ -45,11 +49,13 @@
       font-size: 24px;
       line-height: 36px;
       padding-top: 150px;
-      &-span{
+
+      &-span {
         margin-top: 20px;
         margin-bottom: 20px;
       }
-      &-registration{
+
+      &-registration {
         background: #1B2A20;
         color: #EDEDED;
         margin-right: 10px;
@@ -58,8 +64,9 @@
       }
     }
   }
+
   @media (min-width: 482px) and (max-width: 833.9px) {
-    &__background-top{
+    &__background-top {
       height: 26vh;
     }
 
@@ -67,27 +74,30 @@
       min-width: 320px;
       min-height: 118px;
       top: 470px;
-      &_text1{
+
+      &_text1 {
         min-height: 46px;
         padding: 10px;
         font-size: 48px;
         line-height: 62.4px;
       }
     }
-    &__background-bottom{
+    &__background-bottom {
       min-height: 380px;
 
-      &_container{
+      &_container {
         max-width: 686px;
         min-height: 37px;
         padding-top: 140px;
-        top:520px;
-        &-content{
+        top: 520px;
+
+        &-content {
           padding: 30px;
           font-size: 16px;
           line-height: 26.4px;
         }
-        &-registration{
+
+        &-registration {
           margin-right: 40px;
           margin-left: 40px;
           margin-bottom: 80px;
@@ -96,7 +106,7 @@
     }
   }
   @media (min-width: 834px) and (max-width: 1800px) {
-    &__background-top{
+    &__background-top {
       height: 39vh;
     }
 
@@ -106,24 +116,27 @@
       left: 50%;
       transform: translate(-50%, -50%);
 
-      &_text1{
+      &_text1 {
         padding: 10px;
         font-size: 64px;
         line-height: 70.46px;
       }
     }
-    &__background-bottom{
+    &__background-bottom {
       min-height: 380px;
-      &_container{
+
+      &_container {
         max-width: 683px;
         min-height: 102px;
         padding-top: 160px;
-        &-content{
+
+        &-content {
           padding: 30px;
           font-size: 18px;
           line-height: 29.7px;
         }
-        &-registration{
+
+        &-registration {
           margin-right: 40px;
           margin-left: 40px;
           margin-bottom: 110px;
