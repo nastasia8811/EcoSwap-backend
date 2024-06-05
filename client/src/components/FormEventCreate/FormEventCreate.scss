@@ -4,12 +4,10 @@
   padding: 60px 35px 40px;
   box-sizing: border-box;
   margin-bottom: 40px;
-
   &__grid_wrapper {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 30px;
-
     &__input {
       padding: 0 30px;
       outline: none;
@@ -17,20 +15,19 @@
     }
   }
 
-  @media (min-width: 482px) and (max-width: 995.9px) {
-    & {
-      min-width: 400px;
+  //@media (min-width: 482px) and (max-width: 995.9px) {
+  //  & {
+  //
+  //  }
+  //}
 
+  @media (min-width: 996px) {
+    & {
+      min-width: 500px;
       &__grid_wrapper {
         grid-template-columns: 1fr 1fr;
         column-gap: 30px;
       }
-
-    @media (min-width: 996px) {
-      & {
-        min-width: 500px;
-      }
-    }
     }
   }
 }

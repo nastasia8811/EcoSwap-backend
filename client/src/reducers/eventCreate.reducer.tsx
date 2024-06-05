@@ -6,6 +6,7 @@ export interface EventCreateState {
             date: string;
             img: string;
             city: string;
+            description:string;
         },
         modalError: null,
         modalSuccess: null,
@@ -20,6 +21,7 @@ export const initialState: EventCreateState = {
         date: '',
         img: '',
         city:'',
+        description:'',
     },
     modalError: null,
     modalSuccess: null,

@@ -86,6 +86,19 @@ const FormEventCreate: React.FC<FormEventCreateProps> = ({
                                     helperText='null'
                                     required
                                 />
+                                <FormikControl
+                                    type="text"
+                                    control="input"
+                                    label="Description"
+                                    color="success"
+                                    className="form-eventCreate__grid_wrapper__input"
+                                    name="title"
+                                    placeholder="Enter event description"
+                                    variant="outlined"
+                                    id="outlined-multiline-flexible"
+                                    helperText='null'
+                                    required
+                                />
 
                             </div>
                             <button type="submit" disabled={!isValid}>create</button>
