@@ -9,6 +9,7 @@ import Registration from "./pages/Registration/Registration";
 //import Blog from './pages/Blog/Blog';
 import Events from './pages/Events/Events';
 import Account from './pages/Account/Account';
+import EventCreate from "./pages/EventCreate/EventCreate";
 
 const App = () =>{
 
@@ -23,6 +24,7 @@ const App = () =>{
             <Route path="/authorization" element={ <Authorization/> }/>
             <Route path="/registration" element={ <Registration/> }/>
             <Route path="/account" element={ <Account/> }/>
+            <Route path="/newEvent" element={ <EventCreate/> }/>
           </Routes>
         </div>
         <Footer/>

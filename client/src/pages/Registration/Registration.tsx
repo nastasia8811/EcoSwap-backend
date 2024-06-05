@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { Container } from '@mui/material';
+import {Container} from '@mui/material';
 import './Registration.scss';
 import BreadCrumbs from '../../components/BreadCrumbs/BreadCrumbs';
 import FormRegistration from '../../components/FormRegistration/FormRegistration';
 import ValidationSchema from './ValidationSchemaRegistration';
 import ModalSuccessRegistration from './components/ModalSuccessRegistration/ModalSuccessRegistration';
 import Preloader from '../../components/Preloader/Preloader';
-import { createCustomerServerApi, actionRegistrationSuccess, actionRegistrationError } from '../../reducers';
+import {createCustomerServerApi, actionRegistrationSuccess, actionRegistrationError} from '../../reducers';
 import ModalErrorRegistration from './components/ModalErrorRegistration/ModalErrorRegistration';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {
     selectorRegistrationInitialState,
     selectorRegistrationIsLoading,
@@ -32,7 +32,7 @@ const Registration: React.FC = () => {
     return (
         <main>
             <Container className="registration-container" maxWidth="lg">
-                <BreadCrumbs linksArray={[{ link: '/registration', text: 'Registration' }]} />
+                <BreadCrumbs linksArray={[{link: '/registration', text: 'Registration'}]}/>
                 <div className="registration-container__wrapper">
                     <h2 className="registration-container__wrapper-title">Registration</h2>
 
@@ -50,9 +50,11 @@ const Registration: React.FC = () => {
                         }}
                     />
 
-                    {loading && <Preloader open />}
-                    {openModal && <ModalSuccessRegistration closeModal={() => dispatch(actionRegistrationSuccess(false))} />}
-                    {modalError && <ModalErrorRegistration closeErrorModal={() => dispatch(actionRegistrationError(false))} />}
+                    {loading && <Preloader open/>}
+                    {openModal &&
+                        <ModalSuccessRegistration closeModal={() => dispatch(actionRegistrationSuccess(false))}/>}
+                    {modalError &&
+                        <ModalErrorRegistration closeErrorModal={() => dispatch(actionRegistrationError(false))}/>}
                 </div>
             </Container>
         </main>

@@ -111,18 +111,4 @@ export const getUserApi = () => async (dispatch: (arg0: { payload: any; type: `$
 
 };
 
-
-
-// import { Dispatch } from 'redux';
-
-
-// export const getUserApi = () => async (dispatch: Dispatch) => {
-//     try {
-//         const response = await axios.get(GET_USER);
-//         dispatch({ type: 'SET_USER_DATA', payload: response.data });
-//     } catch (error) {
-//         dispatch({ type: 'API_ERROR', payload: error });
-//     }
-// };
-
 export default loginSlice.reducer;

@@ -4,6 +4,7 @@ import {
     registrationReducer,
     loginReducer,
     accountReducer,
+    eventCreateReducer
     //authorizationReducer
 } from "../reducers";
 
@@ -14,6 +15,7 @@ const store = configureStore({
         registration: registrationReducer,
         login: loginReducer,
         account: accountReducer,
+        eventCreate: eventCreateReducer,
         // authorization: authorizationReducer,
     }
     

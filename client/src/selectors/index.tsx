@@ -2,12 +2,14 @@
 import { RegistrationState } from "../reducers/registration.reducer"
 import{LoginState} from '../reducers/login.reducer'
 import{AccountState} from '../reducers/account.reducer'
-//import{AuthorizationState} from '../reducers/authorization.reducer'
+import {EventCreateState} from '../reducers'
+
 
 interface AppState {
     registration: RegistrationState;
     login: LoginState;
     account: AccountState;
+    eventCreate: EventCreateState;
     //authorization: AuthorizationState;
     //eventItem: EventItemState;
 }
@@ -33,6 +35,13 @@ export const selectorLoginToken = (state: AppState) => state.login.loginToken;
 
 //MY ACCAUNT
 export const selectorAccountIsLoading = (state: AppState) => state.account.accountPageIsLoading;
+
+// EVENTECREATE
+export const selectorCreatingEventIsLoading = (state: AppState) => state.eventCreate.pageIsLoading;
+export const selectorCreatingEventModalSuccess = (state: AppState) => state.eventCreate.modalSuccess;
+export const selectorCreatingEventModalError = (state: AppState) => state.eventCreate.modalError;
+export const selectorCreatingEventInitialState = (state: AppState) => state.eventCreate.formData;
+export const selectorCreatingEventMessageError = (state: AppState) => state.eventCreate.messageError;
 
 //AUTHORIZATION
 // export const selectorAuthorizationIsLoading = (state: AppState) => state.authorization.authorizationPageIsLoading;
