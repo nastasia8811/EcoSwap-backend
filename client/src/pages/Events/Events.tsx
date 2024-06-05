@@ -6,6 +6,8 @@ import { eventsList } from "./eventlist";
 import React from 'react';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+import EventCreate from '../EventCreate/EventCreate';
+import {useState} from 'react'
 // import { createTheme } from '@mui/material/styles';
 // import {lightGreen} from '@mui/material/colors';
 //
@@ -16,9 +18,19 @@ import AddIcon from '@mui/icons-material/Add';
 //
 //     },
 // });
+// interface EventsProps {
+//     closeModalCreateEvent: () => void;
+// }
+const Events: React.FC = () => {
+    const [isModalAuthOpen, setIsModalAuthOpen] = useState(false);
 
-const Events:React.FC = () => {
-
+    const toggleModalAuth = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        setIsModalAuthOpen(!isModalAuthOpen);
+    };
+    const closeModalCreateEvent = () => {
+        setIsModalAuthOpen(false);
+    }
     return(
         <>
          <Container className="events-container" maxWidth="lg">
@@ -27,9 +39,13 @@ const Events:React.FC = () => {
                     <h2 className="events-container__wrapper-title">Events</h2>
                     <div className="events-container__wrapper-plus">
                         <Fab  size="small" color="primary"
-                             aria-label="add">
+                             aria-label="add" onClick={(event) => toggleModalAuth(event)}>
                             <AddIcon />
-                        </Fab></div>
+
+                        </Fab>
+                        {isModalAuthOpen && <EventCreate closeModalCreateEvent={()=>closeModalCreateEvent()} />}
+
+                    </div>
 
                     <Box className="events-container__wrapper-flex">
                     {eventsList.map((item:any) => (
