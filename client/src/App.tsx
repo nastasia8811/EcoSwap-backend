@@ -9,11 +9,36 @@ import Registration from "./pages/Registration/Registration";
 //import Blog from './pages/Blog/Blog';
 import Events from './pages/Events/Events';
 import Account from './pages/Account/Account';
+import {useSelector} from "react-redux";
+import {selectorLoginToken} from "./selectors";
 //import EventCreate from "./pages/EventCreate/EventCreate";
+import { useEffect } from 'react';
+import {actionToken} from "./reducers";
+import {useDispatch} from "react-redux";
+import {ThunkDispatch} from "redux-thunk";
+import {Action} from "redux";
+
+import {  getUserApi } from "./reducers";
 
 const App = () =>{
+    const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
 
-  return (
+    useEffect(() => {
+        const token =  localStorage.getItem("token");
+        if (token){
+            dispatch(actionToken(token))
+        }
+    }, [])
+
+   const authorizationToken = useSelector(selectorLoginToken);
+    useEffect(() => {
+        if (authorizationToken) {
+            dispatch<object>(getUserApi());
+        }
+    }, [authorizationToken, dispatch]);
+
+
+    return (
       <div className="app-wrapper">
         <Header  />
         <div className="app-routes-wrapper">
