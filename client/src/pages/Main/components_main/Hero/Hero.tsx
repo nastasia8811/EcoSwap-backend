@@ -34,9 +34,10 @@ const Hero = () => {
 
 <div className="hero__background-bottom">
     <div className="hero__background-bottom_container">
-        <p className="hero__background-bottom_container-content">Explore a world of environmental protection events with EcoSwap! We offer a wide range of gatherings dedicated to ecology, sustainable development, and nature conservation. Get inspired, learn, and join the global movement for a greener future right here!</p>
+        <p className="hero__background-bottom_container-content">Explore a world of environmental protection
+            events with EcoSwap! We offer a wide range of gatherings dedicated to ecology, sustainable development,
+            and nature conservation. Get inspired, learn, and join the global movement for a greener future right here!</p>
     </div>
-
 </div>
                     </Container>
                 </ThemeProvider>

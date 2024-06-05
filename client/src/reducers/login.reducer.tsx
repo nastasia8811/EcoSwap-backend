@@ -100,7 +100,8 @@ export const sendApiLogin = (value: { login: string; password: string }) => (dis
 
 export const getUserApi = () => async (dispatch: (arg0: { payload: any; type: `${string}/${string}`; } | AsyncThunkAction<any, any, any>) => void)  =>{
     return axios
-    .get(GET_USER)
+    .get(GET_USER, { headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2M4NjQ5NmEyZmRkNjcxNmM5YjRkYiIsImZpcnN0TmFtZSI6ImZnZmdmIiwibGFzdE5hbWUiOiJmZ2ZnZiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MTc1MzA1MTEsImV4cCI6MTcxNzU2NjUxMX0.8-CZDCV2QQNUD5phIzv3LCuQwva2UG93kyYanR8rbPA` }})
+
     .then(customer =>{
         dispatch(actionUserData(customer.data))
     })

@@ -60,6 +60,13 @@
       }
     }
   }
+//  &__background-last{
+//    background-image: url("img/unsplash_TFyi0QOx08c.jpg");
+//    background-repeat: no-repeat;
+//    background-position: center center;
+//    background-size: cover;
+//min-height: 380px;
+//  }
   @media (min-width: 482px) and (max-width: 833.9px) {
     &__background-top{
       height: 26vh;
@@ -144,6 +151,8 @@
         }
       }
     }
+    //&__background-last{
+    //}
     }
   }
 
