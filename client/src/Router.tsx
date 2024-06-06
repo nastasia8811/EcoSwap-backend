@@ -10,7 +10,7 @@ import Events from "./pages/Events/Events";
 import Account from "./pages/Account/Account";
 import Registration from "./pages/Registration/Registration";
 import Authorization from "./pages/Authorization/Authorization";
-
+import EventPage from "./pages/EventPage/EventPage";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +29,8 @@ const router = createBrowserRouter([
                 path: 'events',
                 element: <Events/>,
             },
+            {   path: "/event/:id",
+                element: <EventPage/>},
             {
                 path: 'account',
                 element: <Account/>,

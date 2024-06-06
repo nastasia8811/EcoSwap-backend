@@ -7,7 +7,8 @@ import { eventsList } from "./eventlist";
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import EventCreate from '../EventCreate/EventCreate';
-import {useState} from 'react'
+import {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 //import { useSelector} from "react-redux";
 // import {ThunkDispatch} from "redux-thunk";
 // import {Action} from "redux";
@@ -29,6 +30,7 @@ import {useState} from 'react'
 // }
 const Events: React.FC = () => {
     const [isModalAuthOpen, setIsModalAuthOpen] = useState(false);
+
     //const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
     const toggleModalAuth = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
@@ -37,6 +39,16 @@ const Events: React.FC = () => {
     const closeModalCreateEvent = () => {
         setIsModalAuthOpen(false);
     }
+
+
+    const navigate = useNavigate();
+
+
+    const handleEventClick = (id: number) => {
+        navigate(`/event/${id}`);
+    };
+
+
     // const token = useSelector(selectorLoginToken);
     // const navigate=useNavigate();
 
@@ -112,10 +124,11 @@ const Events: React.FC = () => {
                     </div>
                     <Box className="events-container__wrapper-flex">
                     {eventsList.map((item:any) => (
-                         <EventItem key={item.id} id={item.id} title={item.title} img={item.img} />
+                         <EventItem key={item.id} id={item.id} title={item.title} img={item.img} onClick={() => handleEventClick(item.id)}  />
       ))}
                   
                     </Box>
+
                 </div>
             </Container>
         </>
