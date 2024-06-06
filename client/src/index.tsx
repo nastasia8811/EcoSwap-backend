@@ -1,28 +1,23 @@
-// import * as ReactDOM from 'react-dom/client';
+import * as ReactDOM from 'react-dom/client';
 // import App from './App';
 // import { BrowserRouter } from 'react-router-dom';
 // import { Provider } from "react-redux";
-// import store from './store';
+//  import store from './store';
+import './reset.css';
+import {
+    createBrowserRouter,
+    RouterProvider,
+    // Route,
+    // Link,
+} from "react-router-dom";
+import Layout from "./pages/Layout/Layout";
+import Main from "./pages/Main/Main";
+import AboutUs from "./pages/AboutUs/AboutUs";
 import Events from "./pages/Events/Events";
 import Account from "./pages/Account/Account";
-import Main from "./pages/Main/Main";
-import Authorization from "./pages/Authorization/Authorization"
-//import Footer from "./components/footer/Footer";
-import './reset.css';
 import Registration from "./pages/Registration/Registration";
-import AboutUs from './pages/AboutUs/AboutUs';
-import Layout from './pages/Layout/Layout'
-import { createBrowserRouter } from 'react-router-dom';
+import Authorization from "./pages/Authorization/Authorization";
 
-// const root = ReactDOM.createRoot(document.getElementById('root')as HTMLElement);
-// root.render(
-//       <Provider store={store}>
-//         <BrowserRouter>
-//             <App />
-//         </BrowserRouter>
-//     </Provider>
-//
-// );
 
 const router = createBrowserRouter([
     {
@@ -34,15 +29,15 @@ const router = createBrowserRouter([
                 element: <Main />,
             },
             {
-                path: 'dashboard',
+                path: 'about',
                 element: <AboutUs />,
             },
             {
-                path: 'dashboard',
+                path: 'events',
                 element: <Events/>,
             },
             {
-                path: 'dashboard',
+                path: 'account',
                 element: <Account/>,
             },
 
@@ -94,8 +89,12 @@ const router = createBrowserRouter([
     },
 ]);
 
-export default router;
 
+const root = ReactDOM.createRoot(document.getElementById('root')as HTMLElement);
+root.render(
+    // <Provider store={store}>
+<RouterProvider router={router} />
+     // </Provider>
 
-
+);
 
