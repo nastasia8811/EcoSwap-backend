@@ -39,10 +39,35 @@ const Events: React.FC = () => {
     }
     const token = useSelector(selectorLoginToken);
     const navigate=useNavigate();
-    useEffect(() => {
+
+    useEffect(() =>{
        if (!token){
            navigate('/authorization');
+       } else {
+           fetch('http://localhost:5000/api/event')
+               .then((res)=>res.json())
+               .then((data)=>console.log(data))
+           const token = localStorage.getItem("token")
+
+           fetch('http://localhost:5000/api/event',{method: 'POST',
+
+               // @ts-ignore
+               headers: {
+                   'Content-Type': 'application/json;charset=utf-8',
+                   'Authorization':token,
+               },
+               body: JSON.stringify({})})
+               .then((res)=>res.json())
+               .then((data)=>console.log(data))
        }
+
+        // let response = await fetch('/article/fetch/post/user', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json;charset=utf-8'
+        //     },
+        //     body: JSON.stringify(user)
+        // });
             }, []);
 
     return(
