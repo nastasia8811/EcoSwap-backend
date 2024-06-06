@@ -1,5 +1,5 @@
 import './App.scss';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route,Link, Outlet } from 'react-router-dom';
 import Header from "./components/Header/Header";
 import Main from "./pages/Main/Main";
 import Authorization from "./pages/Authorization/Authorization"
@@ -17,10 +17,9 @@ import {actionToken} from "./reducers";
 import {useDispatch} from "react-redux";
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
-
 import {  getUserApi } from "./reducers";
 
-const App = () =>{
+const App = () => {
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
 
     useEffect(() => {
@@ -43,13 +42,14 @@ const App = () =>{
         <Header  />
         <div className="app-routes-wrapper">
           <Routes>
-            <Route path="/" element={ <Main/> }/>
-            <Route path="/about" element={ <AboutUs/> }/>
-            <Route path="/events" element={ <Events/> }/>
-            <Route path="/authorization" element={ <Authorization/> }/>
-            <Route path="/registration" element={ <Registration/> }/>
-            <Route path="/account" element={ <Account/> }/>
-            {/*<Route path="/newEvent" element={ <EventCreate/> }/>*/}
+              <Route path="/" element={<Layout />}/>
+                  <Route index element={ <Main/> }/>
+                  <Route path="/about" element={ <AboutUs/> }/>
+                  <Route path="/events" element={ <Events/> }/>
+                  <Route path="/authorization" element={ <Authorization/> }/>
+                  <Route path="/registration" element={ <Registration/> }/>
+                  <Route path="/account" element={ <Account/> }/>
+
           </Routes>
         </div>
         <Footer/>
@@ -57,4 +57,38 @@ const App = () =>{
   );
 };
 
+
+
+function Layout() {
+    return (
+        <div>
+            {/* A "layout route" is a good place to put markup you want to
+          share across all the pages on your site, like navigation. */}
+            <nav>
+                <ul>
+                    <li>
+                        <Link to="/">Home</Link>
+
+                    </li>
+                    <li>
+                        <Link to="/about">About us</Link>
+                    </li>
+                    {/*<li>*/}
+                    {/*    <Link to="/dashboard">Dashboard</Link>*/}
+                    {/*</li>*/}
+                    {/*<li>*/}
+                    {/*    <Link to="/nothing-here">Nothing Here</Link>*/}
+                    {/*</li>*/}
+                </ul>
+            </nav>
+
+            <hr />
+
+            {/* An <Outlet> renders whatever child route is currently active,
+          so you can think about this <Outlet> as a placeholder for
+          the child routes we defined above. */}
+            <Outlet />
+        </div>
+);
+}
 export default App;
