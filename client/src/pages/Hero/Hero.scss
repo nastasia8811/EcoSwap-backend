@@ -60,6 +60,15 @@
       }
     }
   }
+  &__carousel{
+    box-shadow: 0 -25px 25px -25px #8BA993;
+    //background-image: url("img/image.jpg");
+    background-repeat: no-repeat;
+
+    background-position: center center;
+    background-size: cover;
+    background-color: #8BA993;
+  }
 //  &__background-last{
 //    background-image: url("img/unsplash_TFyi0QOx08c.jpg");
 //    background-repeat: no-repeat;

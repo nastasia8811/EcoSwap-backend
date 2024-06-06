@@ -1,7 +1,7 @@
 import {Box, Container, createTheme, Theme, ThemeProvider} from '@mui/material';
 import './Hero.scss';
 import {Link} from "react-router-dom";
-
+import ImageCarousel from '../../components/ImageCarousel/ImageCarousel';
 
 const theme: Theme = createTheme({
     components: {
@@ -37,12 +37,16 @@ const Hero = () => {
 <div className="hero__background-bottom">
     <div className="hero__background-bottom_container">
         <p className="hero__background-bottom_container-content">Explore a world of environmental protection
-            events with EcoSwap! We offer a wide range of gatherings dedicated to ecology, sustainable development,
-            and nature conservation. Get inspired, learn, and join the global movement for a greener future right here!</p>
+            events with EcoSwap! We offer an extensive array of gatherings focused on ecology, sustainable development, and nature conservation.
+            Get inspired, learn, and become part of the global movement for a greener future right here!</p>
     </div>
 </div>
+                        <Box className="hero__carousel">
+                        <h2 className="hero__carousel-title">Most popular events</h2>
+                        <ImageCarousel />
 
-                        <Link to="/events">Register events</Link>
+                        <Link className="hero__carousel-register" to="/events">Register events</Link>
+                        </Box>
                     </Container>
                 </ThemeProvider>
 
