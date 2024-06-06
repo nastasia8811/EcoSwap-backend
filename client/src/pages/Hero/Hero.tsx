@@ -1,5 +1,6 @@
 import {Box, Container, createTheme, Theme, ThemeProvider} from '@mui/material';
 import './Hero.scss';
+import {Link} from "react-router-dom";
 
 
 const theme: Theme = createTheme({
@@ -14,6 +15,7 @@ const theme: Theme = createTheme({
     },
 });
 const Hero = () => {
+
     return (
         <>
             <Box className="hero">
@@ -39,8 +41,11 @@ const Hero = () => {
             and nature conservation. Get inspired, learn, and join the global movement for a greener future right here!</p>
     </div>
 </div>
+
+                        <Link to="/events">Register events</Link>
                     </Container>
                 </ThemeProvider>
+
             </Box>
         </>
     )

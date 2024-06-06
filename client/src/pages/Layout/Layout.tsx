@@ -22,9 +22,10 @@ const Layout = () => {
         const storedToken = localStorage.getItem("token");
         if (storedToken) {
             dispatch(actionToken(storedToken));
-        } else {
-            navigate('/authorization');
         }
+        // else {
+        //     navigate('/authorization');
+        // }
     }, [dispatch, navigate]);
 
     useEffect(() => {
@@ -33,9 +34,9 @@ const Layout = () => {
         }
     }, [token, dispatch]);
 
-    if (!token) {
-        return null; // Или какой-нибудь спиннер/загрузка
-    }
+    // if (!token) {
+    //     return null; // Или какой-нибудь спиннер/загрузка
+    // }
 
     return (
         <Box display="flex" sx={{ flexDirection: 'column', minHeight: '100vh' }}>
