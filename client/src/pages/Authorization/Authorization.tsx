@@ -15,6 +15,7 @@ import { sendApiLogin, actionLoginError } from "../../reducers";
 import ModalLoginError from './modalLoginError/ModalErrorRegistration/ModalLoginError';
 
 import { useNavigate } from "react-router-dom";
+
 const Authorization: React.FC = () => {
     const userData = useSelector(selectorLoginUserData);
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();

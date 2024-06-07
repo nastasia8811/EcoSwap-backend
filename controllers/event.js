@@ -2,16 +2,13 @@ const Event = require("../models/Event");
 
 
 exports.addEvent = (req, res, next) => {
-    Event.findOne({ name: req.body.name }).then(event => {
-        if (event) {
-            return res
-                .status(400)
-                .json({ message: `Event with name "${event.name}" already exists` });
-        } else {
-            const initialQuery = _.cloneDeep(req.body);
-            const newColor = new Event(queryCreator(initialQuery));
 
-            newColor
+            const newEvent = new Event({
+                ...req.body,
+                customer_id: req.user.id, // ID користувача з JWT токену
+            });
+
+            newEvent
                 .save()
                 .then(event => res.json(event))
                 .catch(err =>
@@ -19,8 +16,8 @@ exports.addEvent = (req, res, next) => {
                         message: `Error happened on server: "${err}" `
                     })
                 );
-        }
-    });
+
+
 };
 
 exports.updateEvent = (req, res, next) => {

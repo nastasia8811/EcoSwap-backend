@@ -2,9 +2,14 @@
   min-width: 345px;
   position: relative;
   font-family: Maitree, sans-serif;
+  &__img{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
   &__wrapper {
     min-width: 300px;
-
+    background-color: #F0EEDF;
     &-title {
       text-align: center;
       margin-bottom: 43px;
