@@ -1,6 +1,6 @@
 
 import { RegistrationState } from "../reducers/registration.reducer"
-import{LoginState} from '../reducers/login.reducer'
+import {LoginState} from '../reducers/login.reducer'
 import{AccountState} from '../reducers/account.reducer'
 import {EventCreateState} from '../reducers'
 
@@ -29,8 +29,9 @@ export const selectorRegistrationMessageError = (state: AppState) => state.regis
 //LOGIN
 
 export const selectorLoginIsLoading = (state: AppState) => state.login.loginPageIsLoading;
-export const selectorLoginUserData = (state: AppState) => state.login.userData;
-export const selectorMassageError = (state: AppState) => state.login.loginMassageError;
+
+//export const selectLoginUserData = (state: AppState) => state.login.userData;
+export const selectorMassageError = (state: AppState) => state.login.loginMessageError;
 export const selectorLoginModalError = (state: AppState) => state.login.modalError;
 export const selectorLoginToken = (state: AppState) => state.login.loginToken;
 

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import FormLogin from "../../components/FormLogin/FormLogin";
 import validationSchemaLogin from "../Authorization/ValidationSchemaLogin";
 import { useDispatch, useSelector } from "react-redux";
-import { selectorLoginIsLoading, selectorLoginUserData, selectorLoginModalError } from "../../selectors";
+import { selectorLoginIsLoading, selectorLoginModalError } from "../../selectors";
 import Preloader from "../../components/Preloader/Preloader";
 import * as React from "react";
 import { ThunkDispatch } from "redux-thunk";
@@ -17,7 +17,8 @@ import ModalLoginError from './modalLoginError/ModalErrorRegistration/ModalLogin
 import { useNavigate } from "react-router-dom";
 
 const Authorization: React.FC = () => {
-    const userData = useSelector(selectorLoginUserData);
+    // @ts-ignore
+    const userData = useSelector((state)=>state.login.userData);
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
     //const dispatch = useDispatch(); 
 

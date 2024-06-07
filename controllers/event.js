@@ -5,7 +5,7 @@ exports.addEvent = (req, res, next) => {
 
             const newEvent = new Event({
                 ...req.body,
-                customer_id: req.user.id, // ID користувача з JWT токену
+                //customer_id: req.user._id, // ID користувача з JWT токену
             });
 
             newEvent

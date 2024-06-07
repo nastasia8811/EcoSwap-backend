@@ -62,7 +62,7 @@
   },
   "include": [
     "src/**/*.tsx"
-, "src/pages/Events/eventlist.tsx"  ],
+,   "src/pages/Events/eventlist.tsx"  ],
   "exclude": [
     "node_modules",
     "build"

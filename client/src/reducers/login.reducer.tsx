@@ -5,20 +5,37 @@ import axios from 'axios';
 
 export interface LoginState {
     loginPageIsLoading: boolean;
-    userData: object;
     loginToken: string;
-    loginMassageError: string | null;
+    loginMessageError:null | string;
     modalError: string | null;
+    userData: UserDataObject;
+}
+
+interface UserDataObject {
+    isAdmin?: boolean;
+    enabled?: boolean;
+    _id?: string;
+    firstName?: string;
+    lastName?: string;
+    login: string;
+    email?: string;
+    password:string;
+    telephone?: string;
+    city?: string;
+    country?: string;
+    customerNo?: string;
+    date?: string;
+    __v?: number;
 }
 
 export const initialState: LoginState = {
     userData: {
         login: "",
-        password: ""
+        password: "",
     },
     loginToken: localStorage.getItem("token") || "",
     loginPageIsLoading: false,
-    loginMassageError: null,
+    loginMessageError: null,
     modalError: null,
 };
 
@@ -46,11 +63,11 @@ const loginSlice: Slice<LoginState> = createSlice({
             setAuthToken(action.payload);
         },
 
-        actionUserData: (state, action: PayloadAction<object>) => {
+        actionUserData: (state, action: PayloadAction<UserDataObject>) => {
             state.userData = action.payload;
         },
         actionLoginMassageError: (state, action: PayloadAction<string>) => {
-            state.loginMassageError = action.payload;
+            state.loginMessageError = action.payload;
         },
         actionLoginError: (state, action: PayloadAction<string>) => {
             state.modalError = action.payload;
