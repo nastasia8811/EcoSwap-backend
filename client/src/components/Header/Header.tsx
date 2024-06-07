@@ -31,9 +31,9 @@ const Header = () => {
                         {/*<NavLink to="/blog" className="header__wrapper-menu-item">*/}
                         {/*    Blog*/}
                         {/*</NavLink>*/}
-                        <NavLink to="/events" className="header__wrapper-menu-item">
-                            Events
-                        </NavLink>
+                        {/*<NavLink to="/events" className="header__wrapper-menu-item">*/}
+                        {/*    Events*/}
+                        {/*</NavLink>*/}
                         <NavLink to="/authorization" className="header__wrapper-menu-item">
                             <LoginOutlinedIcon />
                            {/*{isUserAuthorized ?<LoginOutlinedIcon /> : <AccountCircleOutlinedIcon /> }*/}

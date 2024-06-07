@@ -8,13 +8,14 @@ import React, {useEffect} from 'react';
 // import AddIcon from '@mui/icons-material/Add';
 import EventCreate from '../EventCreate/EventCreate';
 import  {useState} from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,Link } from 'react-router-dom';
 // @ts-ignore
 import events from "./img/events.jpg";
 import { useSelector} from "react-redux";
 //import {ThunkDispatch} from "redux-thunk";
 //import {Action} from "redux";
 import {selectorLoginToken} from "../../selectors";
+
 
 
 //import { createTheme } from '@mui/material/styles';
@@ -119,7 +120,8 @@ const Events: React.FC = () => {
                     <BreadCrumbs linksArray={[{ link:'/events', text: 'Events' }]} />
                     <h2 className="events-container__wrapper-title">Events</h2>
                     <div className="events-container__wrapper-plus">
-                        <Button variant="outlined" onClick={(event) => toggleModalAuth(event)}>Add Event</Button>
+                        <Button className="events-container__wrapper-plus-button" variant="outlined" onClick={(event) => toggleModalAuth(event)}>Add Event</Button>
+                        <Button className="events-container__wrapper-plus-button" variant="outlined" onClick={(event) => toggleModalAuth(event)}><Link to="/account">My Account</Link></Button>
                         {/*<ToggleButton value="android" onClick={(event) => toggleModalAuth(event)}>Add Event</ToggleButton>*/}
                         {/*<Fab  size="small" color="primary"*/}
                         {/*     aria-label="add" onClick={(event) => toggleModalAuth(event)}>*/}

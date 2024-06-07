@@ -5,6 +5,7 @@ import{AccountState} from '../reducers/account.reducer'
 import {EventCreateState} from '../reducers'
 
 
+
 interface AppState {
     registration: RegistrationState;
     login: LoginState;
@@ -35,6 +36,13 @@ export const selectorLoginToken = (state: AppState) => state.login.loginToken;
 
 //MY ACCAUNT
 export const selectorAccountIsLoading = (state: AppState) => state.account.accountPageIsLoading;
+export const selectorAccountGetCreatedEvents = (state: AppState) => state.account.accountGetCreatedEvents;
+export const selectorAccountGetRegisterEvents = (state: AppState) => state.account.accountGetRegisterEvents;
+export const selectorAccountChangeCreatedEvent = (state: AppState) => state.account.accountChangeCreatedEvent;
+export const selectorAccountDeleteCreatedEvent = (state: AppState) => state.account.accountDeleteCreatedEvent;
+export const selectorAccountUnregisterEvents = (state: AppState) => state.account.accountUnregisterEvents;
+export const selectorAccountError = (state: AppState) => state.account.accountError;
+
 
 // EVENTECREATE
 export const selectorCreatingEventIsLoading = (state: AppState) => state.eventCreate.pageIsLoading;
