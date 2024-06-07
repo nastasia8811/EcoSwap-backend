@@ -4,18 +4,19 @@ import './Events.scss';
 import EventItem from "src/components/EventItem/EventItem";
 import { eventsList } from "./eventlist";
 import React, {useEffect} from 'react';
-// import Fab from '@mui/material/Fab';
-// import AddIcon from '@mui/icons-material/Add';
+//, {useEffect}
+
 import EventCreate from '../EventCreate/EventCreate';
 import  {useState} from 'react';
 import { useNavigate,Link } from 'react-router-dom';
 // @ts-ignore
 import events from "./img/events.jpg";
 import { useSelector} from "react-redux";
+
 //import {ThunkDispatch} from "redux-thunk";
 //import {Action} from "redux";
 import {selectorLoginToken} from "../../selectors";
-
+//import axios from 'axios'
 
 
 //import { createTheme } from '@mui/material/styles';
@@ -43,71 +44,65 @@ const Events: React.FC = () => {
         setIsModalAuthOpen(false);
     }
 
-
-    const navigate = useNavigate();
-
-
     const handleEventClick = (id: number) => {
         navigate(`/event/${id}`);
     };
 
-
     const token = useSelector(selectorLoginToken);
-    //const navigate=useNavigate();
+    const navigate=useNavigate();
+
+    // @ts-ignore
+    const userData = useSelector((state)=>state.login.userData)
 
     useEffect(() =>{
        if (!token){
            navigate('/authorization');
        } else {
-           fetch('http://localhost:5000/api/event')
-               .then((res)=>res.json())
-               .then((data)=>console.log(data))
+    //        fetch('http://localhost:5000/api/event')
+    //            .then((res)=>res.json())
+    //            .then((data)=>console.log(data))
+    //
+    //        const token = localStorage.getItem("token")
+    //
+    //        axios.post('http://localhost:5000/api/event',{{
+    //                title: "Концерт гурту Океан Ельзи",
+    //                date: new Date("2024-07-15T19:30:00"),
+    //                img: "https://example.com/concert_poster.jpg",
+    //                city: "Київ",
+    //                description: "Концерт до 30-річчя гурту",
+    //                location: "НСК Олімпійський",
+    //                available: 5000,
+    //                bookedSeats: [], // Поки що немає заброньованих місць
+    //                customer_id: "648f0e547c8768e698234567" // Приклад ID користувача з моделі Customer
+    //            };})
+    //            .then((res)=>console.log(res))
+    //            .then((data)=>console.log(data))
+    //
+           //axios.delete('http://localhost:5000/api/event/666364902271f36b6e0e9a5c')
 
-           const token = localStorage.getItem("token")
-
-           fetch('http://localhost:5000/api/event',{method: 'POST',
-
-               // @ts-ignore
-               headers: {
-                   'Content-Type': 'application/json;charset=utf-8',
-                   'Authorization':token,
-               },
-               body: JSON.stringify({})})
-               .then((res)=>res.json())
-               .then((data)=>console.log(data))
-
-           fetch('http://localhost:5000/api/event/id',{method: 'DELETE',
-               // @ts-ignore
-               headers: {
-                   'Content-Type': 'application/json;charset=utf-8',
-                   'Authorization':token,
-               },
-               body: JSON.stringify({})})
-               .then((res)=>res.json())
-               .then((data)=>console.log(data))
-
-           fetch('http://localhost:5000/api/event/id',{method: 'PUT',
-
-               // @ts-ignore
-               headers: {
-                   'Content-Type': 'application/json;charset=utf-8',
-                   'Authorization':token,
-               },
-               body: JSON.stringify({})})
-               .then((res)=>res.json())
-               .then((data)=>console.log(data))
-
-           fetch('http://localhost:5000/api/event/id',{method: 'GET',
-
-               // @ts-ignore
-               headers: {
-                   'Content-Type': 'application/json;charset=utf-8',
-                   'Authorization':token,
-               },
-               body: JSON.stringify({})})
-               .then((res)=>res.json())
-               .then((data)=>console.log(data))
-       }
+    //
+    //        fetch('http://localhost:5000/api/event/id',{method: 'PUT',
+    //
+    //            // @ts-ignore
+    //            headers: {
+    //                'Content-Type': 'application/json;charset=utf-8',
+    //                'Authorization':token,
+    //            },
+    //            body: JSON.stringify({})})
+    //            .then((res)=>res.json())
+    //            .then((data)=>console.log(data))
+    //
+    //        fetch('http://localhost:5000/api/event/id',{method: 'GET',
+    //
+    //            // @ts-ignore
+    //            headers: {
+    //                'Content-Type': 'application/json;charset=utf-8',
+    //                'Authorization':token,
+    //            },
+    //            body: JSON.stringify({})})
+    //            .then((res)=>res.json())
+    //            .then((data)=>console.log(data))
+      }
 
             }, []);
 
