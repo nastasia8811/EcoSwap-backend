@@ -4,7 +4,8 @@
     width: 355px;
     cursor: pointer;
     &__img{
-        width: 355px;
+
+        display: block;
     }
     &__title{
         border-bottom-left-radius: 10px;
@@ -37,7 +38,7 @@
             }
         }
     }
-    @media (min-width: 834px) and (max-width: 1800px) {
+    @media (min-width: 996px) {
         &{
             margin:30px;
             width: 510px;

@@ -1,9 +1,15 @@
 import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
-
+import { Container, Box } from '@mui/material';
+// @ts-ignore
+import swap from "./img/swap.jpg";
+import './AboutUs.scss'
 
 const AboutUs = () => {
     return (
-        <>
+
+            <Container className="about" maxWidth="xl">
+            <img className="about__img" src={swap} alt='nature'/>
+                <Box className="about__container">
             <BreadCrumbs linksArray={[{link: '/about', text: 'About us'}]}/>
             <h1>EcoSwap: Uniting for Environmental Protection</h1>
             <p>EcoSwap is a unique platform that brings people together to organize and participate in events aimed at
@@ -31,7 +37,9 @@ const AboutUs = () => {
             <p>Join EcoSwap and become part of the movement for a cleaner and healthier planet! Discover interesting
                 events, create your own, and contribute to the preservation of our shared environment. Together, we can
                 make a difference!</p>
-            </>
+                </Box>
+                </Container>
+
             )
             };
 

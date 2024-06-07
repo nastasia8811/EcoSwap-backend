@@ -1,12 +1,10 @@
 .hero{
   min-width: 375px;
   &__background-top{
-    background-image: url("img/container_top.jpg");
-    background-repeat: no-repeat;
-    height: 19vh;
-    background-position: center center;
-    background-size: cover;
+    width: 100%;
+    height:auto;
     position:relative;
+    display: block;
   }
 
   &__content-container {
@@ -62,24 +60,20 @@
   }
   &__carousel{
     box-shadow: 0 -25px 25px -25px #8BA993;
-    //background-image: url("img/image.jpg");
-    background-repeat: no-repeat;
-
-    background-position: center center;
-    background-size: cover;
     background-color: #8BA993;
-  }
-//  &__background-last{
-//    background-image: url("img/unsplash_TFyi0QOx08c.jpg");
-//    background-repeat: no-repeat;
-//    background-position: center center;
-//    background-size: cover;
-//min-height: 380px;
-//  }
-  @media (min-width: 482px) and (max-width: 833.9px) {
-    &__background-top{
-      height: 26vh;
+    &-title{
+      padding-top: 40px;
+      color: #EDEDED;
+      font-family: Cleopatras;
+      font-size: 64px;
+      font-weight: 400;
+      line-height: 70.46px;
+      text-align: center;
+
     }
+  }
+
+  @media (min-width: 482px) and (max-width: 995.9px) {
 
     &__content-container {
       min-width: 444px;
@@ -118,10 +112,7 @@
       }
     }
   }
-  @media (min-width: 834px) and (max-width: 1800px) {
-    &__background-top{
-      height: 39vh;
-    }
+  @media (min-width: 996px) {
 
     &__content-container {
       min-width: 444px;
@@ -160,8 +151,7 @@
         }
       }
     }
-    //&__background-last{
-    //}
+
     }
   }
 

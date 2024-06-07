@@ -1,14 +1,17 @@
 import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
-import { Box, Container,} from '@mui/material';
+import {Box, Container,Button} from '@mui/material';
 import './Events.scss';
 import EventItem from "src/components/EventItem/EventItem";
 import { eventsList } from "./eventlist";
 //import React, {useEffect} from 'react';
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
+// import Fab from '@mui/material/Fab';
+// import AddIcon from '@mui/icons-material/Add';
 import EventCreate from '../EventCreate/EventCreate';
-import {useState} from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+
+// @ts-ignore
+import events from "./img/events.jpg";
 //import { useSelector} from "react-redux";
 // import {ThunkDispatch} from "redux-thunk";
 // import {Action} from "redux";
@@ -110,16 +113,20 @@ const Events: React.FC = () => {
 
     return(
         <>
-         <Container className="events-container" maxWidth="lg">
-            <BreadCrumbs linksArray={[{ link:'/events', text: 'Events' }]} />
+         <Container className="events-container" maxWidth="xl">
+             <img className="events-container__img" src={events} alt='nature'/>
+
                 <div className="events-container__wrapper">
+                    <BreadCrumbs linksArray={[{ link:'/events', text: 'Events' }]} />
                     <h2 className="events-container__wrapper-title">Events</h2>
                     <div className="events-container__wrapper-plus">
-                        <Fab  size="small" color="primary"
-                             aria-label="add" onClick={(event) => toggleModalAuth(event)}>
-                            <AddIcon />
+                        <Button variant="outlined" onClick={(event) => toggleModalAuth(event)}>Add Event</Button>
+                        {/*<ToggleButton value="android" onClick={(event) => toggleModalAuth(event)}>Add Event</ToggleButton>*/}
+                        {/*<Fab  size="small" color="primary"*/}
+                        {/*     aria-label="add" onClick={(event) => toggleModalAuth(event)}>*/}
+                        {/*    <AddIcon />*/}
 
-                        </Fab>
+                        {/*</Fab>*/}
                         {isModalAuthOpen && <EventCreate closeModalCreateEvent={()=>closeModalCreateEvent()} />}
                     </div>
                     <Box className="events-container__wrapper-flex">

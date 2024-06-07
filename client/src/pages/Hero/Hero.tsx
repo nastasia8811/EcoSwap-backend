@@ -1,29 +1,32 @@
-import {Box, Container, createTheme, Theme, ThemeProvider} from '@mui/material';
+import {Box, Container} from '@mui/material';
 import './Hero.scss';
 import {Link} from "react-router-dom";
 import ImageCarousel from '../../components/ImageCarousel/ImageCarousel';
 
-const theme: Theme = createTheme({
-    components: {
-        MuiContainer: {
-            styleOverrides: {
-                root: {
-                    maxWidth: '1800px', // Set your custom maxWidth value here
-                },
-            },
-        },
-    },
-});
+
+// @ts-ignore
+import container_top from './img/container_top.jpg'
+
+// const theme: Theme = createTheme({
+//     components: {
+//         MuiContainer: {
+//             styleOverrides: {
+//                 root: {
+//                     maxWidth: '1800px', // Set your custom maxWidth value here
+//                 },
+//             },
+//         },
+//     },
+// });
 const Hero = () => {
 
     return (
-        <>
-            <Box className="hero">
-                <ThemeProvider theme={theme}>
-                    <Container maxWidth="xl">
-                        <div className="hero__background-top">
 
-                        </div>
+            <Box className="hero">
+                {/*<ThemeProvider theme={theme}>*/}
+                    <Container maxWidth="xl">
+                        <img className="hero__background-top" src={container_top} alt='nature'/>
+
                         <div className="hero__content-container">
                             <div className="hero__content-container_text1">
                                 We have only
@@ -42,16 +45,15 @@ const Hero = () => {
     </div>
 </div>
                         <Box className="hero__carousel">
-                        <h2 className="hero__carousel-title">Most popular events</h2>
+                        <h2 className="hero__carousel-title">Join our events</h2>
                         <ImageCarousel />
 
                         <Link className="hero__carousel-register" to="/events">Register events</Link>
                         </Box>
                     </Container>
-                </ThemeProvider>
+                {/*//</ThemeProvider>*/}
 
             </Box>
-        </>
     )
 }
 
