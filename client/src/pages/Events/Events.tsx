@@ -3,25 +3,24 @@ import {Box, Container,Button} from '@mui/material';
 import './Events.scss';
 import EventItem from "src/components/EventItem/EventItem";
 import { eventsList } from "./eventlist";
-//import React, {useEffect} from 'react';
+import React, {useEffect} from 'react';
 // import Fab from '@mui/material/Fab';
 // import AddIcon from '@mui/icons-material/Add';
 import EventCreate from '../EventCreate/EventCreate';
-import React, {useState} from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import  {useState} from 'react';
+import { useNavigate } from 'react-router-dom'
 // @ts-ignore
 import events from "./img/events.jpg";
-//import { useSelector} from "react-redux";
-// import {ThunkDispatch} from "redux-thunk";
-// import {Action} from "redux";
-//import {selectorLoginToken} from "../../selectors";
-//import {useNavigate} from "react-router-dom";
+import { useSelector} from "react-redux";
+//import {ThunkDispatch} from "redux-thunk";
+//import {Action} from "redux";
+import {selectorLoginToken} from "../../selectors";
 
-// import { createTheme } from '@mui/material/styles';
-// import {lightGreen} from '@mui/material/colors';
-//
-//
+
+//import { createTheme } from '@mui/material/styles';
+//import {lightGreen} from '@mui/material/colors';
+
+
 // const theme = createTheme({
 //     palette: {
 //         primary: lightGreen,
@@ -52,64 +51,64 @@ const Events: React.FC = () => {
     };
 
 
-    // const token = useSelector(selectorLoginToken);
-    // const navigate=useNavigate();
+    const token = useSelector(selectorLoginToken);
+    //const navigate=useNavigate();
 
-    // useEffect(() =>{
-    //    if (!token){
-    //        navigate('/authorization');
-    //    } else {
-    //        fetch('http://localhost:5000/api/event')
-    //            .then((res)=>res.json())
-    //            .then((data)=>console.log(data))
-    //
-    //        const token = localStorage.getItem("token")
-    //
-    //        fetch('http://localhost:5000/api/event',{method: 'POST',
-    //
-    //            // @ts-ignore
-    //            headers: {
-    //                'Content-Type': 'application/json;charset=utf-8',
-    //                'Authorization':token,
-    //            },
-    //            body: JSON.stringify({})})
-    //            .then((res)=>res.json())
-    //            .then((data)=>console.log(data))
-    //
-    //        fetch('http://localhost:5000/api/event/id',{method: 'DELETE',
-    //            // @ts-ignore
-    //            headers: {
-    //                'Content-Type': 'application/json;charset=utf-8',
-    //                'Authorization':token,
-    //            },
-    //            body: JSON.stringify({})})
-    //            .then((res)=>res.json())
-    //            .then((data)=>console.log(data))
-    //
-    //        fetch('http://localhost:5000/api/event/id',{method: 'PUT',
-    //
-    //            // @ts-ignore
-    //            headers: {
-    //                'Content-Type': 'application/json;charset=utf-8',
-    //                'Authorization':token,
-    //            },
-    //            body: JSON.stringify({})})
-    //            .then((res)=>res.json())
-    //            .then((data)=>console.log(data))
-    //
-    //        fetch('http://localhost:5000/api/event/id',{method: 'GET',
-    //
-    //            // @ts-ignore
-    //            headers: {
-    //                'Content-Type': 'application/json;charset=utf-8',
-    //                'Authorization':token,
-    //            },
-    //            body: JSON.stringify({})})
-    //            .then((res)=>res.json())
-    //            .then((data)=>console.log(data))
-    //    }
-    //
-    //         }, []);
+    useEffect(() =>{
+       if (!token){
+           navigate('/authorization');
+       } else {
+           fetch('http://localhost:5000/api/event')
+               .then((res)=>res.json())
+               .then((data)=>console.log(data))
+
+           const token = localStorage.getItem("token")
+
+           fetch('http://localhost:5000/api/event',{method: 'POST',
+
+               // @ts-ignore
+               headers: {
+                   'Content-Type': 'application/json;charset=utf-8',
+                   'Authorization':token,
+               },
+               body: JSON.stringify({})})
+               .then((res)=>res.json())
+               .then((data)=>console.log(data))
+
+           fetch('http://localhost:5000/api/event/id',{method: 'DELETE',
+               // @ts-ignore
+               headers: {
+                   'Content-Type': 'application/json;charset=utf-8',
+                   'Authorization':token,
+               },
+               body: JSON.stringify({})})
+               .then((res)=>res.json())
+               .then((data)=>console.log(data))
+
+           fetch('http://localhost:5000/api/event/id',{method: 'PUT',
+
+               // @ts-ignore
+               headers: {
+                   'Content-Type': 'application/json;charset=utf-8',
+                   'Authorization':token,
+               },
+               body: JSON.stringify({})})
+               .then((res)=>res.json())
+               .then((data)=>console.log(data))
+
+           fetch('http://localhost:5000/api/event/id',{method: 'GET',
+
+               // @ts-ignore
+               headers: {
+                   'Content-Type': 'application/json;charset=utf-8',
+                   'Authorization':token,
+               },
+               body: JSON.stringify({})})
+               .then((res)=>res.json())
+               .then((data)=>console.log(data))
+       }
+
+            }, []);
 
     return(
         <>
