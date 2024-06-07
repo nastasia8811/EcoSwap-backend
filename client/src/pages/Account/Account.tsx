@@ -1,4 +1,4 @@
-import {Container} from '@mui/material';
+import {Container,ButtonGroup,Button} from '@mui/material';
 import './Account.scss';
 import BreadCrumbs from '../../components/BreadCrumbs/BreadCrumbs';
 import Preloader from '../../components/Preloader/Preloader';
@@ -14,7 +14,14 @@ const MyAccount: React.FC = () => {
             <BreadCrumbs linksArray={[{link: '/account', text: 'MyAccount'}]}/>
             <div className="account__wrapper">
                 <h2 className="account__wrapper-title">My account</h2>
-
+                <ButtonGroup
+                    disableElevation
+                    variant="contained"
+                    aria-label="Disabled button group"
+                >
+                    <Button>My events</Button>
+                    <Button>Participation</Button>
+                </ButtonGroup>
                 {loading && <Preloader open/>}
 
             </div>

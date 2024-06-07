@@ -57,9 +57,9 @@ export const {
 
 } = accountSlice.actions;
 
-// export const sendApiLogin = (value: { login: string; password: string }) => (dispatch: any) => {
+// export const sendApiAccount = (value: { login: string; password: string }) => (dispatch: any) => {
 //     console.log('Sending login request with value:', value);
-//     dispatch(actionPageIsLoadingLogin(true));
+//     dispatch(actionPageIsLoadingAccount(true));
 
     
 //     return axios
