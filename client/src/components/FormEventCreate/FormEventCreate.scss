@@ -9,6 +9,7 @@
     grid-template-columns: 1fr;
     row-gap: 30px;
     &__input {
+      cursor: pointer;
       padding: 0 30px;
       outline: none;
       border: none;

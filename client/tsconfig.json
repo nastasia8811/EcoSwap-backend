@@ -1,3 +1,5 @@
+
+
 {
   "compilerOptions": {
     "baseUrl": ".",
@@ -7,6 +9,10 @@
         "components/*"
       ]
     },
+    "target": "es6",
+    "strict": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
@@ -50,14 +56,14 @@
     "removeComments": false,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true,
+
     "strictNullChecks": true,
     "suppressExcessPropertyErrors": false,
     "suppressImplicitAnyIndexErrors": false,
-    "target": "es2017",
+
     "traceResolution": false,
-    "rootDir": "src",
-    "outDir": "build/lib",
+
+//    "outDir": "build/lib",
     "typeRoots": []
   },
   "include": [
@@ -68,3 +74,4 @@
     "build"
   ]
 }
+

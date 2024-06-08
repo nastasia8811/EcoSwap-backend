@@ -49,7 +49,7 @@ export const selectorAccountError = (state: AppState) => state.account.accountEr
 export const selectorCreatingEventIsLoading = (state: AppState) => state.eventCreate.pageIsLoading;
 export const selectorCreatingEventModalSuccess = (state: AppState) => state.eventCreate.modalSuccess;
 export const selectorCreatingEventModalError = (state: AppState) => state.eventCreate.modalError;
-export const selectorCreatingEventInitialState = (state: AppState) => state.eventCreate.formData;
+export const selectorCreatingEvent = (state: AppState) => state.eventCreate.formData;
 export const selectorCreatingEventMessageError = (state: AppState) => state.eventCreate.messageError;
 
 //AUTHORIZATION

@@ -26,7 +26,7 @@ const EventItem: React.FC<EventItemProps>  = ({title, img, id,onClick}) =>  {
     <IconButton aria-label="edit" color="primary">
       <EditOutlinedIcon />
     </IconButton>
-    <IconButton aria-label="delete" color="primary">
+    <IconButton aria-label="delete" color="primary" >
       <StarBorderOutlinedIcon />
     </IconButton>
   </h2>

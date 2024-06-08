@@ -17,10 +17,6 @@
 //     if (!userData){
 //         navigate('/authorization');
 //     } else {
-//         axios.get('http://localhost:5000/api/event')
-//             .then((res)=> console.log(res))
-//             .then((data)=>console.log(data))
-        //
         //        const token = localStorage.getItem("token")
         //
         //        axios.post('http://localhost:5000/api/event',{{

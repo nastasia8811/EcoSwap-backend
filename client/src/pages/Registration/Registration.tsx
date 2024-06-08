@@ -47,7 +47,8 @@ const Registration: React.FC = () => {
                                     console.log("надо очистить форму")
                                 }
                             })
-                        }}
+                        }
+                    }
                     />
 
                     {loading && <Preloader open/>}

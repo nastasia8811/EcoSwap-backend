@@ -30,7 +30,7 @@ const EventSchema = new Schema(
         },
         available:{
             type: Number,
-            required:true
+            required:false
         },
         bookedSeats:
         //масив id
@@ -38,7 +38,7 @@ const EventSchema = new Schema(
         customer_id: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Customer', // Посилання на модель Customer
-            required: true,
+            required: false,
         },
     },
 );

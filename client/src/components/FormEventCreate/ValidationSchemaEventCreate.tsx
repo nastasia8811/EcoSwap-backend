@@ -29,6 +29,17 @@ const validationSchemaEventCreate = yup.object().shape({
       /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
       'Enter correct url',
     ),
+  description:yup
+      .string()
+      .min(10, 'Min 10 symbols'),
+  location:yup
+      .string()
+      .min(10, 'Min 10 symbols'),
+  bookedSeats: yup
+      .number()
+      .min(5, 'Min 5 symbols'),
 });
+
+
 
 export default validationSchemaEventCreate;
