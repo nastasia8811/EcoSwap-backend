@@ -115,10 +115,10 @@ const FormEventCreate: React.FC<FormEventCreateProps> = ({
                                 <FormikControl
                                     type="text"
                                     control="input"
-                                    label="BookedSeats"
+                                    label="Available"
                                     color="success"
                                     className="form-eventCreate__grid_wrapper__input"
-                                    name="bookedSeats"
+                                    name="available"
                                     placeholder="Enter event description"
                                     variant="outlined"
                                     id="outlined-multiline-flexible"

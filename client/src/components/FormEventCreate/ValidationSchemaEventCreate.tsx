@@ -35,9 +35,9 @@ const validationSchemaEventCreate = yup.object().shape({
   location:yup
       .string()
       .min(10, 'Min 10 symbols'),
-  bookedSeats: yup
+  available:yup
       .number()
-      .min(5, 'Min 5 symbols'),
+      .min(5, 'Min 5 symbols')
 });
 
 

@@ -20,6 +20,19 @@ exports.addEvent = (req, res, next) => {
 
 };
 
+exports.findById = (req, res, next) =>{
+    Event.findOne({ _id: req.params.id })
+        .then(event => {
+            if (!event) {
+                return res
+                    .status(400)
+                    .json({message: `Event with _id "${req.params.id}" is not found.`});
+            } else {
+                res.json(event)
+            }
+        })
+        }
+
 exports.updateEvent = (req, res, next) => {
     Event.findOne({ _id: req.params.id })
         .then(event => {

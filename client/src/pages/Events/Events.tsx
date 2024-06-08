@@ -5,7 +5,7 @@ import './Events.scss';
 import React, {useEffect} from 'react';
 import EventCreate from '../EventCreate/EventCreate';
 import  {useState} from 'react';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 // @ts-ignore
 import events from "./img/events.jpg";
 import axios from "axios";
@@ -70,13 +70,15 @@ const Events: React.FC = () => {
                     <BreadCrumbs linksArray={[{ link:'/events', text: 'Events' }]} />
                     <h2 className="events-container__wrapper-title">Events</h2>
                     <div className="events-container__wrapper-plus">
-                        <Button className="events-container__wrapper-plus-button" variant="outlined" onClick={(event) => toggleModalAuth(event)}>Add Event</Button>
-                        <Button className="events-container__wrapper-plus-button" variant="outlined" onClick={(event) => toggleModalAuth(event)}><Link to="/account">My Account</Link></Button>
+                        <Button className="events-container__wrapper-plus-button" variant="outlined"
+                                onClick={(event) => toggleModalAuth(event)}>Add Event</Button>
+                        {/*<Button className="events-container__wrapper-plus-button" variant="outlined" */}
+                        {/*        onClick={(event) => toggleModalAuth(event)}><Link to="/account">My Account</Link></Button>*/}
                         {isModalAuthOpen && <EventCreate closeModalCreateEvent={()=>closeModalCreateEvent()} />}
                     </div>
                     <Box className="events-container__wrapper-flex">
                     {eventsData.map((item:any) => (
-                         <EventItem key={item.id} id={item.id} title={item.title} img={item.img} onClick={() => handleEventClick(item.id)}  />
+                         <EventItem key={item._id} id={item._id} title={item.title} img={item.img} onClick={() => handleEventClick(item._id)}  />
       ))}
                     </Box>
 

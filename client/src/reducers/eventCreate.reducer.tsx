@@ -18,8 +18,9 @@ export interface EventData {
     description: string;
     available: number;
     location: string;
-    bookedSeats?: null;
-    customer_id?: string;
+    bookedSeats?: string[] | null;
+    customer_id?: string | null;
+    _id?: null | string;
 }
 
 export const initialState: EventCreateState = {
@@ -31,8 +32,9 @@ export const initialState: EventCreateState = {
         description: '',
         available: 0,
         location: '',
-        bookedSeats: null,
-        customer_id: ''
+        bookedSeats: [],
+        customer_id: null,
+        _id: null,
     },
     modalError: null,
     modalSuccess: null,
@@ -47,13 +49,13 @@ const EventCreateSlice: Slice<EventCreateState> = createSlice({
         actionPageIsLoadingCreatingEvent: (state, action: PayloadAction<boolean>) => {
             state.pageIsLoading = action.payload;
         },
-        actionCreatingEventSuccess: (state, action: PayloadAction<null>) => {
+        actionCreatingEventSuccess: (state, action: PayloadAction<null | string>) => {
             state.modalSuccess = action.payload;
         },
         actionEventData: (state, action: PayloadAction<EventData>) => {
             state.formData = action.payload;
         },
-        actionCreatingEventError: (state, action: PayloadAction<null>) => {
+        actionCreatingEventError: (state, action: PayloadAction<null | string>) => {
             state.modalError = action.payload;
         },
         actionMessageEventError: (state, action: PayloadAction<string>) => {
@@ -72,11 +74,12 @@ export const {
 } = EventCreateSlice.actions;
 
 
-export const sendApiEvent = (values: any) => (dispatch: any) => {
+export const sendApiEvent = (values:any) => (dispatch: any) => {
     console.log('Sending API event request...');
     dispatch(actionPageIsLoadingCreatingEvent(true));
 
-    return axios.post(ADD_EVENT, values)
+
+    return axios.post( ADD_EVENT, values)
         .then((response) => {
             console.log('Event response:', response);
             dispatch(actionEventData(response.data));

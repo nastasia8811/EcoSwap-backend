@@ -21,6 +21,10 @@ interface EventCreateProps {
 const EventCreate: React.FC<EventCreateProps> = ({closeModalCreateEvent}) => {
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
     const eventData = useSelector(selectorCreatingEvent);
+
+    // @ts-ignore
+    const userData = useSelector((state)=>state.login.userData)
+
     const [modalOpen, setModalOpen] = useState(false);
 
     const toggleModalOpen = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -32,10 +36,22 @@ const EventCreate: React.FC<EventCreateProps> = ({closeModalCreateEvent}) => {
         event.stopPropagation();
     };
 
+
     const handleSubmit = (values: any) => {
-        dispatch(sendApiEvent(values)).then((axiosValue) => {
+        let sendApi = sendApiEvent;
+
+       // const newObj = {...values, customer_id:userData._id}
+        values.customer_id=userData._id
+        if ( eventData._id){
+
+//TODO в IF create apdate function and write  into sendApi
+
+            //dispatch(update values)
+        }
+        dispatch(sendApi(values)).then((axiosValue) => {
             if (axiosValue) {
-                setModalOpen(true);
+
+                setModalOpen(false);
             }
         }).catch((error) => {
             console.error("Submission error:", error);
