@@ -4,12 +4,17 @@ import { Container, Box } from '@mui/material';
 import swap from "./img/swap.jpg";
 import './AboutUs.scss'
 
+
 const AboutUs = () => {
     return (
 
             <Container className="about" maxWidth="xl">
             <img className="about__img" src={swap} alt='nature'/>
-                <Box className="about__container">
+                <Box className="about__content-container">
+                    <Box className="about__content-container_text1">
+                        About us
+                    </Box></Box>
+                <Box className="about__text-container">
             <BreadCrumbs linksArray={[{link: '/about', text: 'About us'}]}/>
             <h1>EcoSwap: Uniting for Environmental Protection</h1>
             <p>EcoSwap is a unique platform that brings people together to organize and participate in events aimed at

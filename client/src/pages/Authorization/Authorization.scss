@@ -2,15 +2,14 @@
   min-width: 375px;
 
   &__background-top {
-    background-image: url("img/Frame 633324.png");
-    background-repeat: no-repeat;
-    height: 19vh;
-    background-position: center center;
-    background-size: cover;
-    position: relative;
+    width: 100%;
+    height:auto;
+    position:relative;
+    display: block;
   }
 
   &__content-container {
+    box-sizing: border-box;
     position: absolute;
     background-color: #1B2A20;
     min-width: 231px;
@@ -24,9 +23,8 @@
       padding-left: 10px;
       padding-top: 10px;
       min-width: 206px;
-      font-family: Cleopatras, sans-serif;
+      font-family: Cleopatras;
       font-size: 24px;
-      //font-weight: 400;
       line-height: 31.2px;
       text-align: center;
     }
@@ -65,7 +63,7 @@
     }
   }
 
-  @media (min-width: 482px) and (max-width: 995.9px) {
+  @media (min-width: 482px) and (max-width: 833.9px) {
     &__background-top {
       height: 26vh;
     }
@@ -73,7 +71,7 @@
     &__content-container {
       min-width: 320px;
       min-height: 118px;
-      top: 470px;
+      top: 240px;
 
       &_text1 {
         min-height: 46px;
@@ -89,7 +87,7 @@
         max-width: 686px;
         min-height: 37px;
         padding-top: 140px;
-        top: 520px;
+        top: 240px;
 
         &-content {
           padding: 30px;
@@ -105,7 +103,7 @@
       }
     }
   }
-  @media (min-width: 996px) {
+  @media (min-width: 834px) {
     &__background-top {
       height: 39vh;
     }
