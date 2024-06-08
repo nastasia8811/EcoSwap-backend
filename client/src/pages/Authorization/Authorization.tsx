@@ -16,6 +16,9 @@ import ModalLoginError from './modalLoginError/ModalErrorRegistration/ModalLogin
 
 import { useNavigate } from "react-router-dom";
 
+// @ts-ignore
+import auth from "./img/auth.png";
+
 const Authorization: React.FC = () => {
     // @ts-ignore
     const userData = useSelector((state)=>state.login.userData);
@@ -42,8 +45,9 @@ const navigate = useNavigate();
         <>
             <Box className="auth">
                 <Container maxWidth="xl">
-                    <div className="auth__background-top">
-                    </div>
+                    {/*<div className="auth__background-top">*/}
+                    {/*</div>*/}
+                    <img className="auth__background-top" src={auth} alt='nature'/>
                     <div className="auth__content-container">
                         <div className="auth__content-container_text1">
                             Authorization
