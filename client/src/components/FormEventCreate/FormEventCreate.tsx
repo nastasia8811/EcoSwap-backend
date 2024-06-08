@@ -92,7 +92,33 @@ const FormEventCreate: React.FC<FormEventCreateProps> = ({
                                     label="Description"
                                     color="success"
                                     className="form-eventCreate__grid_wrapper__input"
-                                    name="title"
+                                    name="description"
+                                    placeholder="Enter event description"
+                                    variant="outlined"
+                                    id="outlined-multiline-flexible"
+                                    helperText='null'
+                                    required
+                                />
+                                <FormikControl
+                                    type="text"
+                                    control="input"
+                                    label="Location"
+                                    color="success"
+                                    className="form-eventCreate__grid_wrapper__input"
+                                    name="location"
+                                    placeholder="Enter event description"
+                                    variant="outlined"
+                                    id="outlined-multiline-flexible"
+                                    helperText='null'
+                                    required
+                                />
+                                <FormikControl
+                                    type="text"
+                                    control="input"
+                                    label="Available"
+                                    color="success"
+                                    className="form-eventCreate__grid_wrapper__input"
+                                    name="available"
                                     placeholder="Enter event description"
                                     variant="outlined"
                                     id="outlined-multiline-flexible"

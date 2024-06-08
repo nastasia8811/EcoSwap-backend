@@ -22,10 +22,12 @@ import accountReducer,{
 } from './account.reducer'; 
 
 import eventCreateReducer,{
-    EventCreateState,
     actionPageIsLoadingCreatingEvent,
     actionCreatingEventSuccess,
-    actionCreatingEventError
+    actionCreatingEventError,
+    actionMessageEventError,
+    actionEventData,
+    EventCreateState
 } from './eventCreate.reducer';
 
 // import authorizationReducer,{
@@ -54,11 +56,13 @@ export {
     getUserApi,
     accountReducer,
     actionPageIsLoadingAccount,
-    EventCreateState,
     eventCreateReducer,
     actionPageIsLoadingCreatingEvent,
     actionCreatingEventSuccess,
     actionCreatingEventError,
+    actionMessageEventError,
+    actionEventData,
+    EventCreateState
     // authorizationReducer,
     // actionPageIsLoadingAuthorization,
     // actionAuthorizationSuccesNewIcon,

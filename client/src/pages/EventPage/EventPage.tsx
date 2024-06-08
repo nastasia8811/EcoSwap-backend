@@ -1,37 +1,66 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
-import { Container , ToggleButton} from '@mui/material';
-import { eventsList } from '../Events/eventlist';
+import { Container, ToggleButton} from '@mui/material';
+// , ToggleButton}
 import './EventPage.scss';
-
-
+import axios from "axios"
 // @ts-ignore
 import background from './img/background.jpg';
-interface EventPageProps {
-    id?: any;
-    title?: string;
-    img?: string;
-    date?: string;
-    city?: string;
-    description?:string;
-    available?:number;
-    onClick?: () => void;
-}
-const EventPage: React.FC<EventPageProps> = () => {
-    const { id } = useParams<{ id: string }>();
-    const event = eventsList.find(event => event.id === parseInt(id || '', 10));
+import {GET_EVENTS} from '../../endpoints';
+import {useState, useEffect} from 'react';
 
-    if (!event) {
-        return <div>Event not found</div>;
-    }
+interface Person {
+    title: string;
+    date: string;
+    img: string;
+    city: string;
+    description: string;
+    available: number;
+    location: string;
+    bookedSeats?: string[] | null;
+    customer_id?: string | null;
+
+}
+
+const EventPage: React.FC = () => {
+const [event, setEvent] = useState<Person>({
+    title: '',
+    date: '',
+    img: '',
+    city: '',
+    description: '',
+    available: 0,
+    location: '',
+    bookedSeats: [],
+    customer_id: null});
+
+const params = useParams()
+    console.log(params)
+
+    useEffect(() =>{
+        if (params.id){
+            axios.get(GET_EVENTS)
+                .then((response) => {
+                    setEvent(response.data);
+                })
+                .catch((error) => {
+                    console.error('Error fetching events:', error);
+                });
+        }
+    }, []);
+
+    // if (!event) {
+    //     return <div>Event not found</div>;
+    //добавити лоадер
+    // }
 
     return (
         <>
-            <Container className="eventPage" maxWidth="xl">
+            <Container className="eventPage" maxWidth="xl" >
                 <img className="eventPage__img" src={background} alt='nature'/>
-                <BreadCrumbs linksArray={[{ link: '/events', text: 'Events' }, { link: `/event/${id}`, text: 'Event' }]} />
-                <div className="eventPage__container">
+                <BreadCrumbs linksArray={[{ link: '/events', text: 'Events' }, { link: `/event/${params.id}`, text: 'Event' }]} />
+                <div className="eventPage__container" onClick={()=>{}}>
 
                     <h2 className="eventPage__container-title">{event.title}</h2>
                     <div className="eventPage__container-date">{event.date}</div>
