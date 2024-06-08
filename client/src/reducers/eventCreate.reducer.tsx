@@ -72,11 +72,11 @@ export const {
 } = EventCreateSlice.actions;
 
 
-export const sendApiEvent = () => (dispatch: any) => {
+export const sendApiEvent = (values: any) => (dispatch: any) => {
     console.log('Sending API event request...');
     dispatch(actionPageIsLoadingCreatingEvent(true));
 
-    return axios.post(ADD_EVENT, {})
+    return axios.post(ADD_EVENT, values)
         .then((response) => {
             console.log('Event response:', response);
             dispatch(actionEventData(response.data));

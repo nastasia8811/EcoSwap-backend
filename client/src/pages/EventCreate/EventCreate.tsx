@@ -12,6 +12,8 @@ import {sendApiEvent} from "../../reducers/eventCreate.reducer";
 import {useDispatch, useSelector} from 'react-redux';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
+
+
 interface EventCreateProps {
     closeModalCreateEvent: () => void;
 }
