@@ -1,7 +1,7 @@
 import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
 import {Box, Container,Button} from '@mui/material';
 import './Events.scss';
-//import EventItem from "src/components/EventItem/EventItem";
+
 import React, {useEffect} from 'react';
 import EventCreate from '../EventCreate/EventCreate';
 import  {useState} from 'react';
@@ -12,10 +12,8 @@ import axios from "axios";
 import {useSelector} from "react-redux";
 import {GET_EVENTS} from "../../endpoints";
 import EventItem from "../../components/EventItem/EventItem";
-//import EventPage from "../EventPage/EventPage";
-//import {selectorLoginToken} from "../../selectors";
-//import { createTheme } from '@mui/material/styles';
-//import {lightGreen} from '@mui/material/colors';
+// import {selectLoginUserData} from "../../selectors";
+
 
 
 // const theme = createTheme({
@@ -29,14 +27,16 @@ import EventItem from "../../components/EventItem/EventItem";
 // }
 
 const Events: React.FC = () => {
+
     const [isModalAuthOpen, setIsModalAuthOpen] = useState(false);
     const [eventsData, setEventsData] = useState([]);
     const navigate = useNavigate();
-    //const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
+
     const toggleModalAuth = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         setIsModalAuthOpen(!isModalAuthOpen);
     };
+
     const closeModalCreateEvent = () => {
         setIsModalAuthOpen(false);
     }
@@ -72,8 +72,6 @@ const Events: React.FC = () => {
                     <div className="events-container__wrapper-plus">
                         <Button className="events-container__wrapper-plus-button" variant="outlined"
                                 onClick={(event) => toggleModalAuth(event)}>Add Event</Button>
-                        {/*<Button className="events-container__wrapper-plus-button" variant="outlined" */}
-                        {/*        onClick={(event) => toggleModalAuth(event)}><Link to="/account">My Account</Link></Button>*/}
                         {isModalAuthOpen && <EventCreate closeModalCreateEvent={()=>closeModalCreateEvent()} />}
                     </div>
                     <Box className="events-container__wrapper-flex">

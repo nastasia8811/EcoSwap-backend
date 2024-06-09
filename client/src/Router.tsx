@@ -5,7 +5,6 @@ import Layout from "./pages/Layout/Layout";
 import Hero from "./pages/Hero/Hero";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Events from "./pages/Events/Events";
-import MyAccount from "./pages/Account/Account";
 import Registration from "./pages/Registration/Registration";
 import Authorization from "./pages/Authorization/Authorization";
 import EventPage from "./pages/EventPage/EventPage";
@@ -28,11 +27,9 @@ const router = createBrowserRouter([
                 element: <Events/>,
             },
             {   path: "/event/:id",
-                element: <EventPage/>},
-            {
-                path: 'account',
-                element: <MyAccount/>,
+                element: <EventPage/>
             },
+
             {
                 path: 'registration',
                 element: <Registration />,

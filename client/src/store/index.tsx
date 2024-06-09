@@ -3,9 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import {
     registrationReducer,
     loginReducer,
-    accountReducer,
-    eventCreateReducer
-    //authorizationReducer
+    eventReducer,
 } from "../reducers";
 
 
@@ -14,11 +12,8 @@ const store = configureStore({
     reducer:{
         registration: registrationReducer,
         login: loginReducer,
-        account: accountReducer,
-        eventCreate: eventCreateReducer,
-        // authorization: authorizationReducer,
+        event: eventReducer
     }
-    
 
 })
 

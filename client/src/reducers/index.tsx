@@ -17,26 +17,18 @@ import loginReducer, {
     getUserApi
 } from './login.reducer';
 
-import accountReducer,{
-    actionPageIsLoadingAccount
-} from './account.reducer'; 
-
-import eventCreateReducer,{
-    actionPageIsLoadingCreatingEvent,
+import eventReducer,{
+    actionPageIsLoadingEvent,
     actionCreatingEventSuccess,
     actionCreatingEventError,
     actionMessageEventError,
     actionEventData,
-    EventCreateState
-} from './eventCreate.reducer';
+    EventState,
+    actionChangeEvent,
+    actionDeleteEvent,
+    actionUnregisterEvent
+} from './event.reducer';
 
-// import authorizationReducer,{
-//     actionPageIsLoadingAuthorization,
-//     actionAuthorizationSuccesNewIcon,
-//     actionAuthorizationMassageError,
-//     actionAuthorizationError,
-//     authorizationSuccess
-// } from './authorization.reducer'; 
 
 export {
     registrationReducer,
@@ -54,19 +46,14 @@ export {
     actionLoginMassageError,
     sendApiLogin,
     getUserApi,
-    accountReducer,
-    actionPageIsLoadingAccount,
-    eventCreateReducer,
-    actionPageIsLoadingCreatingEvent,
+    eventReducer,
+    actionPageIsLoadingEvent,
     actionCreatingEventSuccess,
     actionCreatingEventError,
     actionMessageEventError,
     actionEventData,
-    EventCreateState
-    // authorizationReducer,
-    // actionPageIsLoadingAuthorization,
-    // actionAuthorizationSuccesNewIcon,
-    // actionAuthorizationMassageError,
-    // actionAuthorizationError,
-    // authorizationSuccess
+    EventState,
+    actionChangeEvent,
+    actionDeleteEvent,
+    actionUnregisterEvent
 };

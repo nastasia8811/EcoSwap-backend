@@ -1,4 +1,3 @@
-
 import './EventCreate.scss';
 import React from 'react';
 import ValidationSchemaEventCreate from "../../components/FormEventCreate/ValidationSchemaEventCreate";
@@ -6,9 +5,8 @@ import FormEventCreate from "../../components/FormEventCreate/FormEventCreate";
 import { useState } from 'react';
 import Modal from '../../components/Modal/Modal'
 import './EventCreate.scss';
-
-import {selectorCreatingEvent} from "../../selectors";
-import {sendApiEvent} from "../../reducers/eventCreate.reducer";
+import { selectorCreatingEvent} from "../../selectors";
+import {sendApiEvent} from "../../reducers/event.reducer";
 import {useDispatch, useSelector} from 'react-redux';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
@@ -61,8 +59,6 @@ const EventCreate: React.FC<EventCreateProps> = ({closeModalCreateEvent}) => {
 
         return (
             <>
-                {/*<Container className="eventCreate-container" maxWidth="lg">*/}
-                {/*    <BreadCrumbs linksArray={[{link: '/newEvent', text: 'New event'}]}/>*/}
                 <Modal
                     modalAction={closeModalCreateEvent}
                     closeAction={closeModalCreateEvent}
@@ -83,9 +79,6 @@ const EventCreate: React.FC<EventCreateProps> = ({closeModalCreateEvent}) => {
                         </button>
                     </div>
                     </Modal>
-                    {/*</div>*/}
-                {/*</Container>*/}
-
             </>
         )
     }
