@@ -43,11 +43,11 @@ exports.updateEvent = (req, res, next) => {
             } else {
 
                  Event.findByIdAndUpdate(
-                    req.params.eventId,
+                    req.params.id,
                     req.body,
                     { new: true }
                  )
-                    .then(color => res.json(event))
+                    .then(event => res.json(event))
                     .catch(err =>
                         res.status(400).json({
                             message: `Error happened on server: "${err}" `

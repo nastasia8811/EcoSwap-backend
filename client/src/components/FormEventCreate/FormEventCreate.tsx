@@ -15,11 +15,6 @@ const FormEventCreate: React.FC<FormEventCreateProps> = ({
                                                                validationSchema
                                                            }) => {
 
-
-    // const handleMouseDown = (e: React.MouseEvent) => {
-    //     e.preventDefault();
-    // };
-
     return (
         <>
             <Formik
@@ -46,7 +41,7 @@ const FormEventCreate: React.FC<FormEventCreateProps> = ({
                                 />
 
                                 <FormikControl
-                                    type="text"
+                                    type="date"
                                     control="input"
                                     color="success"
                                     label="Event date"
@@ -127,7 +122,7 @@ const FormEventCreate: React.FC<FormEventCreateProps> = ({
                                 />
 
                             </div>
-                            <button type="submit" disabled={!isValid}>create</button>
+                            <button type="submit" disabled={!isValid}>Save</button>
                         </Form>
                     </>
                 )}

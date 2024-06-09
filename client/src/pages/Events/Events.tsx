@@ -1,7 +1,7 @@
 import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
 import {Box, Container,Button} from '@mui/material';
 import './Events.scss';
-//import EventItem from "src/components/EventItem/EventItem";
+
 import React, {useEffect} from 'react';
 import EventCreate from '../EventCreate/EventCreate';
 import  {useState} from 'react';
@@ -11,11 +11,10 @@ import events from "./img/events.jpg";
 import axios from "axios";
 import {useSelector} from "react-redux";
 import {GET_EVENTS} from "../../endpoints";
+import {selectorDeleteEvent} from '../../selectors';
 import EventItem from "../../components/EventItem/EventItem";
-//import EventPage from "../EventPage/EventPage";
-//import {selectorLoginToken} from "../../selectors";
-//import { createTheme } from '@mui/material/styles';
-//import {lightGreen} from '@mui/material/colors';
+// import {selectLoginUserData} from "../../selectors";
+
 
 
 // const theme = createTheme({
@@ -29,14 +28,17 @@ import EventItem from "../../components/EventItem/EventItem";
 // }
 
 const Events: React.FC = () => {
+
     const [isModalAuthOpen, setIsModalAuthOpen] = useState(false);
     const [eventsData, setEventsData] = useState([]);
     const navigate = useNavigate();
-    //const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
+
+
     const toggleModalAuth = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         setIsModalAuthOpen(!isModalAuthOpen);
     };
+
     const closeModalCreateEvent = () => {
         setIsModalAuthOpen(false);
     }
@@ -46,6 +48,7 @@ const Events: React.FC = () => {
     };
     // @ts-ignore
     const userData = useSelector((state)=>state.login.userData)
+const deleteTriger = useSelector(selectorDeleteEvent);
 
     useEffect(() =>{
         if (!userData){
@@ -59,7 +62,7 @@ const Events: React.FC = () => {
                     console.error('Error fetching events:', error);
                 });
         }
-    }, []);
+    }, [deleteTriger]);
 
     return(
         <>
@@ -72,13 +75,11 @@ const Events: React.FC = () => {
                     <div className="events-container__wrapper-plus">
                         <Button className="events-container__wrapper-plus-button" variant="outlined"
                                 onClick={(event) => toggleModalAuth(event)}>Add Event</Button>
-                        {/*<Button className="events-container__wrapper-plus-button" variant="outlined" */}
-                        {/*        onClick={(event) => toggleModalAuth(event)}><Link to="/account">My Account</Link></Button>*/}
                         {isModalAuthOpen && <EventCreate closeModalCreateEvent={()=>closeModalCreateEvent()} />}
                     </div>
                     <Box className="events-container__wrapper-flex">
                     {eventsData.map((item:any) => (
-                         <EventItem key={item._id} id={item._id} title={item.title} img={item.img} onClick={() => handleEventClick(item._id)}  />
+                         <EventItem key={item._id} event={item}  onClick={() => handleEventClick(item._id)}  />
       ))}
                     </Box>
 

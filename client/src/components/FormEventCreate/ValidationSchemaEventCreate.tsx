@@ -15,14 +15,14 @@ const validationSchemaEventCreate = yup.object().shape({
     .matches(/[a-zA-z\s]/g, 'Should contain only characters and space'),
 
   date: yup
-      .string()
-      .typeError("Date should be in the format DD.MM.YYYY")
-      .min(8, 'Date should contain minimum 8 symbols')
-      .matches(
-          /^\d{2}\.\d{2}\.\d{4}$/,
-          'Date should be in the format DD.MM.YYYY'
+      .date()
+      .typeError("Date should be in the format DD.MM.YYYY"),
+      //.min(8, 'Date should contain minimum 8 symbols'),
+      // .matches(
+      //     /^\d{2}\.\d{2}\.\d{4}$/,
+      //     'Date should be in the format DD.MM.YYYY'
 
-      ),
+      // ),
   img: yup
     .string()
     .matches(

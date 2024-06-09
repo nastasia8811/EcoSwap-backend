@@ -7,7 +7,7 @@ export const LOGIN_USER = `/customers/login`;
 export const GET_USER = `/customers/customer`;
 
 export const ADD_EVENT = `/event`;
-export const DELETE_EVENT = `/event/id`;
-export const UPDATE_EVENT = `/event/id`;
+export const DELETE_EVENT = `/event/`;
+export const UPDATE_EVENT = `/event/`;
 export const GET_EVENTS = `/event`;
 export const GET_EVENT = `/event/id`;
