@@ -16,7 +16,7 @@ export interface EventState {
 
 export interface EventData {
     title: string;
-    date: string;
+    date: Date;
     img: string;
     city: string;
     description: string;
@@ -30,7 +30,7 @@ export interface EventData {
 export const initialState: EventState = {
     formData: {
         title: '',
-        date: '',
+        date: new Date(),
         img: '',
         city: '',
         description: '',
@@ -46,7 +46,7 @@ export const initialState: EventState = {
     messageError: "",
     changeEvent:  {
     title: "",
-        date: '',
+        date: new Date(),
         img: '',
         city: '',
         description: '',

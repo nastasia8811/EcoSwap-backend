@@ -46,7 +46,7 @@ const FormEventCreate: React.FC<FormEventCreateProps> = ({
                                 />
 
                                 <FormikControl
-                                    type="text"
+                                    type="date"
                                     control="input"
                                     color="success"
                                     label="Event date"
