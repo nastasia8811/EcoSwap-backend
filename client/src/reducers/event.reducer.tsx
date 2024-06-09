@@ -1,7 +1,7 @@
-import {createSlice, PayloadAction, Slice} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, Slice} from "@reduxjs/toolkit";
 import axios from 'axios';
-import {ADD_EVENT} from "../endpoints";
-
+import {ADD_EVENT, DELETE_EVENT, GET_EVENT, UPDATE_EVENT} from "../endpoints";
+import {getLocalDate} from "../helpers/date";
 export interface EventState {
     formData: EventData,
     modalError: null | string,
@@ -16,7 +16,7 @@ export interface EventState {
 
 export interface EventData {
     title: string;
-    date: Date;
+    date: Date| string;
     img: string;
     city: string;
     description: string;
@@ -30,7 +30,7 @@ export interface EventData {
 export const initialState: EventState = {
     formData: {
         title: '',
-        date: new Date(),
+        date: getLocalDate(),
         img: '',
         city: '',
         description: '',
@@ -67,13 +67,15 @@ const EventSlice: Slice<EventState> = createSlice({
         actionPageIsLoadingEvent: (state, action: PayloadAction<boolean>) => {
             state.pageIsLoading = action.payload;
         },
-        actionCreatingEventSuccess: (state, action: PayloadAction<null | string>) => {
+        actionEventSuccess: (state, action: PayloadAction<null | string>) => {
             state.modalSuccess = action.payload;
         },
         actionEventData: (state, action: PayloadAction<EventData>) => {
+            const newData= new Date(action.payload.date);
+            action.payload.date = getLocalDate(newData);
             state.formData = action.payload;
         },
-        actionCreatingEventError: (state, action: PayloadAction<null | string>) => {
+        actionEventError: (state, action: PayloadAction<null | string>) => {
             state.modalError = action.payload;
         },
         actionMessageEventError: (state, action: PayloadAction<string>) => {
@@ -88,20 +90,34 @@ const EventSlice: Slice<EventState> = createSlice({
         actionUnregisterEvent: (state, action: PayloadAction<boolean>) => {
             state.unregisterEvent = action.payload;
         },
+        actionGetOneEventData: (state, action: PayloadAction<EventData>) => {
+            state.formData = action.payload;
+        },
     },
 });
 
 export const {
     actionPageIsLoadingEvent,
-    actionCreatingEventSuccess,
-    actionCreatingEventError,
+    actionEventSuccess,
+    actionEventError,
     actionMessageEventError,
     actionEventData,
     EventState,
     actionChangeEvent,
     actionDeleteEvent,
-    actionUnregisterEvent
+    actionUnregisterEvent,
+    actionGetOneEventData,
 } = EventSlice.actions;
+
+export const delApiOneEvent = (id:string) => async (dispatch: any)  =>{
+    return axios
+        .delete(DELETE_EVENT+id)
+        .then(event =>{
+            dispatch(actionDeleteEvent(event.data))
+        })
+        .catch(error => {
+            console.error('del error:', error);
+        });}
 
 
 export const sendApiEvent = (values:any) => (dispatch: any) => {
@@ -113,14 +129,14 @@ export const sendApiEvent = (values:any) => (dispatch: any) => {
         .then((response) => {
             console.log('Event response:', response);
             dispatch(actionEventData(response.data));
-            dispatch(actionCreatingEventSuccess('Event created successfully.'));
+            dispatch(actionEventSuccess('Event created successfully.'));
             return response;
         })
         .catch((error) => {
             console.error('Event error:', error);
             if (error.response) {
                 console.error('Error response data:', error.response.data);
-                dispatch(actionCreatingEventError(error.response.data.message));
+                dispatch(actionEventError(error.response.data.message));
             } else {
                 dispatch(actionMessageEventError('An unknown error occurred.'));
             }
@@ -129,6 +145,41 @@ export const sendApiEvent = (values:any) => (dispatch: any) => {
         });
 };
 
+export const getApiOneEvent = (event:any) => async (dispatch: any)  =>{
+    return axios
+        .get(GET_EVENT,event)
+        .then(customer =>{
+            dispatch(actionGetOneEventData(customer.data))
+        })
+        .catch(error => {
+            console.error('Get one event error:', error);
+        });}
+
+
+export const changeApiEvent = (values:any) => (dispatch: any) => {
+    console.log('Sending API update event request...');
+    dispatch(actionPageIsLoadingEvent(true));
+
+//конкантенація
+    return axios.put( UPDATE_EVENT+values._id, values)
+        .then((response) => {
+            console.log('Event update response:', response);
+            dispatch(actionChangeEvent(response.data));
+            dispatch(actionEventSuccess('Event updated successfully.'));
+            return response;
+        })
+        .catch((error) => {
+            console.error('Event error:', error);
+            if (error.response) {
+                console.error('Error response data:', error.response.data);
+                dispatch(actionEventError(error.response.data.message));
+            } else {
+                dispatch(actionMessageEventError('An unknown error occurred.'));
+            }
+        }).finally(() => {
+            dispatch(actionPageIsLoadingEvent(false));
+        });
+};
 
 
 export default EventSlice.reducer;

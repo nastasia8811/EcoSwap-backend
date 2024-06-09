@@ -19,14 +19,16 @@ import loginReducer, {
 
 import eventReducer,{
     actionPageIsLoadingEvent,
-    actionCreatingEventSuccess,
-    actionCreatingEventError,
+    actionEventSuccess,
+    actionEventError,
     actionMessageEventError,
     actionEventData,
     EventState,
     actionChangeEvent,
     actionDeleteEvent,
-    actionUnregisterEvent
+    actionUnregisterEvent,
+    actionGetOneEventData,
+
 } from './event.reducer';
 
 
@@ -48,12 +50,14 @@ export {
     getUserApi,
     eventReducer,
     actionPageIsLoadingEvent,
-    actionCreatingEventSuccess,
-    actionCreatingEventError,
+    actionEventSuccess,
+    actionEventError,
     actionMessageEventError,
     actionEventData,
     EventState,
     actionChangeEvent,
     actionDeleteEvent,
-    actionUnregisterEvent
+    actionUnregisterEvent,
+    actionGetOneEventData,
+
 };

@@ -5,15 +5,17 @@ import FormEventCreate from "../../components/FormEventCreate/FormEventCreate";
 import { useState } from 'react';
 import Modal from '../../components/Modal/Modal'
 import './EventCreate.scss';
-import { selectorCreatingEvent} from "../../selectors";
-import {sendApiEvent} from "../../reducers/event.reducer";
+import {selectorCreatingEvent} from "../../selectors";
+import {sendApiEvent, changeApiEvent} from "../../reducers/event.reducer";
 import {useDispatch, useSelector} from 'react-redux';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
 
 
+
 interface EventCreateProps {
     closeModalCreateEvent: () => void;
+
 }
 
 const EventCreate: React.FC<EventCreateProps> = ({closeModalCreateEvent}) => {
@@ -29,23 +31,25 @@ const EventCreate: React.FC<EventCreateProps> = ({closeModalCreateEvent}) => {
         event.preventDefault();
         setModalOpen(!modalOpen);
     };
-
     const handleModalClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         event.stopPropagation();
     };
+    // const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
+    // const eventTarget = event.currentTarget
+    // dispatch(getApiOneEvent(eventTarget)).then((axiosValue) => {
+    //     return axiosValue
+    // })
+    // import {getApiOneEvent} from "../../reducers/event.reducer";
+    // import {useDispatch} from 'react-redux';
+    // import {ThunkDispatch} from "redux-thunk";
+    // import {Action} from "redux";
 
+    const handleSubmit = ( values:any) => {
 
-    const handleSubmit = (values: any) => {
-        let sendApi = sendApiEvent;
+        let sendApi = (values._id) ? changeApiEvent : sendApiEvent;
 
-       // const newObj = {...values, customer_id:userData._id}
         values.customer_id=userData._id
-        if ( eventData._id){
 
-//TODO в IF create apdate function and write  into sendApi
-
-            //dispatch(update values)
-        }
         dispatch(sendApi(values)).then((axiosValue) => {
             if (axiosValue) {
 

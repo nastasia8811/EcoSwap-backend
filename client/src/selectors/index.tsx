@@ -35,6 +35,7 @@ export const selectorCreatingEventMessageError = (state: AppState) => state.even
 export const selectorChangeEvent = (state: AppState) => state.event.changeEvent;
 export const selectorDeleteEvent = (state: AppState) => state.event.deleteEvent;
 export const selectorUnregisterEvent = (state: AppState) => state.event.unregisterEvent;
+export const selectorGetOneEvent = (state: AppState) => state.event.formData;
 
 
 
