@@ -6,7 +6,12 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import EventCreate from "../../pages/EventCreate/EventCreate";
-import {EventData, actionEventData, delApiOneEvent, bookOrCencelApiEvent} from "../../reducers/event.reducer";
+import {
+    EventData,
+    actionEventData,
+    delApiOneEvent,
+    bookOrCancelApiEvent
+} from "../../reducers/event.reducer";
 import {useDispatch, useSelector} from 'react-redux';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
@@ -61,7 +66,7 @@ if (type === "full") {
                 <IconButton aria-label="delete" color="primary" onClick={(e) => {
                     e.stopPropagation();
                     if (typeof _id === "string") {
-                        dispatch(bookOrCencelApiEvent(_id,userData._id))
+                        dispatch(bookOrCancelApiEvent(_id,userData._id))
                     }
                 }}
                           >

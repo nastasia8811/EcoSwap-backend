@@ -117,7 +117,7 @@ export const {
 } = EventSlice.actions;
 
 
-export const bookOrCencelApiEvent = (id:string, customerId:string) => (dispatch: any) => {
+export const bookOrCancelApiEvent = (id:string, customerId:string) => (dispatch: any) => {
     console.log('Sending API update event request...');
     dispatch(actionPageIsLoadingEvent(true));
 
