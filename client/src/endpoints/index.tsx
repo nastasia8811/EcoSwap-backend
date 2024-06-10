@@ -11,3 +11,8 @@ export const DELETE_EVENT = `/event/`;
 export const UPDATE_EVENT = `/event/`;
 export const GET_EVENTS = `/event`;
 export const GET_EVENT = `/event/id`;
+export const BOOK_OR_CANCEL_EVENT = `/event/`;
+
+export function createOrCancelEvent (id:string, customerId:string){
+    return BOOK_OR_CANCEL_EVENT+id+"/book/"+ customerId
+}

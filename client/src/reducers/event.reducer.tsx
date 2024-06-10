@@ -1,6 +1,12 @@
 import { createSlice, PayloadAction, Slice} from "@reduxjs/toolkit";
 import axios from 'axios';
-import {ADD_EVENT, DELETE_EVENT, GET_EVENT, UPDATE_EVENT} from "../endpoints";
+import {
+    ADD_EVENT,
+    createOrCancelEvent,
+    DELETE_EVENT,
+    GET_EVENT,
+    UPDATE_EVENT
+} from "../endpoints";
 import {getLocalDate} from "../helpers/date";
 export interface EventState {
     formData: EventData,
@@ -87,6 +93,7 @@ const EventSlice: Slice<EventState> = createSlice({
         actionDeleteEvent: (state, action: PayloadAction<boolean>) => {
             state.deleteEvent = action.payload;
         },
+        // переіменувати
         actionUnregisterEvent: (state, action: PayloadAction<boolean>) => {
             state.unregisterEvent = action.payload;
         },
@@ -108,6 +115,31 @@ export const {
     actionUnregisterEvent,
     actionGetOneEventData,
 } = EventSlice.actions;
+
+
+export const bookOrCencelApiEvent = (id:string, customerId:string) => (dispatch: any) => {
+    console.log('Sending API update event request...');
+    dispatch(actionPageIsLoadingEvent(true));
+
+    return axios.put( createOrCancelEvent(id, customerId))
+        .then((response) => {
+            console.log('Event update response:', response);
+            //dispatch(actionUnregisterEvent(response.data));
+            dispatch(actionEventSuccess('Event updated successfully.'));
+            return response;
+        })
+        .catch((error) => {
+            console.error('Event error:', error);
+            if (error.response) {
+                console.error('Error response data:', error.response.data);
+                dispatch(actionEventError(error.response.data.message));
+            } else {
+                dispatch(actionMessageEventError('An unknown error occurred.'));
+            }
+        }).finally(() => {
+            dispatch(actionPageIsLoadingEvent(false));
+        });
+};
 
 export const delApiOneEvent = (id:string) => async (dispatch: any)  =>{
     return axios

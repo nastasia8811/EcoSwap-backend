@@ -68,7 +68,7 @@ const ImageCarousel: React.FC = () => {
         <Box  sx={{ maxWidth: 1100, margin: 'auto', mt: 4 }}>
             <Slider className="carousel" {...settings}>
                 {eventsData.map((item: EventData) => (
-                    <EventItem key={item._id} event={item} />
+                    <EventItem type="slider" key={item._id} event={item} />
                 ))}
             </Slider>
         </Box>

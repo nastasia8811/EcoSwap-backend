@@ -6,7 +6,8 @@ const {
     deleteEvent,
     updateEvent,
     getEvents,
-    findById
+    findById,
+    bookOrCancelEvent
 } = require("../controllers/event");
 
 router.post("/", addEvent);
@@ -14,5 +15,5 @@ router.delete("/:id", deleteEvent);
 router.put("/:id", updateEvent);
 router.get("/", getEvents)
 router.get("/:id",findById)
-
+router.put("/:eventId/book/:customerId",bookOrCancelEvent)
 module.exports = router;
