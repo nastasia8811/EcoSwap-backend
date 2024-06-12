@@ -32,7 +32,8 @@ export const selectorCreatingEventModalSuccess = (state: AppState) => state.even
 export const selectorCreatingEventModalError = (state: AppState) => state.event.modalError;
 export const selectorCreatingEvent = (state: AppState) => state.event.formData;
 export const selectorCreatingEventMessageError = (state: AppState) => state.event.messageError;
-export const selectorChangeEvent = (state: AppState) => state.event.changeEvent;
+//export const selectorChangeEvent = (state: AppState) => state.event.changeEvent;
+export const selectorGetEvents = (state: AppState) => state.event.events;
 export const selectorDeleteEvent = (state: AppState) => state.event.deleteEvent;
 export const selectorUnregisterEvent = (state: AppState) => state.event.unregisterEvent;
 export const selectorGetOneEvent = (state: AppState) => state.event.formData;

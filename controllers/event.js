@@ -101,24 +101,22 @@ exports.bookOrCancelEvent = (req, res, next) => {
 
     Event.findById(eventId)
         .then((event )=> {
-           const customerIsBooked =  event.bookedSeats.includes(customerId)
+           const customerIsBooked = event.bookedSeats.includes(customerId)
 
             if(customerIsBooked) {
-                event.bookedSeats.pull(customerId)
-                event.save()
-                    .then(() => {
-                        return res.json({message: "booking is canceled"});
-                    }
-                )
+                event.bookedSeats.pull(customerId);
+                event.available = event.available-1;
+
             } else {
                 event.bookedSeats.push(customerId)
-                event.save()
-                    .then(() => {
-                        return res.json({message:"booking is successfully"});
-                        }
-                    )
-            }
-        })
+                event.available = event.available+1;
+
+            } event.save()
+                    .then((data) => {
+                        return res.json(data);
+                    })
+        }
+        )
         .catch(err =>
             res.status(400).json({
                 message: `Error happened on server: "${err}" `

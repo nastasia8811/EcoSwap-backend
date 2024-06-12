@@ -31,7 +31,8 @@ const EventItem: React.FC<EventItemProps> = ({event, onClick,type="full"}) => {
 
     // @ts-ignore
     const userData =useSelector((state)=> state.login.userData)
-    console.log(userData)
+
+
     const toggleModalAuth = (event: EventData) => {
         setIsModalAuthOpen(!isModalAuthOpen);
         dispatch(actionEventData(event))
@@ -63,7 +64,7 @@ if (type === "full") {
                     <EditOutlinedIcon/>
                 </IconButton>
                 {isModalAuthOpen && <EventCreate closeModalCreateEvent={() => closeModalCreateEvent()}/>}
-                <IconButton aria-label="delete" color="primary" onClick={(e) => {
+                <IconButton aria-label="book or cancel" color="primary" onClick={(e) => {
                     e.stopPropagation();
                     if (typeof _id === "string") {
                         dispatch(bookOrCancelApiEvent(_id,userData._id))

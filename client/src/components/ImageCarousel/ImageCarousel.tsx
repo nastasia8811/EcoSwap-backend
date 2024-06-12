@@ -1,17 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Box } from '@mui/material';
-//import { eventsList } from "../../pages/Events/eventlist";
 import EventItem from "../EventItem/EventItem";
 import './ImageCarousel.scss'
-import {EventData} from "../../reducers/event.reducer";
-import axios from "axios";
-import {GET_EVENTS} from "../../endpoints";
+import {EventData, getEvents} from "../../reducers/event.reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {selectorGetEvents} from "../../selectors";
+
 
 const ImageCarousel: React.FC = () => {
-    const [eventsData, setEventsData] = useState([]);
+    const eventsArray = useSelector(selectorGetEvents);
+    const dispatch = useDispatch()
     // const settings = {
     //     dots: true,
     //     infinite: true,
@@ -20,13 +21,8 @@ const ImageCarousel: React.FC = () => {
     //     slidesToScroll: 1
     // };
     useEffect(()=>{
-        axios.get(GET_EVENTS)
-            .then((response) => {
-                setEventsData(response.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching events:', error);
-            });
+        // @ts-ignore
+        dispatch(getEvents())
     },[])
 
         const settings = {
@@ -67,7 +63,7 @@ const ImageCarousel: React.FC = () => {
     return (
         <Box  sx={{ maxWidth: 1100, margin: 'auto', mt: 4 }}>
             <Slider className="carousel" {...settings}>
-                {eventsData.map((item: EventData) => (
+                {eventsArray.map((item: EventData) => (
                     <EventItem type="slider" key={item._id} event={item} />
                 ))}
             </Slider>
