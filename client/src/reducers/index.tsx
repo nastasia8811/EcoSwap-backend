@@ -28,7 +28,7 @@ import eventReducer,{
     actionDeleteEvent,
     actionUnregisterEvent,
     actionGetOneEventData,
-
+    actionGetEvents
 } from './event.reducer';
 
 
@@ -59,5 +59,5 @@ export {
     actionDeleteEvent,
     actionUnregisterEvent,
     actionGetOneEventData,
-
+    actionGetEvents
 };

@@ -94,3 +94,32 @@ exports.getEvents = (req, res, next) => {
             })
         );
 };
+
+exports.bookOrCancelEvent = (req, res, next) => {
+    const eventId = req.params.eventId;
+    const customerId = req.params.customerId;
+
+    Event.findById(eventId)
+        .then((event )=> {
+           const customerIsBooked = event.bookedSeats.includes(customerId)
+
+            if(customerIsBooked) {
+                event.bookedSeats.pull(customerId);
+                event.available = event.available-1;
+
+            } else {
+                event.bookedSeats.push(customerId)
+                event.available = event.available+1;
+
+            } event.save()
+                    .then((data) => {
+                        return res.json(data);
+                    })
+        }
+        )
+        .catch(err =>
+            res.status(400).json({
+                message: `Error happened on server: "${err}" `
+            })
+        );
+}

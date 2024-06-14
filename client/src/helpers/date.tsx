@@ -6,3 +6,4 @@ export const getLocalDate = (date = new Date()) => {
 
     return `${year}-${month}-${day}`;
 };
+

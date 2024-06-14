@@ -8,11 +8,11 @@ import  {useState} from 'react';
 import { useNavigate} from 'react-router-dom';
 // @ts-ignore
 import events from "./img/events.jpg";
-import axios from "axios";
-import {useSelector} from "react-redux";
-import {GET_EVENTS} from "../../endpoints";
-import {selectorDeleteEvent} from '../../selectors';
+import {useSelector, useDispatch} from "react-redux";
+
+import { selectorGetEvents} from '../../selectors';
 import EventItem from "../../components/EventItem/EventItem";
+import {getEvents} from "../../reducers/event.reducer";
 // import {selectLoginUserData} from "../../selectors";
 
 
@@ -30,10 +30,9 @@ import EventItem from "../../components/EventItem/EventItem";
 const Events: React.FC = () => {
 
     const [isModalAuthOpen, setIsModalAuthOpen] = useState(false);
-    const [eventsData, setEventsData] = useState([]);
     const navigate = useNavigate();
-
-
+const dispatch = useDispatch()
+const eventsArray = useSelector(selectorGetEvents);
     const toggleModalAuth = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         setIsModalAuthOpen(!isModalAuthOpen);
@@ -48,21 +47,16 @@ const Events: React.FC = () => {
     };
     // @ts-ignore
     const userData = useSelector((state)=>state.login.userData)
-const deleteTriger = useSelector(selectorDeleteEvent);
+
 
     useEffect(() =>{
         if (!userData){
             navigate('/authorization');
         } else {
-            axios.get(GET_EVENTS)
-                .then((response) => {
-                    setEventsData(response.data);
-                })
-                .catch((error) => {
-                    console.error('Error fetching events:', error);
-                });
+            // @ts-ignore
+            dispatch(getEvents())
         }
-    }, [deleteTriger]);
+    }, []);
 
     return(
         <>
@@ -78,7 +72,7 @@ const deleteTriger = useSelector(selectorDeleteEvent);
                         {isModalAuthOpen && <EventCreate closeModalCreateEvent={()=>closeModalCreateEvent()} />}
                     </div>
                     <Box className="events-container__wrapper-flex">
-                    {eventsData.map((item:any) => (
+                    {eventsArray.map((item:any) => (
                          <EventItem key={item._id} event={item}  onClick={() => handleEventClick(item._id)}  />
       ))}
                     </Box>
