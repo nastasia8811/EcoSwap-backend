@@ -32,7 +32,7 @@ export interface EventData {
     description: string;
     available: number;
     location: string;
-    bookedSeats?: string[] | null;
+    bookedSeats?: string[] ;
     customer_id?: string | null;
     _id?: null | string;
 }
@@ -70,13 +70,15 @@ const EventSlice: Slice<EventState> = createSlice({
         actionEventSuccess: (state, action: PayloadAction<null | string>) => {
             state.modalSuccess = action.payload;
         },
+        actionEventCreate: (state, action: PayloadAction<EventData>) => {
+            // додавання елемента у formData
+            state.events.push(action.payload)
+        },
+
         actionEventData: (state, action: PayloadAction<EventData>) => {
-            console.log(action.payload.date)
-             const newData= new Date(action.payload.date);
-            console.log(newData)
+            const newData= new Date(action.payload.date);
             const newObject = {...action.payload,date: getLocalDate(newData)}
             state.formData = newObject;
-
         },
         actionEventError: (state, action: PayloadAction<null | string>) => {
             state.modalError = action.payload;
@@ -117,6 +119,7 @@ export const {
     actionEventData,
     EventState,
     actionChangeEvent,
+    actionEventCreate,
     actionDeleteEvent,
     actionUnregisterEvent,
     actionGetOneEventData,
@@ -170,20 +173,18 @@ export const delApiOneEvent = (id:string) => async (dispatch: any)  =>{
 
 
 export const sendApiEvent = (values:any) => (dispatch: any) => {
-    console.log('Sending API event request...');
     dispatch(actionPageIsLoadingEvent(true));
 
     return axios.post( ADD_EVENT, values)
         .then((response) => {
-            console.log('Event response:', response);
-            dispatch(actionEventData(response.data));
+            dispatch(actionEventCreate(response.data));
             dispatch(actionEventSuccess('Event created successfully.'));
             return response;
         })
         .catch((error) => {
             console.error('Event error:', error);
             if (error.response) {
-                console.error('Error response data:', error.response.data);
+
                 dispatch(actionEventError(error.response.data.message));
             } else {
                 dispatch(actionMessageEventError('An unknown error occurred.'));

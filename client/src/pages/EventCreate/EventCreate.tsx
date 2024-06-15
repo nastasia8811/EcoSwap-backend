@@ -2,7 +2,7 @@ import './EventCreate.scss';
 import React from 'react';
 import ValidationSchemaEventCreate from "../../components/FormEventCreate/ValidationSchemaEventCreate";
 import FormEventCreate from "../../components/FormEventCreate/FormEventCreate";
-import { useState } from 'react';
+//import { useState } from 'react';
 import Modal from '../../components/Modal/Modal'
 import './EventCreate.scss';
 import {selectorCreatingEvent} from "../../selectors";
@@ -25,26 +25,11 @@ const EventCreate: React.FC<EventCreateProps> = ({closeModalCreateEvent}) => {
     // @ts-ignore
     const userData = useSelector((state)=>state.login.userData)
 
-    const [modalOpen, setModalOpen] = useState(false);
-
-    const toggleModalOpen = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        event.preventDefault();
-        setModalOpen(!modalOpen);
-    };
     const handleModalClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         event.stopPropagation();
     };
-    // const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
-    // const eventTarget = event.currentTarget
-    // dispatch(getApiOneEvent(eventTarget)).then((axiosValue) => {
-    //     return axiosValue
-    // })
-    // import {getApiOneEvent} from "../../reducers/event.reducer";
-    // import {useDispatch} from 'react-redux';
-    // import {ThunkDispatch} from "redux-thunk";
-    // import {Action} from "redux";
-
-    const handleSubmit = ( values:any) => {
+//@ts-ignore
+    const handleSubmit = (values:any,{resetForm}) => {
 
         let sendApi = (values._id) ? changeApiEvent : sendApiEvent;
 
@@ -52,8 +37,8 @@ const EventCreate: React.FC<EventCreateProps> = ({closeModalCreateEvent}) => {
 
         dispatch(sendApi(values)).then((axiosValue) => {
             if (axiosValue) {
-
-                setModalOpen(false);
+                resetForm()
+                closeModalCreateEvent()
             }
         }).catch((error) => {
             console.error("Submission error:", error);
@@ -72,12 +57,13 @@ const EventCreate: React.FC<EventCreateProps> = ({closeModalCreateEvent}) => {
                         <FormEventCreate
                             initialValues={eventData}
                             validationSchema={ValidationSchemaEventCreate}
+                            //@ts-ignore
                             onSubmit={handleSubmit}
                         />
                         <button
                             className="form-block__btn"
                             type="button"
-                            onClick={(event) => toggleModalOpen(event)}
+                            onClick={closeModalCreateEvent}
                         >
                             Close
                         </button>

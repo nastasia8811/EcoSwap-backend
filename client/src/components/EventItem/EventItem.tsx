@@ -33,6 +33,13 @@ const EventItem: React.FC<EventItemProps> = ({event, onClick,type="full"}) => {
     const userData =useSelector((state)=> state.login.userData)
 
 
+
+const headerMessage= userData._id === event.customer_id? "This is yours event": "";
+
+     const bookSeats = event.bookedSeats?.includes(userData._id ) ?  <button>added</button>: <button>deleted</button>
+
+
+
     const toggleModalAuth = (event: EventData) => {
         setIsModalAuthOpen(!isModalAuthOpen);
         dispatch(actionEventData(event))
@@ -45,7 +52,9 @@ if (type === "full") {
 
     return (
         <div className="item-wrapper" onClick={onClick}>
-            <div className="item-wrapper-buttons"></div>
+            <h4 className="item-wrapper_user">{headerMessage}</h4>
+            {bookSeats}
+            {/*<div className="item-wrapper-buttons"></div>*/}
             <img className="item-wrapper__img" key={_id} src={img} alt={title}/>
             <h2 className="item-wrapper__title" key={_id}>{title}
                 <IconButton aria-label="delete" color="primary">

@@ -29,6 +29,10 @@ const Registration: React.FC = () => {
     //const { resetForm } = useFormikContext();
 
 
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
     return (
         <main>
             <Container className="registration-container" maxWidth="lg">
@@ -39,12 +43,12 @@ const Registration: React.FC = () => {
                     <FormRegistration
                         initialValues={initialFormData}
                         validationSchema={ValidationSchema}
-                        onSubmit={(values) => {
+                        //@ts-ignore
+                        onSubmit={(values:any,{resetForm }) => {
                             delete values.confirmPassword;
                             dispatch(createCustomerServerApi(values)).then((axiosValue) => {
                                 if (axiosValue) {
-                                    //resetForm()
-                                    console.log("надо очистить форму")
+                                    resetForm()
                                 }
                             })
                         }
