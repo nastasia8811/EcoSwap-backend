@@ -15,6 +15,7 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
+//import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 
 
 interface EventItemProps {
@@ -33,10 +34,9 @@ const EventItem: React.FC<EventItemProps> = ({event, onClick,type="full"}) => {
     const userData =useSelector((state)=> state.login.userData)
 
 
-
 const headerMessage= userData._id === event.customer_id? "This is yours event": "";
 
-     const bookSeats = event.bookedSeats?.includes(userData._id ) ?  <button>added</button>: <button>deleted</button>
+const bookSeats = event.bookedSeats?.includes(userData._id ) ?  <button>added</button>: <button>deleted</button>
 
 
 
@@ -81,6 +81,7 @@ if (type === "full") {
                 }}
                           >
                     <StarBorderOutlinedIcon/>
+                    {/*{bookedSeats ? <StarOutlinedIcon/> : <StarBorderOutlinedIcon/>}*/}
                 </IconButton>
                 <div>{event.available}</div>
             </h2>
