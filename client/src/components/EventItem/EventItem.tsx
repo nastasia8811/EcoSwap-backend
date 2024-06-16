@@ -35,9 +35,9 @@ const EventItem: React.FC<EventItemProps> = ({event, onClick,type="full"}) => {
     const userData =useSelector((state)=> state.login.userData)
 // const loginedUserToken = useSelector(selectorLoginToken)
 //     && loginedUserToken
-const headerMessage= userData._id === event.customer_id  ? "You created this event": "";
+    const isUserPost = userData._id === event.customer_id;
 
-const bookSeats = event.bookedSeats?.includes(userData._id ) ?  <button>added</button>: <button>deleted</button>
+const bookSeats = event.bookedSeats?.includes(userData._id )
 
 
     const toggleModalAuth = (event: EventData) => {
@@ -52,28 +52,33 @@ if (type === "full") {
 
     return (
         <div className="item-wrapper" onClick={onClick}>
-            <h4 className="item-wrapper_user">{headerMessage}</h4>
-            {bookSeats}
+            <h4 className="item-wrapper_user">{ isUserPost && "You created this event" }</h4>
             {/*<div className="item-wrapper-buttons"></div>*/}
             <img className="item-wrapper__img" key={_id} src={img} alt={title}/>
             <h2 className="item-wrapper__title" key={_id}>{title}
-                <IconButton aria-label="delete" color="primary">
-                <DeleteOutlineOutlinedIcon onClick={(e) => {
-                    e.stopPropagation();
-                    if (typeof _id === "string") {
-                        dispatch(delApiOneEvent(_id))
-                    }
-                }}/>
-            </IconButton>
-                <IconButton aria-label="edit" color="primary" onClick={(e) => {
-                    e.stopPropagation();
-                    toggleModalAuth(event)
-                }}
-                >
-                    <EditOutlinedIcon/>
-                </IconButton>
+                {isUserPost && <>
+                    <IconButton aria-label="delete" color="primary">
+                        <DeleteOutlineOutlinedIcon onClick={(e) => {
+                            e.stopPropagation();
+                            if (typeof _id === "string") {
+                                dispatch(delApiOneEvent(_id))
+                            }
+                        }}/>
+                    </IconButton>
+
+                    <IconButton aria-label="edit" color="primary" onClick={(e) => {
+                        e.stopPropagation();
+                        toggleModalAuth(event)
+                    }}
+                    >
+                        <EditOutlinedIcon/>
+
+                    </IconButton>
+                </>}
+
                 {isModalAuthOpen && <EventCreate closeModalCreateEvent={() => closeModalCreateEvent()}/>}
-                <IconButton aria-label="book or cancel" color="primary" onClick={(e) => {
+
+                <IconButton aria-label="book or cancel"  color={bookSeats ? "success" : "primary"} onClick={(e) => {
                     e.stopPropagation();
                     if (typeof _id === "string") {
                         dispatch(bookOrCancelApiEvent(_id,userData._id))

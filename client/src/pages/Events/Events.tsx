@@ -56,6 +56,7 @@ const eventsArray = useSelector(selectorGetEvents);
         }
     }, []);
 
+    const typeValue = localStorage.getItem('token')? 'full': 'short'
     return(
         <>
          <Container className="events-container" maxWidth="xl">
@@ -65,13 +66,14 @@ const eventsArray = useSelector(selectorGetEvents);
                     <BreadCrumbs linksArray={[{ link:'/events', text: 'Events' }]} />
                     <h2 className="events-container__wrapper-title">Events</h2>
                     <div className="events-container__wrapper-plus">
-                        <Button className="events-container__wrapper-plus-button" variant="outlined"
-                                onClick={(event) => toggleModalAuth(event)}>Add Event</Button>
+                        {typeValue === 'full' &&  <Button className="events-container__wrapper-plus-button" variant="outlined"
+                                                          onClick={(event) => toggleModalAuth(event)}>Add Event</Button>}
+
                         {isModalAuthOpen && <EventCreate closeModalCreateEvent = {closeModalCreateEvent} />}
                     </div>
                     <Box className="events-container__wrapper-flex">
                     {eventsArray.map((item:any) => (
-                         <EventItem key={item._id} event={item}  onClick={() => {}}  />
+                         <EventItem key={item._id} event={item}  type={typeValue} onClick={() => {}}  />
       ))}
                     </Box>
 
