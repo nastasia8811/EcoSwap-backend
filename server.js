@@ -11,19 +11,14 @@ const customers = require('./routes/customers');
 const catalog = require('./routes/catalog');
 const products = require('./routes/products');
 
-const sizes = require('./routes/sizes');
 const filters = require('./routes/filters');
-const subscribers = require('./routes/subscribers');
 const cart = require('./routes/cart');
 const orders = require('./routes/orders');
 const links = require('./routes/links');
 const pages = require('./routes/pages');
 const slides = require('./routes/slides');
-const wishlist = require('./routes/wishlist');
-const comments = require('./routes/comments');
 
 const evntsList = require('./routes/event');
-
 const app = express();
 /**
  * CORS
@@ -59,16 +54,13 @@ app.use('/api/customers', customers);
 app.use('/api/catalog', catalog);
 app.use('/api/products', products);
 
-app.use('/api/sizes', sizes);
 app.use('/api/filters', filters);
-app.use('/api/subscribers', subscribers);
 app.use('/api/cart', cart);
 app.use('/api/orders', orders);
 app.use('/api/links', links);
 app.use('/api/pages', pages);
 app.use('/api/slides', slides);
-app.use('/api/wishlist', wishlist);
-app.use('/api/comments', comments);
+
 
 app.use('/api/event', evntsList);
 // app.use('/', mainRoute);
