@@ -1,4 +1,6 @@
 import  { useState } from "react";
+import { AdvancedImage } from '@cloudinary/react'
+import { Cloudinary } from '@cloudinary/url-gen';
 
 const ImageUpload = () => {
     const [image, setImage] = useState(null);
@@ -6,23 +8,30 @@ const ImageUpload = () => {
     const [loading, setLoading] = useState(false);
     const [preview, setPreview] = useState(null);
 
+
+    const myCld = new Cloudinary({
+        cloud: {
+            cloudName: "dequtvxxc",
+        },
+    });
+
     const uploadImage = async () => {
         setLoading(true);
         const data = new FormData();
         if (image){
             data.append("file", image);
         }
+if ( process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET) { data.append(
+    "upload_preset",
+    "reDiPresetName"
+)}
+if(process.env.REACT_APP_CLOUDINARY_CLOUD_NAME){ data.append("cloud_name", "dequtvxxc");
+    data.append("folder", "Cloudinary-React");}
 
-        data.append(
-            "upload_preset",
-            process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
-        );
-        data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
-        data.append("folder", "Cloudinary-React");
 
         try {
             const response = await fetch(
-                `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
+                `https://api.cloudinary.com/v1_1/dequtvxxc/image/upload`,
                 {
                     method: "POST",
                     body: data,
@@ -36,7 +45,7 @@ const ImageUpload = () => {
         }
     };
 
-    const handleImageChange = (event) => {
+    const handleImageChange = (event:any) => {
         const file = event.target.files[0];
         setImage(file);
 
@@ -44,6 +53,7 @@ const ImageUpload = () => {
         reader.readAsDataURL(file);
 
         reader.onload = () => {
+            // @ts-ignore
             setPreview(reader.result);
         };
     };
@@ -100,9 +110,8 @@ const ImageUpload = () => {
                 ) : (
                     url && (
                         <div className="pb-8 pt-4">
-                            <Image
-                                cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}
-                                publicId={url}
+                            <AdvancedImage
+                                cldImg={myCld.image(url)}
                             />
                         </div>
                     )

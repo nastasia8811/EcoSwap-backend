@@ -2,7 +2,8 @@ import {Box, Container} from '@mui/material';
 import './Hero.scss';
 import {Link} from "react-router-dom";
 import ImageCarousel from '../../components/ImageCarousel/ImageCarousel';
-
+// @ts-ignore
+import ImageUpload from '../../components/ImageUpload/ImageUpload'
 
 // @ts-ignore
 import container_top from './img/container_top.jpg'
@@ -52,7 +53,7 @@ const Hero = () => {
                         </Box>
                     </Container>
                 {/*//</ThemeProvider>*/}
-
+<ImageUpload/>
             </Box>
     )
 }
