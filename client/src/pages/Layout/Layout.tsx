@@ -23,9 +23,9 @@ const Layout = () => {
         if (storedToken) {
             dispatch(actionToken(storedToken));
         }
-        // else {
-        //     navigate('/authorization');
-        // }
+        else {
+            navigate('/authorization');
+        }
     }, [dispatch, navigate]);
 
     useEffect(() => {

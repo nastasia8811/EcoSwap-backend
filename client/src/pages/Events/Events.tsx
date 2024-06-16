@@ -42,9 +42,7 @@ const eventsArray = useSelector(selectorGetEvents);
         setIsModalAuthOpen(false);
     }
 
-    const handleEventClick = (id: number) => {
-        navigate(`/event/${id}`);
-    };
+
     // @ts-ignore
     const userData = useSelector((state)=>state.login.userData)
 
@@ -69,11 +67,11 @@ const eventsArray = useSelector(selectorGetEvents);
                     <div className="events-container__wrapper-plus">
                         <Button className="events-container__wrapper-plus-button" variant="outlined"
                                 onClick={(event) => toggleModalAuth(event)}>Add Event</Button>
-                        {isModalAuthOpen && <EventCreate closeModalCreateEvent={()=>closeModalCreateEvent()} />}
+                        {isModalAuthOpen && <EventCreate closeModalCreateEvent = {closeModalCreateEvent} />}
                     </div>
                     <Box className="events-container__wrapper-flex">
                     {eventsArray.map((item:any) => (
-                         <EventItem key={item._id} event={item}  onClick={() => handleEventClick(item._id)}  />
+                         <EventItem key={item._id} event={item}  onClick={() => {}}  />
       ))}
                     </Box>
 
