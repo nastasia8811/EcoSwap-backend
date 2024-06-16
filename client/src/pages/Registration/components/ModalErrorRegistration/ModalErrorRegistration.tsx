@@ -1,5 +1,5 @@
 import Modal from '../../../../components/Modal/Modal';
-import { useState } from 'react';
+//import { useState } from 'react';
 //import { useNavigate } from 'react-router-dom';
 import './ModalErrorRegistration.scss';
 import { useSelector } from "react-redux";
@@ -11,13 +11,6 @@ interface ModalErrorRegistrationProps {
 
 const ModalErrorRegistration: React.FC<ModalErrorRegistrationProps> = ({ closeErrorModal }) => {
   const closeModalError = useSelector(selectorRegistrationMessageError);
-  //const navigate = useNavigate();
-  const [isModalAuthOpen, setIsModalAuthOpen] = useState(false);
-
-  const toggleModalAuth = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    event.preventDefault();
-    setIsModalAuthOpen(!isModalAuthOpen);
-  };
 
   return (
     <Modal
@@ -29,9 +22,9 @@ const ModalErrorRegistration: React.FC<ModalErrorRegistrationProps> = ({ closeEr
       <button
         className="form-block__btn"
         type="button"
-        onClick={toggleModalAuth}
+        onClick={closeErrorModal}
       >
-        Login
+        Close
       </button>
     </Modal>
   );
