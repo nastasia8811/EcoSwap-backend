@@ -72,6 +72,7 @@ const loginSlice: Slice<LoginState> = createSlice({
         actionLoginError: (state, action: PayloadAction<string>) => {
             state.modalError = action.payload;
         },
+        actionResetState:() =>  initialState
     }
 });
 
@@ -81,6 +82,7 @@ export const {
     actionUserData,
     actionLoginError,
     actionLoginMassageError,
+    actionResetState
 } = loginSlice.actions;
 
 export const sendApiLogin = (value: { login: string; password: string }) => (dispatch: any) => {

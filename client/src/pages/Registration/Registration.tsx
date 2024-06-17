@@ -15,10 +15,10 @@ import {
     selectorRegistrationModalError,
     selectorRegistrationModalSuccess
 } from '../../selectors';
-//import { AxiosResponse } from 'axios';
+
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
-//import {useFormikContext} from 'formik';
+
 
 const Registration: React.FC = () => {
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
@@ -26,13 +26,7 @@ const Registration: React.FC = () => {
     const modalError = useSelector(selectorRegistrationModalError);
     const loading = useSelector(selectorRegistrationIsLoading);
     const openModal = useSelector(selectorRegistrationModalSuccess);
-    //const { resetForm } = useFormikContext();
 
-
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
     return (
         <main>
             <Container className="registration-container" maxWidth="lg">

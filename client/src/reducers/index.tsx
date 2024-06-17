@@ -14,7 +14,8 @@ import loginReducer, {
     actionLoginError,
     actionLoginMassageError,
     sendApiLogin,
-    getUserApi
+    getUserApi,
+    actionResetState
 } from './login.reducer';
 
 import eventReducer,{
@@ -59,5 +60,6 @@ export {
     actionDeleteEvent,
     actionUnregisterEvent,
     actionGetOneEventData,
-    actionGetEvents
+    actionGetEvents,
+    actionResetState
 };
