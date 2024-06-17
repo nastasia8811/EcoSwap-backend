@@ -2,6 +2,9 @@
 import { Formik, Form } from 'formik';
 import FormikControl from '../CustomInput/FormikControl';
 import './FormEventCreate.scss';
+import ImageUpload from "../ImageUpload/ImageUpload";
+import React from "react";
+import {Button} from "@mui/material";
 
 
 interface FormEventCreateProps {
@@ -27,6 +30,7 @@ const FormEventCreate: React.FC<FormEventCreateProps> = ({
                     <>
                         <Form className="form-eventCreate" style={{ width: '100%' }}>
                             <div className="form-eventCreate__grid_wrapper">
+                                <ImageUpload />
                                 <FormikControl
                                     type="text"
                                     control="input"
@@ -54,21 +58,6 @@ const FormEventCreate: React.FC<FormEventCreateProps> = ({
                                     helperText='null'
                                     required
                                 />
-
-                                {/*<FormikControl*/}
-                                {/*    type="file"*/}
-                                {/*    control="input"*/}
-                                {/*    color="success"*/}
-                                {/*    label="Photo url"*/}
-                                {/*    className="form-eventCreate__grid_wrapper__input"*/}
-                                {/*    name="img"*/}
-                                {/*    placeholder=""*/}
-                                {/*    variant="outlined"*/}
-                                {/*    id="outlined-multiline-flexible"*/}
-                                {/*    helperText='null'*/}
-                                {/*    required*/}
-                                {/*/>*/}
-
 
                                 <FormikControl
                                     type="text"
@@ -124,7 +113,8 @@ const FormEventCreate: React.FC<FormEventCreateProps> = ({
                                 />
 
                             </div>
-                            <button type="submit" disabled={!isValid}>Save</button>
+                            <Button className="form-block__btn" style={{margin:'0 auto', display:'flex'}} variant="outlined"  color="success" type="submit" disabled={!isValid}>Save</Button>
+
                         </Form>
                     </>
                 )}

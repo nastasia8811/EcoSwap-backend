@@ -4,7 +4,7 @@ const validationSchemaEventCreate = yup.object().shape({
   title: yup
     .string()
     .min(5, 'Min 5 symbols')
-    .max(20, 'Max 20 symbols')
+    .max(40, 'Max 40 symbols')
     .required('Title field is requierd')
     .matches(/[a-zA-z\s]/g, 'Should contain only characters and space'),
   city: yup
@@ -28,7 +28,7 @@ const validationSchemaEventCreate = yup.object().shape({
       .min(10, 'Min 10 symbols'),
   location:yup
       .string()
-      .min(10, 'Min 10 symbols'),
+      .min(5, 'Min 5 symbols'),
   available:yup
       .number()
       .min(5, 'Min 5 symbols')

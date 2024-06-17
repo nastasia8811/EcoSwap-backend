@@ -2,7 +2,6 @@ import './EventCreate.scss';
 import React from 'react';
 import ValidationSchemaEventCreate from "../../components/FormEventCreate/ValidationSchemaEventCreate";
 import FormEventCreate from "../../components/FormEventCreate/FormEventCreate";
-//import { useState } from 'react';
 import Modal from '../../components/Modal/Modal'
 import './EventCreate.scss';
 import {selectorCreatingEvent} from "../../selectors";
@@ -10,13 +9,10 @@ import {sendApiEvent, changeApiEvent} from "../../reducers/event.reducer";
 import {useDispatch, useSelector} from 'react-redux';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
-import ImageUpload from "../../components/ImageUpload/ImageUpload";
-
-
+import {Button} from "@mui/material";
 
 interface EventCreateProps {
     closeModalCreateEvent: () => void;
-
 }
 
 const EventCreate: React.FC<EventCreateProps> = ({closeModalCreateEvent}) => {
@@ -63,20 +59,14 @@ if(sessionImage){
                     <div className="eventCreate-container__wrapper" onClick={handleModalClick}>
 
                         <h2 className="eventCreate-container__wrapper-title">New event</h2>
-                        <ImageUpload />
+
                         <FormEventCreate
                             initialValues={eventData}
                             validationSchema={ValidationSchemaEventCreate}
                             //@ts-ignore
                             onSubmit={handleSubmit}
                         />
-                        <button
-                            className="form-block__btn"
-                            type="button"
-                            onClick={closeModalCreateEvent}
-                        >
-                            Close
-                        </button>
+                        <Button className="form-block__btn" style={{margin:'0 auto', display:'flex'}} variant="outlined"  color="success" onClick={closeModalCreateEvent}>close</Button>
                     </div>
                     </Modal>
             </>
