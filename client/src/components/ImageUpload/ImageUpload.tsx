@@ -1,9 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 
-// interface  ImageUploadProps {
-//     setFieldValue?: any;
-//
-// }
+
 const ImageUpload:React.FC = () => {
     const [media, setMedia] = useState<File[]>([]);
 
