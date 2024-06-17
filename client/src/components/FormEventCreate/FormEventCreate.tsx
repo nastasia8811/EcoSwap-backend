@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik';
 import FormikControl from '../CustomInput/FormikControl';
 import './FormEventCreate.scss';
 
+
 interface FormEventCreateProps {
     onSubmit: (values: any) => void;
     initialValues: any;
@@ -22,7 +23,7 @@ const FormEventCreate: React.FC<FormEventCreateProps> = ({
                 validationSchema={validationSchema}
                 onSubmit={onSubmit}
             >
-                {(isValid) => (
+                {({isValid}) => (
                     <>
                         <Form className="form-eventCreate" style={{ width: '100%' }}>
                             <div className="form-eventCreate__grid_wrapper">
@@ -54,19 +55,20 @@ const FormEventCreate: React.FC<FormEventCreateProps> = ({
                                     required
                                 />
 
-                                <FormikControl
-                                    type="link"
-                                    control="input"
-                                    color="success"
-                                    label="Photo url"
-                                    className="form-eventCreate__grid_wrapper__input"
-                                    name="img"
-                                    placeholder="Upload a photo of the event"
-                                    variant="outlined"
-                                    id="outlined-multiline-flexible"
-                                    helperText='null'
-                                    required
-                                />
+                                {/*<FormikControl*/}
+                                {/*    type="file"*/}
+                                {/*    control="input"*/}
+                                {/*    color="success"*/}
+                                {/*    label="Photo url"*/}
+                                {/*    className="form-eventCreate__grid_wrapper__input"*/}
+                                {/*    name="img"*/}
+                                {/*    placeholder=""*/}
+                                {/*    variant="outlined"*/}
+                                {/*    id="outlined-multiline-flexible"*/}
+                                {/*    helperText='null'*/}
+                                {/*    required*/}
+                                {/*/>*/}
+
 
                                 <FormikControl
                                     type="text"

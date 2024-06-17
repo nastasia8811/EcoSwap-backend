@@ -37,6 +37,7 @@ export const initialState: LoginState = {
     loginPageIsLoading: false,
     loginMessageError: null,
     modalError: null,
+
 };
 
 

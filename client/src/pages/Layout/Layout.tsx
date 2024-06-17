@@ -1,6 +1,6 @@
 
 import { Box } from '@mui/material';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 // ThemeProvider,createTheme,
 import { useEffect } from 'react';
  import Footer from '../../components/footer/Footer';
@@ -9,24 +9,24 @@ import { useEffect } from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
-import {actionToken, getUserApi} from "../../reducers";
+import { getUserApi} from "../../reducers";
 import {selectorLoginToken} from "../../selectors";
 //import { defaultTheme } from '../../assets/theme/theme';
 //import {  Link } from 'react-router-dom';
 const Layout = () => {
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
     const token = useSelector(selectorLoginToken);
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
-    useEffect(() => {
-        const storedToken = localStorage.getItem("token");
-        if (storedToken) {
-            dispatch(actionToken(storedToken));
-        }
-        else {
-            navigate('/authorization');
-        }
-    }, [dispatch, navigate]);
+    // useEffect(() => {
+    //     const storedToken = localStorage.getItem("token");
+    //     if (storedToken) {
+    //         dispatch(actionToken(storedToken));
+    //     }
+    //     else {
+    //         navigate('/authorization');
+    //     }
+    // }, [dispatch, navigate]);
 
     useEffect(() => {
         if (token) {

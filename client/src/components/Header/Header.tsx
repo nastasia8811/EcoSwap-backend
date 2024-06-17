@@ -16,6 +16,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const isUserAuthorized = useSelector(selectorLoginToken)
 const dispatch = useDispatch()
+    console.log(isUserAuthorized)
     return (
         <header className="header">
             <Container maxWidth="xl">

@@ -5,7 +5,7 @@ import './Events.scss';
 import React, {useEffect} from 'react';
 import EventCreate from '../EventCreate/EventCreate';
 import  {useState} from 'react';
-import { useNavigate} from 'react-router-dom';
+//import { useNavigate} from 'react-router-dom';
 // @ts-ignore
 import events from "./img/events.jpg";
 import {useSelector, useDispatch} from "react-redux";
@@ -30,7 +30,7 @@ import {getEvents} from "../../reducers/event.reducer";
 const Events: React.FC = () => {
 
     const [isModalAuthOpen, setIsModalAuthOpen] = useState(false);
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 const dispatch = useDispatch()
 const eventsArray = useSelector(selectorGetEvents);
     const toggleModalAuth = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -47,12 +47,10 @@ const eventsArray = useSelector(selectorGetEvents);
     const userData = useSelector((state)=>state.login.userData)
 
     useEffect(() =>{
-        if (!userData){
-            navigate('/authorization');
-        } else {
-           //@ts-ignore
-            dispatch(getEvents())
-        }
+
+            // @ts-ignore
+        dispatch(getEvents())
+
     }, []);
 
     const typeValue = localStorage.getItem('token')? 'full': 'short'
