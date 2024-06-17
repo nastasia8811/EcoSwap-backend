@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Formik, Form } from 'formik';
+import {Button} from '@mui/material';
 import FormikControl from '../CustomInput/FormikControl';
 import PasswordInput from '../CustomInput/PasswordInput';
 import './FormRegistration.scss';
@@ -164,7 +165,8 @@ const FormRegistration: React.FC<FormRegistrationProps> = ({
                                     required
                                 />
                             </div>
-                            <button type="submit" disabled={!isValid}>create</button>
+                            <Button style={{margin:'0 auto', display:'flex'}} variant="contained" type="submit" color="success" disabled={!isValid}>create</Button>
+
                         </Form>
                     </>
                 )}

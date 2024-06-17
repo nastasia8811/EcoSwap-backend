@@ -144,7 +144,7 @@ export const bookOrCancelApiEvent = (id:string, customerId:string) => (dispatch:
     return axios.put( createOrCancelEvent(id, customerId))
         .then((response) => {
             console.log('Event update response:', response);
-            //dispatch(actionUnregisterEvent(response.data));
+            dispatch(actionChangeEvent(response.data));
             dispatch(actionEventSuccess('Event updated successfully.'));
             return response;
         })
@@ -208,7 +208,6 @@ export const getApiOneEvent = (event:any) => async (dispatch: any)  =>{
 export const changeApiEvent = (values:any) => (dispatch: any) => {
     console.log('Sending API update event request...');
     dispatch(actionPageIsLoadingEvent(true));
-
 //конкантенація
     return axios.put( UPDATE_EVENT+values._id, values)
         .then((response) => {

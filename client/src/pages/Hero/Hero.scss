@@ -62,15 +62,27 @@
   &__carousel{
     box-shadow: 0 -25px 25px -25px #8BA993;
     background-color: #8BA993;
+    font-family: Cleopatras;
     &-title{
-      padding-top: 30px;
       color: #EDEDED;
-      font-family: Cleopatras;
+      text-align: center;
+      padding-top: 30px;
       font-size: 20px;
       font-weight: 400;
       line-height: 31px;
+    }
+    &-register{
+      color: #1B2A20;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 31px;
+      display: block;
       text-align: center;
 
+    }
+    &-register:hover{
+      color: #EDEDED;
     }
   }
 
@@ -115,6 +127,11 @@
         font-size: 24px;
         line-height: 36px;
       }
+      &-register{
+        font-size: 24px;
+        line-height: 36px;
+      }
+
     }
   }
   @media (min-width: 834px) {
@@ -157,11 +174,16 @@
       }
     }
     &__carousel{
+      padding: 30px;
       &-title{
         padding-top: 40px;
         font-size: 64px;
-        font-weight: 400;
         line-height: 70.46px;
+      }
+      &-register{
+        font-size: 64px;
+        line-height: 70.46px;
+
       }
     }
     }

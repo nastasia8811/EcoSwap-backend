@@ -5,18 +5,11 @@
   box-sizing: border-box;
   margin-bottom: 40px;
 
-  //
-  //@media (max-width: 400px) {
-  //  box-shadow: none;
-  //  padding: 0;
-  //}
-
-
   &__grid_wrapper {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 30px;
-
+margin-bottom: 30px;
     &__input {
       padding: 0 30px;
       outline: none;
@@ -24,6 +17,7 @@
 
     }
   }
+
 
 
   @media (min-width: 482px) and (max-width: 996px) {

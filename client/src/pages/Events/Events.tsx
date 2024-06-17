@@ -5,7 +5,7 @@ import './Events.scss';
 import React, {useEffect} from 'react';
 import EventCreate from '../EventCreate/EventCreate';
 import  {useState} from 'react';
-import { useNavigate} from 'react-router-dom';
+//import { useNavigate} from 'react-router-dom';
 // @ts-ignore
 import events from "./img/events.jpg";
 import {useSelector, useDispatch} from "react-redux";
@@ -30,7 +30,7 @@ import {getEvents} from "../../reducers/event.reducer";
 const Events: React.FC = () => {
 
     const [isModalAuthOpen, setIsModalAuthOpen] = useState(false);
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 const dispatch = useDispatch()
 const eventsArray = useSelector(selectorGetEvents);
     const toggleModalAuth = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -46,16 +46,14 @@ const eventsArray = useSelector(selectorGetEvents);
     // @ts-ignore
     const userData = useSelector((state)=>state.login.userData)
 
-
     useEffect(() =>{
-        if (!userData){
-            navigate('/authorization');
-        } else {
+
             // @ts-ignore
-            dispatch(getEvents())
-        }
+        dispatch(getEvents())
+
     }, []);
 
+    const typeValue = localStorage.getItem('token')? 'full': 'short'
     return(
         <>
          <Container className="events-container" maxWidth="xl">
@@ -65,13 +63,14 @@ const eventsArray = useSelector(selectorGetEvents);
                     <BreadCrumbs linksArray={[{ link:'/events', text: 'Events' }]} />
                     <h2 className="events-container__wrapper-title">Events</h2>
                     <div className="events-container__wrapper-plus">
-                        <Button className="events-container__wrapper-plus-button" variant="outlined"
-                                onClick={(event) => toggleModalAuth(event)}>Add Event</Button>
+                        {typeValue === 'full' &&  <Button className="events-container__wrapper-plus-button" variant="outlined"
+                                                          onClick={(event) => toggleModalAuth(event)}>Add Event</Button>}
+
                         {isModalAuthOpen && <EventCreate closeModalCreateEvent = {closeModalCreateEvent} />}
                     </div>
                     <Box className="events-container__wrapper-flex">
                     {eventsArray.map((item:any) => (
-                         <EventItem key={item._id} event={item}  onClick={() => {}}  />
+                         <EventItem key={item._id} event={item}  type={typeValue} onClick={() => {}}  />
       ))}
                     </Box>
 

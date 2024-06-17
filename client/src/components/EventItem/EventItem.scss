@@ -1,11 +1,13 @@
 
 .item-wrapper{
-    margin:5px;
-    width: 355px;
     cursor: pointer;
+overflow: hidden;
     &__img{
-
+        width: 100%;
+        height: 300px;
+        max-width: 100%;
         display: block;
+        object-fit: cover;
     }
     &__title{
         border-bottom-left-radius: 10px;
@@ -26,10 +28,9 @@
 
     @media (min-width: 482px) and (max-width: 995.9px) {
         &{
-            margin:10px;
-            width: 450px;
+
             &__img{
-                width: 450px;
+
             }
             &__title{
                 min-height: 75px;
@@ -40,10 +41,9 @@
     }
     @media (min-width: 996px) {
         &{
-            margin:30px;
-            width: 510px;
+
             &__img{
-                width: 510px;
+
             }
             &__title{
                 min-height: 79px;

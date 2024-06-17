@@ -1,17 +1,16 @@
 {
-  "name": "fe-final-backend",
+  "name": "redi",
   "version": "1.0.0",
-  "description": "Back End code for final projects of Front End",
+  "description": "My final project ReDiProject",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/dan-it/js-course-development/fe-final-backend.git"
+    "url": "https://github.com/nastasia8811/RediProject"
   },
-  "author": "Saribeg",
+  "author": "Melnyk",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
