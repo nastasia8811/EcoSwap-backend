@@ -10,7 +10,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
 import {Button} from "@mui/material";
-
 interface EventCreateProps {
     closeModalCreateEvent: () => void;
 }
@@ -37,7 +36,7 @@ const sessionImage = sessionStorage.getItem("imgUrl");
 if(sessionImage){
     values.img=sessionImage
 } else if (!values.img){
-    values.img='https://res.cloudinary.com/dequtvxxc/image/upload/v1718537049/exv7anrb5qdu6lczp8vr.jpg'
+    values.img='https://res.cloudinary.com/dequtvxxc/image/upload/v1718666639/yf6pg3rsymcph86j5cad.png'
 }
         dispatch(sendApi(values)).then((axiosValue) => {
             if (axiosValue) {
