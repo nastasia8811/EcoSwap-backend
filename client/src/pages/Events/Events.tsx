@@ -46,12 +46,11 @@ const eventsArray = useSelector(selectorGetEvents);
     // @ts-ignore
     const userData = useSelector((state)=>state.login.userData)
 
-
     useEffect(() =>{
         if (!userData){
             navigate('/authorization');
         } else {
-            // @ts-ignore
+           //@ts-ignore
             dispatch(getEvents())
         }
     }, []);

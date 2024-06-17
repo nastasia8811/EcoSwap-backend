@@ -31,8 +31,18 @@ const ImageCarousel: React.FC = () => {
             speed: 500,
             slidesToShow: 2,
             slidesToScroll: 2,
-            initialSlide: 0,
+            initialSlide: 1,
             responsive: [
+
+                {
+                    breakpoint: 1800,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        infinite: true,
+                        dots: true
+                    }
+                },
                 {
                     breakpoint: 1024,
                     settings: {
@@ -43,25 +53,26 @@ const ImageCarousel: React.FC = () => {
                     }
                 },
                 {
-                    breakpoint: 600,
+                    breakpoint: 700,
                     settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                        initialSlide: 2
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        initialSlide: 1
                     }
                 },
                 {
                     breakpoint: 480,
                     settings: {
                         slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
+                        initialSlide: 1
                     }
                 }
             ]
         };
 
     return (
-        <Box  sx={{ maxWidth: 1100, margin: 'auto', mt: 4 }}>
+        <Box  sx={{ maxWidth: 1800, margin: 'auto', mt: 3 }}>
             <Slider className="carousel" {...settings}>
                 {eventsArray.map((item: EventData) => (
                     <EventItem type="slider" key={item._id} event={item} />

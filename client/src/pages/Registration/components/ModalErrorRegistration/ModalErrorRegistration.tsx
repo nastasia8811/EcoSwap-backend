@@ -1,9 +1,9 @@
 import Modal from '../../../../components/Modal/Modal';
-//import { useState } from 'react';
-//import { useNavigate } from 'react-router-dom';
 import './ModalErrorRegistration.scss';
 import { useSelector } from "react-redux";
 import { selectorRegistrationMessageError } from "../../../../selectors";
+import {Button} from "@mui/material";
+import React from "react";
 
 interface ModalErrorRegistrationProps {
   closeErrorModal: () => void;
@@ -19,13 +19,7 @@ const ModalErrorRegistration: React.FC<ModalErrorRegistrationProps> = ({ closeEr
     >
       <p className="modal_title">{closeModalError}</p>
       <p className="modal_title__login">Please try again or login</p>
-      <button
-        className="form-block__btn"
-        type="button"
-        onClick={closeErrorModal}
-      >
-        Close
-      </button>
+      <Button className="form-block__btn" style={{margin:'0 auto', display:'flex'}} variant="outlined"  color="error" onClick={closeErrorModal}>close</Button>
     </Modal>
   );
 };
