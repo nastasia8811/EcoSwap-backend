@@ -17,12 +17,12 @@ const validationSchemaEventCreate = yup.object().shape({
   date: yup
       .date()
       .typeError("Date should be in the format DD.MM.YYYY"),
-  img: yup
-    .string()
-    .matches(
-      /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-      'Enter correct url',
-    ),
+  // img: yup
+  //   .string()
+  //   .matches(
+  //     /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+  //     'Enter correct url',
+  //   ),
   description:yup
       .string()
       .min(10, 'Min 10 symbols'),

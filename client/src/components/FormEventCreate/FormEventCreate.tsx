@@ -6,23 +6,27 @@ import ImageUpload from "../ImageUpload/ImageUpload";
 import React from "react";
 import {Button} from "@mui/material";
 
+import {selectorCreatingEvent} from "../../selectors";
+import { useSelector} from 'react-redux';
 
 interface FormEventCreateProps {
     onSubmit: (values: any) => void;
-    initialValues: any;
+    initialValues?: any;
     validationSchema: any;
 }
 
 const FormEventCreate: React.FC<FormEventCreateProps> = ({
                                                                onSubmit,
-                                                               initialValues,
+                                                            
                                                                validationSchema
                                                            }) => {
-
+    const eventData = useSelector(selectorCreatingEvent);
     return (
         <>
             <Formik
-                initialValues={initialValues}
+         
+            
+                initialValues={eventData}
                 validationSchema={validationSchema}
                 onSubmit={onSubmit}
             >
@@ -111,7 +115,19 @@ const FormEventCreate: React.FC<FormEventCreateProps> = ({
                                     helperText='null'
                                     required
                                 />
-
+  <FormikControl
+                                    type="text"
+                                    control="input"
+                                    label="image"
+                                    color="success"
+                                    className="form-eventCreate__grid_wrapper__input"
+                                    name="img"
+                                    placeholder="image"
+                                    variant="outlined"
+                                    id="outlined-multiline-flexible"
+                                    helperText='null'
+                                    required
+                                />
                             </div>
                             <Button className="form-block__btn" style={{margin:'0 auto', display:'flex'}} variant="outlined"  color="success" type="submit" disabled={!isValid}>Save</Button>
 

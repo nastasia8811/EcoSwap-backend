@@ -12,9 +12,8 @@ import {useSelector, useDispatch} from "react-redux";
 
 import { selectorGetEvents} from '../../selectors';
 import EventItem from "../../components/EventItem/EventItem";
-import {getEvents} from "../../reducers/event.reducer";
+import {getEvents,actionGetOneEventData, initialState} from "../../reducers/event.reducer";
 // import {selectLoginUserData} from "../../selectors";
-
 
 
 // const theme = createTheme({
@@ -35,7 +34,9 @@ const dispatch = useDispatch()
 const eventsArray = useSelector(selectorGetEvents);
     const toggleModalAuth = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
+        
         setIsModalAuthOpen(!isModalAuthOpen);
+        dispatch(actionGetOneEventData({...initialState.formData}))
     };
 
     const closeModalCreateEvent = () => {

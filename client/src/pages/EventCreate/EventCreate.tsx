@@ -4,7 +4,7 @@ import ValidationSchemaEventCreate from "../../components/FormEventCreate/Valida
 import FormEventCreate from "../../components/FormEventCreate/FormEventCreate";
 import Modal from '../../components/Modal/Modal'
 import './EventCreate.scss';
-import {selectorCreatingEvent} from "../../selectors";
+
 import {sendApiEvent, changeApiEvent} from "../../reducers/event.reducer";
 import {useDispatch, useSelector} from 'react-redux';
 import {ThunkDispatch} from "redux-thunk";
@@ -16,7 +16,7 @@ interface EventCreateProps {
 
 const EventCreate: React.FC<EventCreateProps> = ({closeModalCreateEvent}) => {
     const dispatch = useDispatch<ThunkDispatch<any, any, Action>>();
-    const eventData = useSelector(selectorCreatingEvent);
+    // const eventData = useSelector(selectorCreatingEvent);
 
     // @ts-ignore
     const userData = useSelector((state)=>state.login.userData)
@@ -60,7 +60,7 @@ if(sessionImage){
                         <h2 className="eventCreate-container__wrapper-title">New event</h2>
 
                         <FormEventCreate
-                            initialValues={eventData}
+                            // initialValues={eventData}
                             validationSchema={ValidationSchemaEventCreate}
                             //@ts-ignore
                             onSubmit={handleSubmit}

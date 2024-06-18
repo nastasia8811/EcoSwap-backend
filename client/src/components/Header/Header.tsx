@@ -7,14 +7,15 @@ import { useSelector,useDispatch } from 'react-redux';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
-import {selectorLoginToken} from "../../selectors";
+
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import {actionResetState} from "../../reducers";
+import {actionResetState,actionToken} from "../../reducers";
 
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const isUserAuthorized = useSelector(selectorLoginToken)
+    //@ts-ignore
+    const isUserAuthorized = useSelector((state)=>state.login.userData)
 const dispatch = useDispatch()
     console.log(isUserAuthorized)
     return (
@@ -34,9 +35,13 @@ const dispatch = useDispatch()
                         <NavLink to="/events" className="header__wrapper-menu-item">
                             Events
                         </NavLink>
-                        <NavLink to="/authorization" className="header__wrapper-menu-item" onClick = {()=>{localStorage.removeItem('token'); dispatch(actionResetState(null))}}>
+                        <NavLink to="/authorization" className="header__wrapper-menu-item"
+                         onClick = {()=>{
+                            localStorage.removeItem('token');  
+                            dispatch(actionToken(null));
+        dispatch(actionResetState(null))}}>
 
-                           {isUserAuthorized ?<LoginOutlinedIcon /> : <AccountCircleOutlinedIcon /> }
+                           {isUserAuthorized._id ?<LoginOutlinedIcon /> : <AccountCircleOutlinedIcon /> }
                         </NavLink>
 
                     </Box>
