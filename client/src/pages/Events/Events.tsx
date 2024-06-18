@@ -5,16 +5,15 @@ import './Events.scss';
 import React, {useEffect} from 'react';
 import EventCreate from '../EventCreate/EventCreate';
 import  {useState} from 'react';
-import { useNavigate} from 'react-router-dom';
+//import { useNavigate} from 'react-router-dom';
 // @ts-ignore
 import events from "./img/events.jpg";
 import {useSelector, useDispatch} from "react-redux";
 
 import { selectorGetEvents} from '../../selectors';
 import EventItem from "../../components/EventItem/EventItem";
-import {getEvents} from "../../reducers/event.reducer";
+import {getEvents,actionGetOneEventData, initialState} from "../../reducers/event.reducer";
 // import {selectLoginUserData} from "../../selectors";
-
 
 
 // const theme = createTheme({
@@ -30,12 +29,14 @@ import {getEvents} from "../../reducers/event.reducer";
 const Events: React.FC = () => {
 
     const [isModalAuthOpen, setIsModalAuthOpen] = useState(false);
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 const dispatch = useDispatch()
 const eventsArray = useSelector(selectorGetEvents);
     const toggleModalAuth = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
+        
         setIsModalAuthOpen(!isModalAuthOpen);
+        dispatch(actionGetOneEventData({...initialState.formData}))
     };
 
     const closeModalCreateEvent = () => {
@@ -46,14 +47,11 @@ const eventsArray = useSelector(selectorGetEvents);
     // @ts-ignore
     const userData = useSelector((state)=>state.login.userData)
 
-
     useEffect(() =>{
-        if (!userData){
-            navigate('/authorization');
-        } else {
+
             // @ts-ignore
-            dispatch(getEvents())
-        }
+        dispatch(getEvents())
+
     }, []);
 
     const typeValue = localStorage.getItem('token')? 'full': 'short'

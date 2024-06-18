@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './EventItem.scss';
 import IconButton from '@mui/material/IconButton';
-//import DeleteIcon from '@mui/icons-material/Delete';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
@@ -15,8 +14,6 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import {ThunkDispatch} from "redux-thunk";
 import {Action} from "redux";
-//import {selectorLoginToken} from "../../selectors";
-//import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 
 
 interface EventItemProps {
@@ -52,7 +49,6 @@ const EventItem: React.FC<EventItemProps> = ({event, onClick, type = "full"}) =>
         return (
             <div className="item-wrapper" onClick={onClick}>
                 <h4 className="item-wrapper_user">{isUserPost && "You created this event"}</h4>
-                {/*<div className="item-wrapper-buttons"></div>*/}
                 <img className="item-wrapper__img" key={_id} src={img} alt={title}/>
                 <h2 className="item-wrapper__title" key={_id}>{title}
                     {isUserPost && <>
@@ -77,7 +73,7 @@ const EventItem: React.FC<EventItemProps> = ({event, onClick, type = "full"}) =>
 
                     {isModalAuthOpen && <EventCreate closeModalCreateEvent={() => closeModalCreateEvent()}/>}
 
-                    <IconButton aria-label="book or cancel" color={bookSeats ? "success" : "primary"} onClick={(e) => {
+                    <IconButton aria-label="book or cancel" color={bookSeats ? "primary" : "success"} onClick={(e) => {
                         e.stopPropagation();
                         if (typeof _id === "string") {
                             dispatch(bookOrCancelApiEvent(_id, userData._id))

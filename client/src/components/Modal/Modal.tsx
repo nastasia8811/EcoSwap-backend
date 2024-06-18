@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import {Box} from "@mui/material";
 import React, { ReactNode, MouseEventHandler } from 'react';
 import './Modal.scss';
 
@@ -8,12 +8,12 @@ interface ModalProps {
   closeAction: MouseEventHandler<HTMLDivElement>;
 }
 
-const Modal: React.FC<ModalProps> = ({ children, modalAction, closeAction }) => {
+const Modal: React.FC<ModalProps> = ({ children, closeAction }) => {
   return (
     <div className="wrapper">
       <div className="modal-wrapper" onClick={closeAction}>
         <Box className="modal-block" onClick={(e) => e.stopPropagation()}>
-          <button onClick={modalAction}>{children}</button>
+          {children}
         </Box>
       </div>
     </div>

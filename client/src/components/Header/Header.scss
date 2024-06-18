@@ -16,7 +16,8 @@
       }
     }
     &-menu{
-      display: none;
+      display: block;
+      //display: none;
       &-item{
         padding-right: 15px;
         color: #EDEDED;
@@ -29,10 +30,10 @@
         cursor:pointer;
       }
     }
-    &-burger_btn{
-      display: block;
-      cursor: pointer;
-    }
+    //&-burger_btn{
+    //  display: block;
+    //  cursor: pointer;
+    //}
   }
 
   @media (min-width: 482px) and (max-width: 833.9px) {
