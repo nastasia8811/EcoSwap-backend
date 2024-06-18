@@ -5,28 +5,13 @@ const passport = require('passport');
 const path = require('path');
 require('dotenv').config();
 const cors = require('cors');
-
-const globalConfigs = require('./routes/globalConfigs');
-const customers = require('./routes/customers');
-const catalog = require('./routes/catalog');
-const products = require('./routes/products');
-const colors = require('./routes/colors');
-const sizes = require('./routes/sizes');
-const filters = require('./routes/filters');
-const subscribers = require('./routes/subscribers');
-const cart = require('./routes/cart');
-const orders = require('./routes/orders');
-const links = require('./routes/links');
-const pages = require('./routes/pages');
-const slides = require('./routes/slides');
-const wishlist = require('./routes/wishlist');
-const comments = require('./routes/comments');
-const shippingMethods = require('./routes/shippingMethods');
-const paymentMethods = require('./routes/paymentMethods');
-const partners = require('./routes/partners');
 const evntsList = require('./routes/event');
+const customers = require('./routes/customers');
+const products = require('./routes/products');
+const globalConfigs = require('./routes/globalConfigs');
 
 const app = express();
+
 /**
  * CORS
  */
@@ -56,26 +41,12 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 // Use Routes
-app.use('/api/configs', globalConfigs);
-app.use('/api/customers', customers);
-app.use('/api/catalog', catalog);
-app.use('/api/products', products);
-app.use('/api/colors', colors);
-app.use('/api/sizes', sizes);
-app.use('/api/filters', filters);
-app.use('/api/subscribers', subscribers);
-app.use('/api/cart', cart);
-app.use('/api/orders', orders);
-app.use('/api/links', links);
-app.use('/api/pages', pages);
-app.use('/api/slides', slides);
-app.use('/api/wishlist', wishlist);
-app.use('/api/comments', comments);
-app.use('/api/shipping-methods', shippingMethods);
-app.use('/api/payment-methods', paymentMethods);
-app.use('/api/partners', partners);
 app.use('/api/event', evntsList);
-// app.use('/', mainRoute);
+app.use('/api/customers', customers);
+app.use('/api/configs', globalConfigs);
+app.use('/api/products', products);
+
+
 
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {

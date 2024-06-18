@@ -17,6 +17,7 @@ const ImageUpload:React.FC = () => {
 
     const handleUpload = (e:any) => {
         e.preventDefault()
+
         Promise.all(
             media.map((file) => {
                 const formData = new FormData();
