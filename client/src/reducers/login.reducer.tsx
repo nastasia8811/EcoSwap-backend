@@ -87,7 +87,6 @@ export const {
 } = loginSlice.actions;
 
 export const sendApiLogin = (value: { login: string; password: string }) => (dispatch: any) => {
-    console.log('Sending login request with value:', value);
     dispatch(actionPageIsLoadingLogin(true));
 
     const loginData = {
@@ -98,7 +97,6 @@ export const sendApiLogin = (value: { login: string; password: string }) => (dis
     return axios
         .post(LOGIN_USER, loginData)
         .then((response) => {
-            console.log('Login response:', response);
             const token = response.data.token;
             dispatch(actionToken(token))
             dispatch(actionUserData(response.data));
