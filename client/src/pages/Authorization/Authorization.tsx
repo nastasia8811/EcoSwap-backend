@@ -32,7 +32,6 @@ const navigate = useNavigate();
 
     const handleSubmit = (values: { login: string; password: string }) => {
         dispatch(sendApiLogin(values)).then((response) => {
-            console.log('Login successful:', response);
             navigate('/events');
 
         }).catch((error) => {

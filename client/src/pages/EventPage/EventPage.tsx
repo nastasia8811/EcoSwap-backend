@@ -36,7 +36,6 @@ const [event, setEvent] = useState<Person>({
     customer_id: null});
 
 const params = useParams()
-    console.log(params)
 
     useEffect(() =>{
         if (params.id){

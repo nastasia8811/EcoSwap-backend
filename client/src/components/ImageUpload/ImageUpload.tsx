@@ -6,9 +6,7 @@ const ImageUpload:React.FC = () => {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
-        console.log(target.files)
         if (Object.values) {
-            console.log(target.files!);
             const files = [...Object.values(target.files!)];
             setMedia(files);
         }
