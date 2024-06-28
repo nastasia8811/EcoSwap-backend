@@ -105,11 +105,11 @@ exports.bookOrCancelEvent = (req, res, next) => {
 
             if(customerIsBooked) {
                 event.bookedSeats.pull(customerId);
-                event.available = event.available+1;
+                event.available = event.available-1;
 
             } else {
                 event.bookedSeats.push(customerId)
-                event.available = event.available-1;
+                event.available = event.available+1;
 
             } event.save()
                     .then((data) => {

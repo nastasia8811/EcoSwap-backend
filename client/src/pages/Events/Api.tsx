@@ -30,6 +30,8 @@
         //                bookedSeats: [], // Поки що немає заброньованих місць
         //                customer_id: "648f0e547c8768e698234567" // Приклад ID користувача з моделі Customer
         //            };})
+        //            .then((res)=>console.log(res))
+        //            .then((data)=>console.log(data))
         //
         //axios.delete('http://localhost:5000/api/event/666364902271f36b6e0e9a5c')
 
@@ -43,6 +45,7 @@
         //            },
         //            body: JSON.stringify({})})
         //            .then((res)=>res.json())
+        //            .then((data)=>console.log(data))
         //
         //        fetch('http://localhost:5000/api/event/id',{method: 'GET',
         //
@@ -53,6 +56,7 @@
         //            },
         //            body: JSON.stringify({})})
         //            .then((res)=>res.json())
+        //            .then((data)=>console.log(data))
 //     }
 //
 // }, []);

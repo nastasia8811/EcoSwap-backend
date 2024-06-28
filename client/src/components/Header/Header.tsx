@@ -17,6 +17,7 @@ const Header = () => {
     //@ts-ignore
     const isUserAuthorized = useSelector((state)=>state.login.userData)
 const dispatch = useDispatch()
+    console.log(isUserAuthorized)
     return (
         <header className="header">
             <Container maxWidth="xl">
