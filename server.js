@@ -15,11 +15,23 @@ const app = express();
 /**
  * CORS
  */
-const allowedOrigins = 'http://localhost:3000';
+const allowedOrigins = [
+  'http://localhost:3000'
+  // 'http://eco-swap-api.com',
+  // 'https://eco-swap-api.com'
+];
+
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
+
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
