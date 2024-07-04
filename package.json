@@ -1,7 +1,7 @@
 {
-  "name": "redi",
+  "name": "ecoswap-api",
   "version": "1.0.0",
-  "description": "My final project ReDiProject",
+  "description": "The website allows users to register for events, create their own events, edit, and delete them.",
   "main": "server.js",
   "scripts": {
     "server": "nodemon server.js"
