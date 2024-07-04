@@ -31,7 +31,7 @@ The main pages of the site include:
 ## Requirements
 
 - Node.js v20.14.0
-- Additional dependencies are described in `RediProject/package.json` and `client/package.json`.
+- Additional dependencies are described in `EcoSwap/package.json` and `client/package.json`.
 
 ### Steps to Run the Project with a Specific Node.js Version:
 
@@ -49,7 +49,7 @@ This will configure the current terminal session to use the installed Node.js ve
 
 ### Backend
 
-1. In the `RediProject` directory, install dependencies:
+1. In the `EcoSwap` directory, install dependencies:
    `npm install`
 
 2. Start the development server:
