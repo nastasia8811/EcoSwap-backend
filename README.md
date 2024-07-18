@@ -30,18 +30,18 @@ The main pages of the site include:
 
 ## Requirements
 
-- Node.js v20.14.0
+- Node.js v18.16.0
 - Additional dependencies are described in `EcoSwap/package.json` and `client/package.json`.
 
 ### Steps to Run the Project with a Specific Node.js Version:
 
 1. Ensure Node.js Version is Installed:
    If you haven't installed the required Node.js version yet, use the following command to install it
-   `nvm install v20.14.0`
+   `nvm install v18.16.0`
 
 2. Activate the Desired Node.js Version:
    After installing the Node.js version, activate it with the following command:
-   `nvm use v20.14.0`
+   `nvm use v18.16.0`
 
 This will configure the current terminal session to use the installed Node.js version.
 
