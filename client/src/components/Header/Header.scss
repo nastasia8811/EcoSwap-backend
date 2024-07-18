@@ -1,5 +1,8 @@
 .header{
   min-width: 375px;
+  position: relative;
+
+  z-index: 1000;
   &__wrapper {
     display: flex;
     min-height: 48px;
@@ -8,16 +11,26 @@
     justify-content: space-between;
     padding-right: 10px;
     padding-left: 10px;
-    &-logo{
+
+    &-logo {
       cursor: pointer;
-      &_icon{
+
+      &_icon {
         max-width: 32px;
         max-height: 32px;
       }
     }
+    &-name{
+      font-family: Maitree, sans-serif;
+      font-size: 46px;
+      font-weight: 400;
+      line-height: 70px;
+      text-align: left;
+      color: #8BA993;
+    }
+
     &-menu{
-      display: block;
-      //display: none;
+      display: none;
       &-item{
         padding-right: 15px;
         color: #EDEDED;
@@ -30,10 +43,10 @@
         cursor:pointer;
       }
     }
-    //&-burger_btn{
-    //  display: block;
-    //  cursor: pointer;
-    //}
+    &-burger_btn{
+      display: block;
+      cursor: pointer;
+    }
   }
 
   @media (min-width: 482px) and (max-width: 833.9px) {
@@ -47,21 +60,20 @@
           max-height: 80px;
         }
       }
-      &-menu{
-        display: block;
+
         &-item {
           padding-right: 15px;
           font-weight: 400;
           font-size: 16px;
           line-height: 26.4px;
         }
-      }
+
       &-burger_btn{
-        display: none;
+        display: block;
       }
     }
   }
-  @media (min-width: 834px) and (max-width: 1800px) {
+  @media (min-width: 834px)  {
     &__wrapper {
       display: flex;
       height: 160px;
