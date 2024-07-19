@@ -41,7 +41,7 @@ The main pages of the site include:
 
 2. Activate the Desired Node.js Version:
    After installing the Node.js version, activate it with the following command:
-   `nvm use v18.16.0`
+   `nvm use`
 
 This will configure the current terminal session to use the installed Node.js version.
 
