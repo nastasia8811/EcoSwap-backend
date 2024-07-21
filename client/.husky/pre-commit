@@ -1,5 +1,0 @@
-npm test
-npx stylelint src/**/*.scss
-npx eslint src/**/*.tsx
-npx prettier src/**/*.tsx
-
